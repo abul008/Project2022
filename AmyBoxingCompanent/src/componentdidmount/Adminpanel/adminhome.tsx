@@ -1,9 +1,10 @@
-
+import {AdminTable} from "./admintable";
 
 
 export const AdminPanel:React.FC = ()=>{
-
     return( 
-        <div >AdminPanel</div>
+        <div >
+            <AdminTable />
+        </div>
     )
 }

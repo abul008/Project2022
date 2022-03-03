@@ -1,8 +1,8 @@
 import IRoute from '../InterFace/routes';
 import {Home} from "../HomePage/homePage";
-import { BookProduct } from '../BookPageScreen/bookPageProduct';
 import { AdminPanel } from '../Adminpanel/adminhome';
-import { AdminLogin } from '../Adminpanel/adminlogin';
+// import { AdminLogin } from '../Adminpanel/adminlogin';
+// import {AdminRegister} from "../Adminpanel/adminregister";
 
 
 

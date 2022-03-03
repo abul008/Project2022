@@ -10,7 +10,8 @@ import { HeadPage } from './componentdidmount/HeadPageScreen/headPageScreen';
 
 export const App:React.FC = () => {
 
-  
+
+
   // const state = useSelector((state:RootState) => state.bank)
   // const dispatch = useDispatch();
 

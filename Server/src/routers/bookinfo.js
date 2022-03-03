@@ -1,12 +1,13 @@
 // const express = require('express');
 import express from "express";
 import {bookinfos} from "../controllers/bookinfo.js" ;
-import {admilogin} from "../controllers/adminlogin.js";
+import {admilogin ,admilogins} from "../controllers/adminlogin.js";
 
 const router = express.Router();
 
 
-router.get('/get/adminlogin/', admilogin)
+router.post('/login', admilogin)
+router.get('/logins', admilogins)
 router.get('/get/bookinfo/',bookinfos);
 
 

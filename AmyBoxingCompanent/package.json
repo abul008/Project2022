@@ -2,6 +2,7 @@
   "name": "reactwebpack",
   "version": "1.0.0",
   "description": "",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "start": "webpack server --config webpack/webpack.config.js --env env=dev --open",
@@ -13,10 +14,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/js-cookie": "^3.0.1",
     "@types/react-redux": "^7.1.21",
     "@types/redux-thunk": "^2.1.0",
     "axios": "^0.24.0",
     "i18next": "^21.6.11",
+    "js-cookie": "^3.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-i18next": "^11.15.5",

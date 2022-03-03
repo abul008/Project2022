@@ -2,8 +2,7 @@ import IRoute from '../InterFace/routes';
 import {Home} from "../HomePage/homePage";
 import { BookProduct } from '../BookPageScreen/bookPageProduct';
 import { AdminLogin } from '../Adminpanel/adminlogin';
-
-
+import { isAuth } from '../helpers/auth';
 
 
 const routes: IRoute[] = [
@@ -22,12 +21,9 @@ const routes: IRoute[] = [
     {
         path: '/webadminlogin',
         name: 'admin Login',
-        component: AdminLogin,
+        component:isAuth("role") ?  Home : AdminLogin ,
         exact: true
     }
-    
-    
- 
 ]
 
 

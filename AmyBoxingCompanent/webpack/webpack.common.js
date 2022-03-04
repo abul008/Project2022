@@ -25,9 +25,14 @@ const cssLoaders =(exstra)=>{
 
 
 module.exports = {
-  entry: path.resolve(__dirname, '..', './src/index.tsx'),
+  entry:[
+    'react-hot-loader/patch',  // nenca anum vor routerner@ karenan mi qani cuxov karucven
+     path.resolve(__dirname, '..', './src/index.tsx')],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    // alias: {
+    //   'react-dom': '@hot-loader/react-dom'
+    // }
   },
 
   module: {
@@ -71,6 +76,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '..', './build'),
     filename: 'bundle.js',
+    publicPath: '/'
   },
   mode: 'development',
   plugins: [

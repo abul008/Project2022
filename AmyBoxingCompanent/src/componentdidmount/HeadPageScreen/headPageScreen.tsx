@@ -3,6 +3,7 @@
 import AdminRoute from '../Routing/adminrouting';
 import {Nav} from "../Nav/navPage";
 import routes from '../config/routes';
+import { isAuth } from '../helpers/auth';
 import routesadmin from "../config/routesadmin";
 import {
     BrowserRouter as Router,
@@ -18,7 +19,7 @@ export const HeadPage:React.FC=()=>{
     return(
       <Router>
          <div className="wrapper-page">
-           <Nav />
+          {isAuth("role") ? null :  <Nav /> }
              <Switch>
               {routes.map((route, index) => {
                         return (

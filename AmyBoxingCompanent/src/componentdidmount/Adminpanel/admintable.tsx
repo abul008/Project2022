@@ -1,7 +1,7 @@
-
+import {Table} from "./table";
 
 export const AdminTable:React.FC = ()=>{
     return( 
-        <div >table</div>
+        <div ><Table /></div>
     )
 }

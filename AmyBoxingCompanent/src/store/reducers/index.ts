@@ -10,14 +10,16 @@
 import {combineReducers} from "redux";
 import { todoReducer } from "./todoReducer";
 import {userReducer} from "./userReducer";
-import {traningReducer} from "./traningReduce"
+import {traningReducer} from "./traningReduce";
+import {BookReducer} from "./bookReducer";
 
 
 
 export const rootReducer = combineReducers({
     user: userReducer,
     todo: todoReducer,
-    traning:traningReducer
+    traning:traningReducer,
+    book:BookReducer
     
 })
 

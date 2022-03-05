@@ -1,7 +1,7 @@
 import IRoute from '../InterFace/routes';
 import {Home} from "../HomePage/homePage";
 import { AdminPanel } from '../Adminpanel/adminhome';
-import {addbookinfo} from "../Adminpanel/createbookinfo"
+import {addbookinfo} from "../Adminpanel/bookinfoaddub/createbookinfo"
 
 const routesadmin:IRoute[] = [
   

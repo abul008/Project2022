@@ -1,7 +1,6 @@
 import express from "express";
 import session  from 'express-session';
 import {connectDB} from "./src/config/dbconnect.js";
-import  bodyParser from "body-parser";
 import {routes} from "./src/routers/bookinfo.js";
 import cors from "cors"; 
 import i18next from "i18next";
@@ -9,6 +8,7 @@ import Backend from "i18next-fs-backend";
 import middleware from "i18next-http-middleware"
 import bycript from "bcrypt";
 import ConnectMongo from "connect-mongo";
+import bodyParser  from "body-parser"
 import cookieParser from "cookie-parser";
 import secure from 'express-force-https';
 import connectRedis from 'connect-redis';
@@ -101,7 +101,10 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(bodyParser.json())
 
-app.use(cors());
+app.use(cors({
+  origin:"http://localhost:3000" , 
+  credentials:true
+}));;
 
 
 app.use(pasportini);

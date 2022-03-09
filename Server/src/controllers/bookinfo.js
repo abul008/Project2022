@@ -4,34 +4,43 @@ import {Bookinfo} from "../models/book.js";
 
 
 
-export const uploadbookinfo =  ( async(req,res)=>{
+export const uploadbookinfo =  ( async(req,res,next)=>{
 
    
     const {name_am} = req.body
 
-    const file = req.files.files;
-    console.log(file)
-   const filesArray = file.map(element => {
+    const files = req;
+
+    // console.log(files)
+ 
+    // let filesArray = [];
+    // req.files.forEach(element => {
+    //     const file = {
+    //         fileName: element.originalname,
+    //         fileHreaf:`uploadbookinfo/${element.filename}`,
+    //         filePath: element.path,
+    //         fileType: element.mimetype,
+    //         fileSize: fileSizeFormatter(element.size, 2)
+    //     }
+    //     filesArray.push(file);
+    // });
+
+
+   console.log(req.files.file)
+    const filesArray = req.files.map(element => {
         return  {
-            fileName: element.name,
+            fileName: element.originalname,
             fileHreaf:`uploadbookinfo/${element.filename}`,
-            filePath: element.tempFilePath,
+            filePath: element.path,
             fileType: element.mimetype,
             fileSize: fileSizeFormatter(element.size, 2)
           }
     });
-  
-
 
     console.log(filesArray)
 
   
-    const book = {
-        title:"new blog",
-        snipped: "about my new blog",
-        body:"more about my new blog"
-    };
-    res.send(book)
+    res.status(201).send('Files Uploaded Successmmnnfully');
 })
 
 

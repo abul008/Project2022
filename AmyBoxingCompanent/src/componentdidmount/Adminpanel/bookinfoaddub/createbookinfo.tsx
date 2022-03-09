@@ -12,6 +12,7 @@ import 'jodit/build/jodit.min.css';
 import { useState } from "react";
 
 
+
 export const addbookinfo:React.FC = ()=>{
 
    
@@ -26,13 +27,15 @@ export const addbookinfo:React.FC = ()=>{
     
 
  
-  
+     console.log(`${__dirname}public`)
    
 
 
 
 
     const cretebookinfo = async(e:React.FormEvent<HTMLFormElement>)=>{
+
+
        e.preventDefault()
        const {
          name_am,
@@ -54,18 +57,16 @@ export const addbookinfo:React.FC = ()=>{
        } = data
 
        const formData = new FormData();
-      //  formData.append('file', file);
-       
-      //  const formData = new FormData();
+  
 
        for (let i = 0; i < file.length; i++) {
-           formData.append('files',file[i]);                      
+           formData.append('files', file[i]);                      
        }
-
-       formData.append("name_am", name_am)
+      //  formData.append("file" , file)
+      //  formData.append("name_am", name_am)
        try{
         
-         const res = await axios.post('http://localhost:8080/api/get/bookinfo/' , formData ,{
+         const res = await axios.post('/api/photos/upload' , formData ,{
                 
             headers:{
                 'Content-Type': "multipart/form-data"
@@ -83,7 +84,6 @@ export const addbookinfo:React.FC = ()=>{
 
          setMessage('File Uploaded');
          setUploadedFile({fileName, filePath})
-      console.log(formData)
 
        }catch(error){
           console.log(error)
@@ -105,13 +105,14 @@ export const addbookinfo:React.FC = ()=>{
        
 
        <button>send</button>
+ 
     </form>
     <Progress percentage={uploadPercentage} />
     {uploadedFile ? (
         <div className='row mt-5'>
           <div className='col-md-6 m-auto'>
             <h3 className='text-center'>{uploadedFile.fileName}</h3>
-            <img style={{ width: '100%' }} src={uploadedFile.filePath} alt='' />
+            <img style={{ width: '100%' }} src={require("/media/bookfoto/1646830893576--IMG_4908.JPG")} alt='name' />
           </div>
         </div>
       ) : null}

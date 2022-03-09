@@ -3,6 +3,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const srcPath = path.join(__dirname, '..', 'media')
 
 const cssLoaders =(exstra)=>{
 
@@ -22,7 +23,11 @@ const cssLoaders =(exstra)=>{
 }
 
 
+const rules = []
 
+const includePaths = [
+  srcPath
+]
 
 module.exports = {
   entry:[
@@ -64,6 +69,7 @@ module.exports = {
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        include: includePaths,
         type: 'asset/resource',
       },
       {

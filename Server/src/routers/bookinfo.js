@@ -1,14 +1,15 @@
 // const express = require('express');
 import express from "express";
+import {upload} from "../helpers/filershelper.js";
 import {uploadbookinfo} from "../controllers/bookinfo.js" ;
 import {admilogin ,admilogins} from "../controllers/adminlogin.js";
 
 const router = express.Router();
 
 
-router.post('/login', admilogin)
+router.post('/login',   admilogin)
 router.get('/logins', admilogins)
-router.post('/get/bookinfo/',uploadbookinfo);
+router.post('/photos/upload', upload.array('files') , uploadbookinfo);
 
 
 

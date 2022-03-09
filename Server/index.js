@@ -12,8 +12,12 @@ import ConnectMongo from "connect-mongo";
 import bodyParser  from "body-parser"
 import cookieParser from "cookie-parser";
 import secure from 'express-force-https';
+import multer from "multer";
 import connectRedis from 'connect-redis';
 import { Adminlogin } from "./src/models/login.js";
+import { upload } from "./src/helpers/filershelper.js";
+
+// const upload = multer({ dest: './public/data/uploadsis/' })
 
 
 
@@ -95,13 +99,14 @@ connectDB();
 //     next()
 //  })
 app.use(cookieParser("secretcode"))
-
-
+// app.use('/api/', express.static(path.join(__dirname,'uploads')));
+// app.use(express.static('./methods-public'))
 app.use(middleware.handle(i18next));
-app.use(express.urlencoded({extended:true}))
+// app.use(fileUpload());
+
+app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 app.use(bodyParser.json())
-app.use(fileUpload());
 
 app.use(cors({
   origin:"http://localhost:3000" , 
@@ -155,6 +160,12 @@ app.get("/",async(req,res)=>{
    let a = await Adminlogin.find({})
 
   res.send(a)
+})
+
+app.post('/photos/upload', upload.array('files'), function (req, res, next) {
+  // req.files is array of `photos` files
+  console.log(req.files)
+  // req.body will contain the text fields, if there were any
 })
 
 app.use('/api/' , routes)

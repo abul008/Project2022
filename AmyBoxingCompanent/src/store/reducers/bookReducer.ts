@@ -1,4 +1,7 @@
+import { dataBind } from "jodit/types/core/helpers";
 import {bookstate,BookActionTypes , BookAction} from "../types/book";
+
+
 
 const initialState: bookstate = {
    data:{
@@ -14,11 +17,12 @@ const initialState: bookstate = {
     Numberofpages:"",
     Weight:"",
     Publisher:"",
-    price:0,
+    price:"",
     cover_am:"",
     cover_ru:"",
     cover_en:"",
     date:"",
+    absolute_url:"",
     file:"",
     filename:""
    }

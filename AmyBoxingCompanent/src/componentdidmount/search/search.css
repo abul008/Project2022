@@ -1,0 +1,68 @@
+.search-page {
+    position: relative;
+    display: flex;
+    /* align-items: center; */
+    width: 36%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .search-page form{
+    align-items: center;
+    display: flex;
+    width: 100%;
+    position: relative;
+  }
+  .search-page button {
+    position: absolute;
+    height: 100;
+    background: none;
+    border: none;
+    margin: auto;
+    cursor: pointer;
+    height: 53%;
+    left: 10px;
+    display: flex;
+    align-items: center;
+  }
+  .nav-profile {
+    position: relative;
+  }
+  .nav-page-loginbtn {
+    position: absolute;
+  }
+  .search-page input {
+    width: 100%;
+    /* padding: 6px 0px; */
+    border-radius: 10px;
+    outline: none;
+    border: solid 1px #7c7979;
+    padding-left: 30px;
+  }
+  .search-page input:focus {
+    background: #e7e7e7;
+  }
+  .searche-page-product-info-form{
+    position: absolute;
+    background: rgb(255, 255, 255);
+    width: 100%;
+    top: 38px;
+    /* height: 410px; */
+    max-height: 410px;
+    border-radius: 0px 0px 10px 10px;
+    z-index: 0;
+    border-bottom: solid 1px grey;
+    border-left: solid 1px grey;
+    border-right: 1px solid #6b6b6b;
+    padding: 13px 13px 14px 17px;
+  }
+  .searche-page-product-info-form ul{
+    padding: 2px 0px 5px 5px;
+    line-height: 34px;
+    max-height: 410px;
+  
+  }
+  
+  .searche-page-product-info-form ul li{
+    list-style: none;
+  }

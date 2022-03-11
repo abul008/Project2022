@@ -1,10 +1,11 @@
 import IRoute from '../InterFace/routes';
 import {Home} from "../HomePage/homePage";
 import { AdminPanel } from '../Adminpanel/adminhome';
-import {addbookinfo} from "../Adminpanel/bookinfoaddub/createbookinfo"
+import {Bookinfoadd} from "../Adminpanel/bookinfoaddub/createbookinfo"
+import {Caruselinfo}  from "../Adminpanel/caruselinfo/caruselform";
 
 const routesadmin:IRoute[] = [
-  
+    
     {
         path: '/webadmin',
         name: 'admin page',
@@ -15,7 +16,14 @@ const routesadmin:IRoute[] = [
     {
         path: '/webadmin/addbookinfo/',
         name: 'create admin',
-        component: addbookinfo,
+        component: Bookinfoadd,
+        exact: true
+    },
+       
+    {
+        path: '/webadmin/addcaruselinfo',
+        name: 'create admin',
+        component: Caruselinfo,
         exact: true
     }
   

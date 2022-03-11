@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const srcPath = path.join(__dirname, '..', 'media')
 
 const cssLoaders =(exstra)=>{
-
+ 
   
   const loaders =  [ 
      {
@@ -69,7 +69,7 @@ module.exports = {
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        include: includePaths,
+        // include: includePaths,
         type: 'asset/resource',
       },
       {

@@ -11,11 +11,12 @@ export interface Bookinfo{
     Numberofpages:string,
     Weight:string,
     Publisher:string,
-    price:number,
+    price: string,
     cover_am:string,
     cover_ru:string,
     cover_en:string,
     date:string,
+    absolute_url:string,
     file:any,
     filename:any
 }

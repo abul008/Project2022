@@ -1,10 +1,9 @@
-// import {useTypedSelector} from "../../hooks/userTypedSelector";
-// import { useActions } from '../../hooks/useActions';
 import AdminRoute from '../Routing/adminrouting';
-import {Nav} from "../Nav/navPage";
+import {Nav} from "../Nav/nav";
 import routes from '../config/routes';
 import { isAuth } from '../helpers/auth';
 import routesadmin from "../config/routesadmin";
+import "./headPaheScreen.css";
 import {
     BrowserRouter as Router,
     Switch,
@@ -20,6 +19,7 @@ export const HeadPage:React.FC=()=>{
       <Router>
          <div className="wrapper-page">
           {isAuth("role") ? null :  <Nav /> }
+          <div className='header-section'>
              <Switch>
               {routes.map((route, index) => {
                         return (
@@ -42,6 +42,7 @@ export const HeadPage:React.FC=()=>{
                         );
                })}
           </Switch>
+          </div>
          </div>
       </Router>
     )

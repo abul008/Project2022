@@ -1,46 +1,68 @@
 import {Bookinfo} from "../models/book.js";
+import {Bookinfoschema} from "../models/book.js"
 
 
 
 
 
-export const uploadbookinfo =  ( async(req,res,next)=>{
-
-   
-    const {name_am} = req.body
-
-    const files = req;
-
-    // console.log(files)
- 
-    // let filesArray = [];
-    // req.files.forEach(element => {
-    //     const file = {
-    //         fileName: element.originalname,
-    //         fileHreaf:`uploadbookinfo/${element.filename}`,
-    //         filePath: element.path,
-    //         fileType: element.mimetype,
-    //         fileSize: fileSizeFormatter(element.size, 2)
-    //     }
-    //     filesArray.push(file);
-    // });
+export const uploadbookinfo = ( async(req,res,next)=>{
 
 
-   console.log(req.files.file)
+    try{
+
+        
+    const  {
+        name_am,
+        name_ru,
+        name_en,
+        author_am,
+        author_ru,
+        author_en,
+        Language_am,
+        Numberofpages,
+        Weight,
+        Publisher,
+        price,
+        date,
+        absolute_url
+    } = req.body
+
+
     const filesArray = req.files.map(element => {
         return  {
             fileName: element.originalname,
-            fileHreaf:`uploadbookinfo/${element.filename}`,
+            fileHreaf:`/media/bookfoto/${element.filename}`,
             filePath: element.path,
             fileType: element.mimetype,
             fileSize: fileSizeFormatter(element.size, 2)
           }
     });
 
-    console.log(filesArray)
 
-  
+    const bookinfodb = new  Bookinfoschema({
+        name_am:name_am,
+        name_ru:name_ru,
+        name_en:name_en,
+        author_am:author_am,
+        author_ru:author_ru,
+        author_en:author_en,
+        Language_am:Language_am,
+        Numberofpages:Numberofpages,
+        Weight:Weight,
+        Publisher: Publisher,
+        price:price,
+        date:date,
+        get_absolute_url:absolute_url,
+        files:filesArray
+    })
+
+    await  bookinfodb.save()
+
+     
     res.status(201).send('Files Uploaded Successmmnnfully');
+}catch(error) {
+    res.status(400).send(error.message);
+}
 })
 
 

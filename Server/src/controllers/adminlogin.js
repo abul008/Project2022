@@ -21,7 +21,7 @@ passport.use(new passportLocal.Strategy({
         return done(null, null, {message: "Incorrect email"});
     }
      
-    console.log(user)
+    // console.log(req.session.admin)
  
     if(await user.password === password){
         
@@ -65,10 +65,20 @@ passport.use(new passportLocal.Strategy({
       }
     });
 
+    req.session.user = user
+
     // user.isAuthenticated = true;
-    return res.json(user);
+
+    return res.json(req.session.user);
 
   })(req, res)
+})
+
+
+export const getUSers = ((req,res)=>{  
+
+  req.session.user = "hello"
+   res.send(req.session)
 })
 
 

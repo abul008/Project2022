@@ -6,7 +6,7 @@ import { useActions } from '../../../hooks/useActions';
 export const Bookimg:React.FC = ()=>{
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement >)=>{
-        setBookPage({...data,file:e.target.files, filename:e.target.files[0].name})
+        setBookPage({...data,file:e.target.files, filename:e.target.files})
     }
     const {data} = useTypedSelector(state => state.book)
 

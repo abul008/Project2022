@@ -19,6 +19,7 @@ export const Bookauthorname:React.FC = ()=>{
             <label>հեղինակ:Am</label>
                 <input
                 type="text"
+                required
                 placeholder="հեղինակ" 
                 value={data.author_am}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,author_am:e.target.value})}
@@ -29,6 +30,7 @@ export const Bookauthorname:React.FC = ()=>{
             <label>հեղինակ:Ru</label>
                 <input
                 type="text"
+                required
                 placeholder="հեղինակ" 
                 value={data.author_ru}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,author_ru:e.target.value})}
@@ -36,7 +38,8 @@ export const Bookauthorname:React.FC = ()=>{
              </div>
             <div className="admin-input-cantrol">
             <label>հեղինակ:En</label>
-                   <input
+                <input
+                required
                 type="text"
                 placeholder="հեղինակ" 
                 value={data.author_en}

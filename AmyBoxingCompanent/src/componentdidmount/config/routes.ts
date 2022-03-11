@@ -13,7 +13,7 @@ const routes: IRoute[] = [
         exact: true
     },
     {
-        path: '/Book/name',
+        path: '/Book/',
         name: 'Book Page',
         component: BookProduct,
         exact: true

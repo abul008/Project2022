@@ -2,28 +2,15 @@ import express from "express";
 import session  from 'express-session';
 import {connectDB} from "./src/config/dbconnect.js";
 import {routes} from "./src/routers/bookinfo.js";
+import { caruselroutes } from "./src/routers/caruselinfo.js";
 import cors from "cors"; 
 import i18next from "i18next";
 import Backend from "i18next-fs-backend";
 import middleware from "i18next-http-middleware"
-import fileUpload  from "express-fileupload";
-import bycript from "bcrypt";
-import ConnectMongo from "connect-mongo";
 import bodyParser  from "body-parser"
 import cookieParser from "cookie-parser";
 import secure from 'express-force-https';
-import multer from "multer";
-import connectRedis from 'connect-redis';
 import { Adminlogin } from "./src/models/login.js";
-import { upload } from "./src/helpers/filershelper.js";
-
-// const upload = multer({ dest: './public/data/uploadsis/' })
-
-
-
-
-
-const RedisStore = connectRedis(session);
 
 
 
@@ -93,11 +80,7 @@ connectDB();
 
   
 
-//   app.use((req,res, next)=>{
-//     console.log(req.session)
-//     console.log("hello")
-//     next()
-//  })
+
 app.use(cookieParser("secretcode"))
 // app.use('/api/', express.static(path.join(__dirname,'uploads')));
 // app.use(express.static('./methods-public'))
@@ -117,43 +100,7 @@ app.use(cors({
 app.use(pasportini);
 app.use(pasportsession);
 
-// passport.use(new passportLocal.Strategy({
-//     usernameField: "email"
-//    },
-   
-//    async(email,password,done)=>{
-   
-//     const user = await Adminlogin.findOne({email})
 
-    
-   
-//    if(user === undefined){
-//        return done(null, null, {message: "Incorrect email"});
-//    }
-
-//    if( user.password === password){
-//           console.log(user)
-//           return done(null, user);
-//    }
-
-//    done(null, null, {message: "Incorrect password"});
-//         //   console.log(user) 
-//     }));
-
-//     passport.serializeUser(()=>{ // objactic stanum enq text
-//        done(null ,user._id)
-//     })
-//     passport.deserializeUser(()=>{  //id- ic stanumenq text
-//       done(null ,Adminlogin.findOne({_id}))  
-//     })
-
-
-
-
-    // app.post("/login", passport.authenticate("local", {
-    //     // successRedirect: "/",
-    //     // failureRedirect: "/logins"
-    //   }));
 
 app.get("/",async(req,res)=>{
    console.log(req.session)
@@ -162,13 +109,10 @@ app.get("/",async(req,res)=>{
   res.send(a)
 })
 
-app.post('/photos/upload', upload.array('files'), function (req, res, next) {
-  // req.files is array of `photos` files
-  console.log(req.files)
-  // req.body will contain the text fields, if there were any
-})
+
 
 app.use('/api/' , routes)
+app.use('/api/' , caruselroutes)
 
 
 

@@ -1,5 +1,6 @@
 import {Bookinfo} from "../models/book.js";
 import {Bookinfoschema} from "../models/book.js"
+import {FileSizeFormatter} from "../config/fileSizeFormater.js"
 
 
 
@@ -34,7 +35,7 @@ export const uploadbookinfo = ( async(req,res,next)=>{
             fileHreaf:`/media/bookfoto/${element.filename}`,
             filePath: element.path,
             fileType: element.mimetype,
-            fileSize: fileSizeFormatter(element.size, 2)
+            fileSize: FileSizeFormatter(element.size, 2)
           }
     });
 
@@ -66,13 +67,13 @@ export const uploadbookinfo = ( async(req,res,next)=>{
 })
 
 
-const fileSizeFormatter = (bytes, decimal) => {
-    if(bytes === 0){
-        return '0 Bytes';
-    }
-    const dm = decimal || 2;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'YB', 'ZB'];
-    const index = Math.floor(Math.log(bytes) / Math.log(1000));
-    return parseFloat((bytes / Math.pow(1000, index)).toFixed(dm)) + ' ' + sizes[index];
+// const fileSizeFormatter = (bytes, decimal) => {
+//     if(bytes === 0){
+//         return '0 Bytes';
+//     }
+//     const dm = decimal || 2;
+//     const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'YB', 'ZB'];
+//     const index = Math.floor(Math.log(bytes) / Math.log(1000));
+//     return parseFloat((bytes / Math.pow(1000, index)).toFixed(dm)) + ' ' + sizes[index];
 
-}
+// }

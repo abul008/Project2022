@@ -9,6 +9,7 @@ const router = express.Router();
 
 router.post('/login',   admilogin)
 router.get('/logins', admilogins)
+
 router.get('/getusers' , getUSers)
 router.post('/photos/upload', upload.array('files') , uploadbookinfo);
 

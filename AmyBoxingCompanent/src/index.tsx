@@ -1,3 +1,5 @@
+// /// <reference path="./definitions/definitions.d.ts" />
+// declare let __webpack_public_path__;
 import ReactDOM from 'react-dom';
 import './index.css';
 import {Provider} from "react-redux";
@@ -7,7 +9,8 @@ import './i18n';
 import i18next from "i18next";
 import axios from "axios";
 
-i18next.changeLanguage("am")
+const lang = localStorage.getItem('lang') || "";
+i18next.changeLanguage(lang)
 axios.defaults.baseURL = 'http://localhost:8080/';
 // axios.defaults.withCredentials = true;
 

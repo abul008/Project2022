@@ -25,8 +25,9 @@ export const Caruselinfo  = ()=>{
         //  });
 
           for (let i = 0; i < file.length; i++) {
-            formData.append('files', file[i]);            
+            formData.append('file', file[i]);            
           }
+          // formData.append('file' , file)
           formData.append('absolute_url' , absalute_url)
 
           try{
@@ -43,7 +44,10 @@ export const Caruselinfo  = ()=>{
                 }
             })
             setTimeout(() => setUploadPercentage(0), 10000);
-   
+
+            window.location
+           
+            window.location.reload();
            //  const { fileName , filePath} = res.data
    
             // setMessage(res.data);

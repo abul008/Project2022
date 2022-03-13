@@ -30,6 +30,7 @@ const includePaths = [
 ]
 
 module.exports = {
+  // context:path.resolve(__dirname, '/src'),
   entry:[
     'react-hot-loader/patch',  // nenca anum vor routerner@ karenan mi qani cuxov karucven
      path.resolve(__dirname, '..', './src/index.tsx')],
@@ -43,6 +44,7 @@ module.exports = {
   module: {
     rules: [
       {
+        
         test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         use: [
@@ -50,6 +52,23 @@ module.exports = {
             loader: 'babel-loader',
           },
         ],
+      },
+      // {
+      //   test: /\.(gif|png|jpg|svg)(\?.*$|$)/,
+      //   use: [
+      //     {
+      //       loader: 'url-loader' ,
+      //       options: {
+      //         limit: 8192,
+      //         name: '[name].[ext]',
+      //         publicPath: '/media'
+      //       },
+      //     },
+      //   ],
+      // },
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
       },
       {
         test: /\.css$/,

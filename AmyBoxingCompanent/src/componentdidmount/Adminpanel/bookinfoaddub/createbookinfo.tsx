@@ -97,6 +97,8 @@ export const Bookinfoadd:React.FC = ()=>{
 
          setMessage(res.data);
 
+         window.location.reload();
+
         //  setUploadedFile({fileName, filePath}) 
 
        }catch(error){

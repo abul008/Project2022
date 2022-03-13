@@ -9,6 +9,15 @@ const fileStorageEngine = multer.diskStorage({
   });
 
 
+  const caruselfileStorageEngine = multer.diskStorage({
+    destination: '../AmyBoxingCompanent/media/carusel/', 
+    filename: (req, file, cb) => {
+      cb(null, Date.now() + "--" + file.originalname);
+    },
+  });
+
+
+
 const filefilter = (req, file, cb) => {
     if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg' 
         || file.mimetype === 'image/jpeg'){
@@ -20,4 +29,5 @@ const filefilter = (req, file, cb) => {
 
 
 export const upload = multer({storage: fileStorageEngine, fileFilter: filefilter});
+export const caruselupload = multer({storage: caruselfileStorageEngine, fileFilter: filefilter});
 

@@ -32,7 +32,7 @@ export const uploadbookinfo = ( async(req,res,next)=>{
     const filesArray = req.files.map(element => {
         return  {
             fileName: element.originalname,
-            fileHreaf:`/media/bookfoto/${element.filename}`,
+            fileHreaf:`/bookfoto/${element.filename}`,
             filePath: element.path,
             fileType: element.mimetype,
             fileSize: FileSizeFormatter(element.size, 2)

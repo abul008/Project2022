@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import "./changelanguage.css";
-import i18next from "i18next";
+
 
 interface NavBackground {
     home:string,
@@ -29,8 +29,9 @@ const lang = localStorage.getItem("lang") || "en";
             setNavbackground({...navbackground,home:"",book:"",about:"",profile:"",changelenguage:""})
             }} 
          >
-           <div style={{display:lang === "am" ? "block" : "none"}}><img src={require("/media/flag/armenianflag.png")}/></div>
-           <div style={{display:lang === "en" ? "block" : "none"}}><img src={require("/media/flag/americanflag.png")}/></div>
+           <div style={{display:lang === "am" ? "block" : "none"}}><img src="/svgfolder/flagarm.svg"/></div>
+           <div style={{display:lang === "ru" ? "block" : "none"}}><img src="/svgfolder/flagrus.svg"/></div>
+           <div style={{display:lang === "en" ? "block" : "none"}}><img src="/svgfolder/flaguse.svg" /></div>
          </div> 
          <div style={{display:changelangcantrol ? "flex" : "none" }} className="change-leng-cantrol">
            <div 
@@ -39,13 +40,19 @@ const lang = localStorage.getItem("lang") || "en";
               window.location.reload()
            }}
        
-            className="change-leng-cantrol-img" ><img src={require("/media/flag/armenianflag.png")}/></div>
+            className="change-leng-cantrol-img" ><img src="/svgfolder/flagarm.svg"/></div>
+                 <div
+             onClick={(e)=>{
+             localStorage.setItem("lang", "ru" )   
+             window.location.reload()
+           }}
+            className="change-leng-cantrol-img" ><img src="/svgfolder/flagrus.svg"/></div>
            <div
              onClick={(e)=>{
              localStorage.setItem("lang", "en" )   
              window.location.reload()
            }}
-            className="change-leng-cantrol-img" ><img src={require("/media/flag/americanflag.png")}/></div>
+            className="change-leng-cantrol-img" ><img src="/svgfolder/flaguse.svg"/></div>
          </div> 
       </div>
     )

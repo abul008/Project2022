@@ -16,7 +16,7 @@ export const CaruselFoto = () =>{
         <div className="admin-input-cantrol">
                 <input 
                 type="file"
-                multiple 
+                // multiple 
                 placeholder="գրքի անուն" 
                 // value={data.name_am}
                 onChange={onChange}

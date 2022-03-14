@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import {Carusel} from "../CaruselScreen/carusel";
+import {Card} from "../card/card";
 
 
 interface Carusels{
@@ -52,6 +53,7 @@ export const Home:React.FC = ()=>{
     return( 
          <div >
             <Carusel   />
+            <Card />
          </div>
     )
 }

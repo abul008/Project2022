@@ -6,7 +6,7 @@ module.exports = {
     devServer: {
         hot: true,
         open: true,
-        static: './src',
+        static: './media',
         port:3000,
         historyApiFallback: true,
       },

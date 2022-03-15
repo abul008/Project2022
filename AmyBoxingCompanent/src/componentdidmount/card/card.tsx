@@ -11,10 +11,26 @@ import "./card.css";
 
 
 
-
+interface CardInfo {
+  carddata:CardJson[]
+}
+interface CardJson{
+  cardname_am:string,
+  cardname_ru:string,
+  cardname_en:string,
+  cardauthor_am:string,
+  cardauthor_ru:string ,
+  cardauthor_en:string ,
+  cardprice:string,
+  cardlanguage:string,
+  cardurl:string,
+  cardgetgoti:string,
+  id:string,
+  cardfile:any
+}
 
  
-export const Card = () =>{
+export const Card:React.FC<CardInfo> = ({carddata}) =>{
 
   const routerproduct = localStorage.getItem('product')
   const [filtersort , setFiltersort] = useState(false)
@@ -22,62 +38,81 @@ export const Card = () =>{
   const dispatch = useDispatch()
   
 
+ console.log(carddata)
+
+ let a = "Russian" 
+ let b = "Russian"
+ let d = "English"
+
 
     return(
       <div className="page-product-card-wrapper" >
    
-       <div className="page-product-card-bottom-cantrol">
-      {/* {
-         props.data.length == 0 ?
-         null :  props.data.map((data,index)=>{
-         return( */}
+       <div style={{background:""}} className="page-product-card-bottom-cantrol">
+      {
+         carddata.map((data,index)=>{
+         return(
         <div 
-        // key={index}
+        key={index}
           className="page-product-card-wrapper-cantrol">
            <div className="page-product-card-is-savaliabe">
-            <span style={{
-            //   background:data.bookisavailabe === "Սահմանափակ է" || data.cardisavailabe === "Limited" ? "linear-gradient(to bottom, #cac531, #f3f9a7)" : null ||
-            //   data.cardisavailabe === "In stock" || data.cardisavailabe === "Առկա է" ? "linear-gradient(to bottom, #1d976c, #93f9b9)" : null ||
-            //   data.cardisavailabe === "out of stock" || data.cardisavailabe === "Առկա չէ" ? "linear-gradient(to bottom, #d31027, #ea384d)" : null || 
-            //   data.cardisavailabe === "New" || data.cardkisavailabe === "Նորույթ" ? "linear-gradient(to bottom, #1d976c, #93f9b9)" : null 
-            }}>{"data.cardisavailabe"}</span>
+            <span 
+            style={{ 
+              background: data.cardgetgoti === "Limited" ? "linear-gradient(to bottom, #cac531, #f3f9a7)" : undefined ||
+              data.cardgetgoti === "In stock"  ? "linear-gradient(to bottom, #1d976c, #93f9b9)" : undefined ||
+              data.cardgetgoti === "out of stock"  ? "linear-gradient(to bottom, #d31027, #ea384d)" : undefined || 
+              data.cardgetgoti === "New"  ? "linear-gradient(to bottom, #1d976c, #93f9b9)" : undefined 
+            }}
+        
+            >{"data.cardisavailabe"}</span>
             <div className="page-product-card-is-savalibe-flag" 
-            //  style={{backgroundImage: data.cardlenguageproduct === "Armenian" ? "url(/flagleng/armenianflag.png)" : null}}
+             style={{
+               backgroundImage: data.cardgetgoti === "Armenian" ? "url(/svgfolder/flagarm.svg)" : undefined ||
+               data.cardgetgoti === "Russian" ? "url(/svgfolder/flagrus.svg)" : undefined ||
+               data.cardgetgoti === "English" ? "url(/svgfolder/flaguse.svg)" : undefined 
+              
+              }}
              >
                  
              </div>
             </div>
             <div  className="page-product-card-head-settings">
             <div className="page-product-card-top-cantrol">
-            <a className="page-product-card-hrefA" target="_blank" href={`/product/${"data.cardid"}`}>  
-            <span className="page-product-cards-linkimg-witdh" style={{backgroundImage:`url(/$"{data.file[0]}")`}}></span>  
+            <a className="page-product-card-hrefA" target="_blank" href={"/book" + data.cardurl + "/" +data.id}>  
+            <span className="page-product-cards-linkimg-witdh" style={{backgroundImage:`url(${data.cardfile[0]})`}}></span>  
             </a>    
-            <div className="page-product-card-link-information"><a href={"/home/techniquenav/product/"}>{ "data.cardname"}</a>  <span>
+            <div className="page-product-card-link-information"><a href={"/home/techniquenav/product/"}>{ data.cardauthor_am}</a>  <span>
                 {/* <BsBookmarks/> */}
                 </span></div>
             </div>    
             <div className="page-product-cards-bottom-cantrol-info">         
-            <h4>{"data.cardauthorname"}</h4>
+            <h4>{data.cardname_am}</h4>
             <div className="page-product-cards-bottom">
-            <b>{"data.cardproductprice"}AMD</b>
+            <b>{data.cardprice}AMD</b>
           </div> 
         <div className="page-product-cards-shop-info">
          {/* <BsPencil/>    */}
         
          <button style={{
-        //      background:data.cardisavailabe === "out of stock" || 
-        //  data.cardisavailabe === "Առկա չէ" ? "linear-gradient(to bottom, #d31027, #ea384d)" : null
-        // ,opacity:data.cardisavailabe === "Առկա չէ" || btnquantity === 10 ? "0.6" : null
+             background:data.cardgetgoti === "out of stock" || 
+             data.cardgetgoti === "Առկա չէ" ? "linear-gradient(to bottom, #d31027, #ea384d)" : undefined
+        ,    opacity:data.cardgetgoti === "Առկա չէ" || btnquantity === 10 ? "0.6" : undefined
         }}
         onClick={()=>{ setBtnquantity(btnquantity+1);console.log('hello')}}
         // disabled={data.cardisavailabe === "Առկա չէ" || btnquantity === 10 }
          >
               {/* <BiCart/> */}
+              Send
          </button>
          </div>
          </div>
          </div>
     </div>
+           )
+          })
+   
+          
+         }
 
     </div> 
 

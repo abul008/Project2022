@@ -15,14 +15,23 @@ export const GeneralInfo:React.FC = ()=>{
 
     return( 
         < >
-                 <select
+              <select
                  style={{display:"block"}}
                  value={data.Language_am}
                  onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setBookPage({...data,Language_am:e.target.value})}
                  >
-                     <option>Հայերեն</option>
+                     <option>Armenian</option>
                      <option>Russian</option>
                      <option>Englishe</option>
+                 </select>
+                 <select
+                 style={{display:"block"}}
+                 value={data.ցategory}
+                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setBookPage({...data, ցategory:e.target.value})}
+                 >
+                     <option>is available</option>
+                     <option>Limited</option>
+                     <option>Not available</option>
                  </select>
                  <div className="admin-input-cantrol">
             <label>Գին:Am</label>

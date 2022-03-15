@@ -1,4 +1,5 @@
 import cookie from 'js-cookie'
+import i18next from "i18next"
 import {useEffect} from "react"
 
 
@@ -12,7 +13,7 @@ export const getCookie = (key:any) => {
        return cookie.get(key);
    }
 };
-console.log(getCookie("connect.sid"))
+
 
 export const isAuth =(name:string)=>{        
   
@@ -29,5 +30,22 @@ export const isAuth =(name:string)=>{
    //        }
       // }
 //   }
+}
+
+
+
+
+
+export const changelenguage = (data:any,name:string)=>{
+    try{    
+    if(data !== undefined){
+        let datas = data[(name + i18next.t('lang'))] ;
+
+       
+         return datas.replace(/<\/?p[^>]*>/g, "");
+    }
+}catch(error){
+   console.log(error)
+}
 }
 

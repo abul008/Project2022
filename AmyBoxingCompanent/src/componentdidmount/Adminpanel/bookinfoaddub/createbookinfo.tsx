@@ -28,13 +28,14 @@ export const Bookinfoadd:React.FC = ()=>{
     const {data} = useTypedSelector(state => state.book)
     
 
+
     useEffect(()=>{
-       axios.get('/api/getusers')
+       axios.get('/api/v1/getusers')
        .then(res=> console.log(res.data))
     },[])
 
     const cretebookinfo = async(e:React.FormEvent<HTMLFormElement>)=>{
-
+     
 
        e.preventDefault()
        const {
@@ -45,6 +46,7 @@ export const Bookinfoadd:React.FC = ()=>{
          author_ru,
          author_en,
          Language_am,
+         ցategory,
          Numberofpages,
          Weight,
          Publisher,
@@ -71,16 +73,20 @@ export const Bookinfoadd:React.FC = ()=>{
       formData.append('author_ru', author_ru)
       formData.append('author_en', author_en)
       formData.append('Language_am',Language_am)
+      formData.append('ցategory',ցategory)
       formData.append('Numberofpages', Numberofpages)
       formData.append('Publisher',Publisher)
       formData.append('Weight',Weight)
       formData.append('price', price)
+      formData.append('cover_am', coverAm)
+      formData.append('cover_ru', coverRu)
+      formData.append('cover_en', coverEn)
       formData.append('date', date) 
       formData.append('absolute_url', absolute_url) 
 
        try{
         
-         const res = await axios.post('/api/photos/upload' , formData ,{
+         const res = await axios.post('/api/v1/photos/upload' , formData ,{
                 
             headers:{
                 'Content-Type': "multipart/form-data"

@@ -6,6 +6,7 @@ import {FileSizeFormatter} from "../config/fileSizeFormater.js"
 
 
 
+
 export const uploadbookinfo = ( async(req,res,next)=>{
 
 
@@ -20,13 +21,19 @@ export const uploadbookinfo = ( async(req,res,next)=>{
         author_ru,
         author_en,
         Language_am,
+        ցategory,
         Numberofpages,
         Weight,
         Publisher,
         price,
+        cover_am,
+        cover_ru,
+        cover_en,
         date,
         absolute_url
     } = req.body
+
+   
 
 
     const filesArray = req.files.map(element => {
@@ -48,10 +55,14 @@ export const uploadbookinfo = ( async(req,res,next)=>{
         author_ru:author_ru,
         author_en:author_en,
         Language_am:Language_am,
+        ցategory:ցategory,
         Numberofpages:Numberofpages,
         Weight:Weight,
         Publisher: Publisher,
         price:price,
+        cover_am:cover_am,
+        cover_ru:cover_ru,
+        cover_en:cover_en,
         date:date,
         get_absolute_url:absolute_url,
         files:filesArray
@@ -67,13 +78,14 @@ export const uploadbookinfo = ( async(req,res,next)=>{
 })
 
 
-// const fileSizeFormatter = (bytes, decimal) => {
-//     if(bytes === 0){
-//         return '0 Bytes';
-//     }
-//     const dm = decimal || 2;
-//     const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'YB', 'ZB'];
-//     const index = Math.floor(Math.log(bytes) / Math.log(1000));
-//     return parseFloat((bytes / Math.pow(1000, index)).toFixed(dm)) + ' ' + sizes[index];
 
-// }
+
+export const getBookinfo = (async(req,res)=>{
+     
+    const getAllinfo = await Bookinfoschema.find({})
+    console.log(getBookinfo)
+
+    res.send(getAllinfo)
+})
+
+

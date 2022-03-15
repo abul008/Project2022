@@ -31,6 +31,10 @@ const Schema = mongoose.Schema;
         type:String,
         required:true
     },
+    ցategory:{
+        type:String,
+        required:true
+    },
     Numberofpages:{
         type:String,
         required:true
@@ -44,6 +48,18 @@ const Schema = mongoose.Schema;
         required:true
     },
     price:{
+        type:String,
+        required:true
+    },
+    cover_am:{
+        type:String,
+        required:true
+    },
+    cover_ru:{
+        type:String,
+        required:true
+    },
+    cover_en:{
         type:String,
         required:true
     },

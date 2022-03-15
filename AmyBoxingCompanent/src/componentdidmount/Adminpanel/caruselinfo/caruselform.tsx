@@ -32,7 +32,7 @@ export const Caruselinfo  = ()=>{
 
           try{
         
-            const res = await axios.post('/api/caruselphotos/upload' , formData ,{
+            const res = await axios.post('/api/v1/caruselphotos/upload' , formData ,{
                    
                headers:{
                    'Content-Type': "multipart/form-data"

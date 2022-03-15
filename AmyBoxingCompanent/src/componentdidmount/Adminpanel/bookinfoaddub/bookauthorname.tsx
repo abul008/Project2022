@@ -1,16 +1,25 @@
 import {useTypedSelector} from "../../../hooks/userTypedSelector";
 import { useActions } from '../../../hooks/useActions';
+import { useEffect } from "react";
 
 
 
 export const Bookauthorname:React.FC = ()=>{
 
     
-    const {data} = useTypedSelector(state => state.book)
+    const {data,getBookdata} = useTypedSelector(state => state.book)
+    const {users} = useTypedSelector(state => state.user)
 
-    const {setBookPage} = useActions()
+    const {setBookPage,fetchTodos} = useActions()
+   
 
- 
+
+
+
+
+  
+
+   
 
 
     return( 

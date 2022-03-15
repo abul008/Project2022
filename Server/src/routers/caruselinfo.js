@@ -1,5 +1,4 @@
 import express from "express";
-import {upload} from "../helpers/filershelper.js";
 import { caruselupload } from "../helpers/filershelper.js";
 import { uploadcaruselinfo, getcaruselinfo } from "../controllers/caruselinfo.js";
 

@@ -111,8 +111,8 @@ app.get("/",async(req,res)=>{
 
 
 
-app.use('/api/' , routes)
-app.use('/api/' , caruselroutes)
+app.use('/api/v1/' , routes)
+app.use('/api/v1/' , caruselroutes)
 
 
 

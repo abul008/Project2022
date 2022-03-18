@@ -3,6 +3,7 @@
     display: flex;
     /* align-items: center; */
     width: 36%;
+    min-width: 380px;
     align-items: center;
     justify-content: center;
   }
@@ -65,4 +66,11 @@
   
   .searche-page-product-info-form ul li{
     list-style: none;
+  }
+
+
+  @media screen and (max-width: 615px) {
+    .search-page{
+      width: 100%;
+    }
   }

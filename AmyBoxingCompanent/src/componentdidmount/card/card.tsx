@@ -2,6 +2,7 @@ import React,{useEffect ,useState} from "react";
 import axios from "axios" ; 
 // import { BiCart} from "react-icons/bi";
 // import { BsBookmarks  } from "react-icons/bs";
+import {changelenguage} from "../helpers/auth"
 import { useDispatch } from "react-redux";
 
 import "./card.css";
@@ -81,12 +82,12 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
             <a className="page-product-card-hrefA" target="_blank" href={"/book" + data.cardurl + "/" +data.id}>  
             <span className="page-product-cards-linkimg-witdh" style={{backgroundImage:`url(${data.cardfile[0]})`}}></span>  
             </a>    
-            <div className="page-product-card-link-information"><a href={"/home/techniquenav/product/"}>{ data.cardauthor_am}</a>  <span>
+            <div className="page-product-card-link-information"><a href={"/home/techniquenav/product/"}>{changelenguage(data , 'cardauthor') }</a>  <span>
                 {/* <BsBookmarks/> */}
                 </span></div>
             </div>    
             <div className="page-product-cards-bottom-cantrol-info">         
-            <h4>{data.cardname_am}</h4>
+            <h4>{  changelenguage(data , 'cardname')}</h4>
             <div className="page-product-cards-bottom">
             <b>{data.cardprice}AMD</b>
           </div> 

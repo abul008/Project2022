@@ -23,3 +23,14 @@
   justify-content: space-between;
  
 }
+
+@media screen and (max-width: 615px) {
+  .nav-ul_cantrol{
+    width: 100%;
+  }
+  .nav-ul_cantrol nav ul{
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}

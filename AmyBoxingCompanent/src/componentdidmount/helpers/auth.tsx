@@ -39,9 +39,8 @@ export const isAuth =(name:string)=>{
 export const changelenguage = (data:any,name:string)=>{
     try{    
     if(data !== undefined){
-        let datas = data[(name + i18next.t('lang'))] ;
+        let datas = data[(name +i18next.t('lang'))] ;
 
-       
          return datas.replace(/<\/?p[^>]*>/g, "");
     }
 }catch(error){

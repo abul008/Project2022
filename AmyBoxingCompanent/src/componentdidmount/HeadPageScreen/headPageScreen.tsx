@@ -3,6 +3,7 @@ import {Nav} from "../Nav/nav";
 import routes from '../config/routes';
 import { isAuth } from '../helpers/auth';
 import routesadmin from "../config/routesadmin";
+import {Footer} from "../Footer/footer";
 import "./headPaheScreen.css";
 import {
     BrowserRouter as Router,
@@ -43,6 +44,7 @@ export const HeadPage:React.FC=()=>{
                })}
           </Switch>
           </div>
+          <Footer />
          </div>
       </Router>
     )

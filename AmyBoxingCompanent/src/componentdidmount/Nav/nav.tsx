@@ -10,9 +10,7 @@ export const Nav:React.FC = ()=>{
            <div className="nav-wrapper-page-search-section">
              <Search placeholder={i18next.t('search')}  />  
              <div className="nav-ul_cantrol">
-               <nav>
-                 <Navhref />
-                </nav>     
+                 <Navhref />  
              </div>             
            </div> 
         </div>

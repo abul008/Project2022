@@ -16,9 +16,7 @@
     left: 0px;
     box-shadow: rgb(0 0 0 / 5%) 0px 0px 0px 1px;
     background: white;
-    /* margin-bottom: 20px; */
     transition: 1s;
-  
     cursor: pointer;
     display: flex;
     display: flex;
@@ -50,7 +48,7 @@
     font-family: sans-serif;
   }
   .page-product-card-wrapper-cantrol img{
-    width: 100%;
+    width: 40px;
   }
   .page-product-card-wrapper-cantrol:hover{
     box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
@@ -65,25 +63,12 @@
   
   .page-product-card-wrapper-cantrol button{
     position: relative;
-    background: #7e7e7e;
     display: flex;
     align-items: center;
     font-weight: 700;
-    
-    background: #76b852;
-    background: -webkit-linear-gradient(to bottom, #8DC26F, #76b852);
-    background: #1D976C;
-    background: -webkit-linear-gradient(to bottom, #93F9B9, #1D976C);
-    background: linear-gradient(to bottom, #93F9B9, #1D976C);
-    background: linear-gradient(to bottom, #8DC26F, #76b852);
-    font-weight: 700;
-    /* border-radius: 36px; */
-    background: #1D976C;
-    background: -webkit-linear-gradient(to bottom, #93F9B9, #1D976C);
-    background: linear-gradient(to bottom, #93F9B9, #1D976C);
     color: white;
     border: navajowhite;
-    /* border-radius: 3px; */
+    padding-bottom: 7px;
     font-size: 26px;
     justify-content: space-evenly;
     cursor: pointer;

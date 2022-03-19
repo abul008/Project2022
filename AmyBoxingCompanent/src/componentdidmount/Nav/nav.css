@@ -8,6 +8,10 @@
   z-index: 3;
 }
 
+.nav-wrapper-page nav{
+  background-color: green;
+}
+
 .nav-wrapper-page-search-section{
   display: flex;
   width: 95%;
@@ -24,11 +28,26 @@
  
 }
 
+.nav-ul_cantrol ul{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-ul_cantrol ul li a{
+  font-weight: 600;
+  font-size: 18px;
+  font-family: sans-serif;
+}
+.nav-ul_cantrol ul li a img{
+  width: 30px;
+}
+
 @media screen and (max-width: 615px) {
   .nav-ul_cantrol{
     width: 100%;
   }
-  .nav-ul_cantrol nav ul{
+  .nav-ul_cantrol  ul{
     height: 100%;
     display: flex;
     justify-content: space-between;

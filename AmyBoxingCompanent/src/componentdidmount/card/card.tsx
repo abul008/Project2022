@@ -103,8 +103,7 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
         // disabled={data.cardisavailabe === "Առկա չէ" || btnquantity === 10 }
          >
               {/* <BiCart/> */}
-              Send
-         </button>
+              <img src="/svgfolder/buyicon.svg" />         </button>
          </div>
          </div>
          </div>

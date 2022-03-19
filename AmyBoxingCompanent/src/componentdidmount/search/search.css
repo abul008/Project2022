@@ -67,6 +67,9 @@
   .searche-page-product-info-form ul li{
     list-style: none;
   }
+  .searche-page-product-info-form ul li a{display: flex;}
+  .searche-page-product-info-form ul li a span{padding-right: 10px;}
+  .searche-page-product-info-form ul li a span img{width: 30px;}
 
 
   @media screen and (max-width: 615px) {

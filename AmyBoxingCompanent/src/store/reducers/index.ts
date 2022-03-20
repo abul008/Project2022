@@ -12,7 +12,7 @@ import { todoReducer } from "./todoReducer";
 import {userReducer} from "./userReducer";
 import {traningReducer} from "./traningReduce";
 import {BookReducer} from "./bookReducer";
-import {CaruselReducer} from "./caruselReducer";
+import {HomeReducer} from "./homeReducer";
 
 
 
@@ -21,7 +21,7 @@ export const rootReducer = combineReducers({
     todo: todoReducer,
     traning:traningReducer,
     book:BookReducer,
-    carusel:CaruselReducer
+    home:HomeReducer
     
 })
 

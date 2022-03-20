@@ -3,12 +3,12 @@ import { useActions } from '../../../hooks/useActions';
 
 
 export const CaruselFoto = () =>{
-    const {data} = useTypedSelector(state => state.carusel)
+    const {data} = useTypedSelector(state => state.home)
 
-    const {setCaruselPage} = useActions()
+    const {setHomePage} = useActions()
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement >)=>{
-        setCaruselPage({...data,file:e.target.files})
+        setHomePage({...data,file:e.target.files})
     }
     
 
@@ -25,9 +25,8 @@ export const CaruselFoto = () =>{
                 <input
                 type="text"
                 value={data.absalute_url}
-                onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setCaruselPage({...data, absalute_url:e.target.value})}
-                placeholder="հասցե"
-             
+                onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setHomePage({...data, absalute_url:e.target.value})}
+                placeholder="հասցե"  
              />
         </div>
     )

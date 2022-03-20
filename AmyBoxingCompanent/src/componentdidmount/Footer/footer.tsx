@@ -10,19 +10,19 @@ interface Footerdata{
 
 export const Footer = () =>{
    
-let footerdata:Footerdata[] = [
+let contact:Footerdata[] = [
     {
         footerhref:"hello",
         footername:"hellos" 
     },
 ]
 
-console.log(footerdata.map(data=>data.footerhref))
+console.log(contact.map(data=>data.footerhref))
     return(
         <div className="footer-wrapper">
             <div className="footer-top-section"> 
                 <div className="footer-link">
-                   <Footerlink footerdata={footerdata} />
+                   <Footerlink footerdata={contact} />
                 </div>
                  <div className="footer-social-media"></div>
             </div>

@@ -2,7 +2,7 @@ import IRoute from '../InterFace/routes';
 import {Home} from "../HomePage/homePage";
 import { AdminPanel } from '../Adminpanel/adminhome';
 import {Bookinfoadd} from "../Adminpanel/bookinfoaddub/createbookinfo"
-import {Caruselinfo}  from "../Adminpanel/caruselinfo/caruselform";
+import {Homeinfo}  from "../Adminpanel/homeinfo/homeform";
 
 const routesadmin:IRoute[] = [
     
@@ -23,7 +23,7 @@ const routesadmin:IRoute[] = [
     {
         path: '/webadmin/addcaruselinfo',
         name: 'create admin',
-        component: Caruselinfo,
+        component: Homeinfo,
         exact: true
     }
   

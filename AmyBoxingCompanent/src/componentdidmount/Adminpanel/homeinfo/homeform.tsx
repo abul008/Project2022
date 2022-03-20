@@ -1,22 +1,36 @@
 import {CaruselFoto} from "./caruselimg";
+import {HomeAddres} from "./contact";
+import {HomeSocialMedia} from "./socialmedia";
 import {useTypedSelector} from "../../../hooks/userTypedSelector";
 import { useActions } from '../../../hooks/useActions';
 import { useState } from "react";
 import axios from "axios";
 
 
-export const Caruselinfo  = ()=>{
+export const Homeinfo  = ()=>{
     
 
     const [uploadPercentage, setUploadPercentage] = useState<number>(0);
-    const {data} = useTypedSelector(state => state.carusel)
+    const {data} = useTypedSelector(state => state.home)
 
-    const {setCaruselPage} = useActions()
-
+    const {setHomePage} = useActions()
+     
+   
     const caruselsubmit = async(event: React.FormEvent<HTMLFormElement>)=>{
           event.preventDefault();
 
-          const {file ,absalute_url} = data
+          const {
+            file ,
+            absalute_url,
+            phone_number,
+            phone_number2,
+            email,
+            addres,
+            facebook_url,
+            instagram_url,
+            telegram_url,
+            copyright_column
+          } = data
 
           const formData = new FormData();
 
@@ -29,6 +43,14 @@ export const Caruselinfo  = ()=>{
           }
           // formData.append('file' , file)
           formData.append('absolute_url' , absalute_url)
+          formData.append('phone_number' , phone_number)
+          formData.append('phone_number1' , phone_number2)
+          formData.append('email' , email) 
+          formData.append('addres' , addres)
+          formData.append('pfacebook_url' , facebook_url)
+          formData.append('instagram_url' , instagram_url)
+          formData.append('telegram_url' , telegram_url)
+          formData.append('copyright_column' , copyright_column)
 
           try{
         
@@ -63,7 +85,9 @@ export const Caruselinfo  = ()=>{
     return(
         <div className="carusel-wrapper">
             <form onSubmit={caruselsubmit}>
-             <CaruselFoto />
+              <CaruselFoto />
+              <HomeAddres />
+              <HomeSocialMedia />
              <button>Send</button>
             </form>
         </div>

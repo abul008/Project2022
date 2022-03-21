@@ -9,14 +9,17 @@ export interface Homeinfo{
     instagram_url:string,
     telegram_url:string,
     copyright_column:string
+    // getHomedata:any
 }
 
 export interface Homestate{
     data:Homeinfo
+    getHomedata:any
 }
 
 export enum HomeActionTypes {
-    HOME_ADD_INFO= 'HOME_ADD_INFO',
+    HOME_ADD_INFO = 'HOME_ADD_INFO',
+    HOME_GET_INFO = 'HOME_GET_INFO',
 }
 
 
@@ -25,5 +28,10 @@ interface HomeAddInfoAction {
     payload: Homeinfo;
 }
 
+interface BookGetInfoAction {
+    type: HomeActionTypes.HOME_GET_INFO;
+    payload: any;
+}
+
 export type HomeAction =
-HomeAddInfoAction
+HomeAddInfoAction | BookGetInfoAction

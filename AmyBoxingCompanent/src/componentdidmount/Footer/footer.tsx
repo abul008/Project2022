@@ -1,6 +1,10 @@
 import "./footer.css";
 import { Footerlink } from "./footelink";
+import {useTypedSelector} from "../../hooks/userTypedSelector";
+import { FooterContactlink } from "./contact";
 import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+
 
 
 interface Footerdata{
@@ -8,7 +12,7 @@ interface Footerdata{
     footername:string
 }
 
-export const Footer = () =>{
+export const Footer:React.FC = () =>{
    
 let contact:Footerdata[] = [
     {
@@ -16,13 +20,17 @@ let contact:Footerdata[] = [
         footername:"hellos" 
     },
 ]
+    
+    const {getHomedata} = useTypedSelector(state => state.home)
 
-console.log(contact.map(data=>data.footerhref))
+   
+
+
     return(
         <div className="footer-wrapper">
             <div className="footer-top-section"> 
                 <div className="footer-link">
-                   <Footerlink footerdata={contact} />
+                 <FooterContactlink />
                 </div>
                  <div className="footer-social-media"></div>
             </div>

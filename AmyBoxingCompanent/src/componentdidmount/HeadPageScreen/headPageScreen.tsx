@@ -1,7 +1,10 @@
+import {useEffect} from 'react';
 import AdminRoute from '../Routing/adminrouting';
 import {Nav} from "../Nav/nav";
 import routes from '../config/routes';
 import { isAuth } from '../helpers/auth';
+import {useTypedSelector} from "../../hooks/userTypedSelector";
+import { useActions } from '../../hooks/useActions';
 import routesadmin from "../config/routesadmin";
 import {Footer} from "../Footer/footer";
 import "./headPaheScreen.css";
@@ -14,6 +17,13 @@ import {
 
 export const HeadPage:React.FC=()=>{
 
+ 
+
+    const {setHomePage ,setGetbookinfo } = useActions()
+    useEffect(()=>{
+      setGetbookinfo()
+    },[])
+   
 //this function shows the location of the home page routes
 
     return(

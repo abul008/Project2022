@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import {Carusel} from "../CaruselScreen/carusel";
+import {useTypedSelector} from "../../hooks/userTypedSelector";
 import {Card} from "../card/card";
 import { any, string } from "prop-types";
 
@@ -31,17 +32,14 @@ export const Home:React.FC = ()=>{
 
     const [carueseldb , setCaruseldb] = useState<Caruseldata[]>([])
     const [bookinfo , setBookinfo] = useState<[]>([])
-
+    
+    const {getHomedata} = useTypedSelector(state => state.home)
+   
+  
   
 
-
-    useEffect(()=>{
-        axios.get("/api/v1/caruselunfo")
-        .then(res=>setCaruseldb(res.data))
-      },[])
-
-      useEffect(()=>{
-        axios.get("/api/v1/getkoobinfo")
+       useEffect(()=>{
+        axios.get("/api/v1/getboobinfo")
         .then(res=>setBookinfo(res.data.map((data:BookinformationCard)=>{
              return{
               cardname_am:data.name_am,
@@ -60,13 +58,10 @@ export const Home:React.FC = ()=>{
         })))
       },[])
    
-
-  
-
-    
+      
     return( 
-         <div >
-            <Carusel dataall={carueseldb}   />
+         <div className="home-page" >
+            <Carusel dataall={getHomedata}   />
             <Card carddata={bookinfo} />
          </div>
     )

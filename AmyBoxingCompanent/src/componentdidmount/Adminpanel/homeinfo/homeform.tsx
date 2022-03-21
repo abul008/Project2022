@@ -4,6 +4,8 @@ import {HomeSocialMedia} from "./socialmedia";
 import {useTypedSelector} from "../../../hooks/userTypedSelector";
 import { useActions } from '../../../hooks/useActions';
 import { useState } from "react";
+import JoditReact from "jodit-react-ts";
+import 'jodit/build/jodit.min.css';
 import axios from "axios";
 
 
@@ -11,16 +13,22 @@ export const Homeinfo  = ()=>{
     
 
     const [uploadPercentage, setUploadPercentage] = useState<number>(0);
+    const [copyrightAm , setCopyrightAm] = useState<string>("")
+    const [copyrightRu , setCopyrightRu] = useState<string>("")
+    const [copyrightEn , setCopyrightEn] = useState<string>("")
     const {data} = useTypedSelector(state => state.home)
 
-    const {setHomePage} = useActions()
-     
+    const {setHomePage } = useActions()
+
+    
+    
+ 
    
     const caruselsubmit = async(event: React.FormEvent<HTMLFormElement>)=>{
           event.preventDefault();
 
           const {
-            file ,
+            file,
             absalute_url,
             phone_number,
             phone_number2,
@@ -29,8 +37,9 @@ export const Homeinfo  = ()=>{
             facebook_url,
             instagram_url,
             telegram_url,
-            copyright_column
           } = data
+
+      
 
           const formData = new FormData();
 
@@ -41,20 +50,21 @@ export const Homeinfo  = ()=>{
           for (let i = 0; i < file.length; i++) {
             formData.append('file', file[i]);            
           }
-          // formData.append('file' , file)
           formData.append('absolute_url' , absalute_url)
           formData.append('phone_number' , phone_number)
-          formData.append('phone_number1' , phone_number2)
+          formData.append('phone_number2' , phone_number2)
           formData.append('email' , email) 
           formData.append('addres' , addres)
-          formData.append('pfacebook_url' , facebook_url)
+          formData.append('facebook_url' , facebook_url)
           formData.append('instagram_url' , instagram_url)
           formData.append('telegram_url' , telegram_url)
-          formData.append('copyright_column' , copyright_column)
+          formData.append('copyright_am' , copyrightAm)
+          formData.append('copyright_ru' , copyrightRu)
+          formData.append('copyright_en' , copyrightEn)
 
           try{
         
-            const res = await axios.post('/api/v1/caruselphotos/upload' , formData ,{
+            const res = await axios.post('/api/v1/homeinfo/upload' , formData ,{
                    
                headers:{
                    'Content-Type': "multipart/form-data"
@@ -88,6 +98,9 @@ export const Homeinfo  = ()=>{
               <CaruselFoto />
               <HomeAddres />
               <HomeSocialMedia />
+              <JoditReact  onChange={(content:string) => setCopyrightAm(content)}     defaultValue={copyrightAm} />
+              <JoditReact  onChange={(content:string) => setCopyrightRu(content)}     defaultValue={copyrightRu} />
+              <JoditReact  onChange={(content:string) => setCopyrightEn(content)}     defaultValue={copyrightEn} />
              <button>Send</button>
             </form>
         </div>

@@ -1,14 +1,14 @@
 import express from "express";
-import { caruselupload } from "../helpers/filershelper.js";
-import { uploadcaruselinfo, getcaruselinfo } from "../controllers/caruselinfo.js";
+import { homeupload } from "../helpers/filershelper.js";
+import { uploadhomeinfo, gethomeinfo } from "../controllers/homeinfo.js";
 
 const router = express.Router();
 
 
 
-router.post('/caruselphotos/upload', caruselupload.single('file') , uploadcaruselinfo);
-router.get('/caruselunfo', getcaruselinfo);
+router.post('/homeinfo/upload', homeupload.single('file') , uploadhomeinfo);
+router.get('/gethomeinfo', gethomeinfo);
 
 
 
-export const caruselroutes = router
+export const homeroutes = router

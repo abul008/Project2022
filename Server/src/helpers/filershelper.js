@@ -9,7 +9,7 @@ const fileStorageEngine = multer.diskStorage({
   });
 
 
-  const caruselfileStorageEngine = multer.diskStorage({
+  const homefileStorageEngine = multer.diskStorage({
     destination: '../AmyBoxingCompanent/media/carusel/', 
     filename: (req, file, cb) => {
       cb(null, Date.now() + "--" + file.originalname);
@@ -29,5 +29,5 @@ const filefilter = (req, file, cb) => {
 
 
 export const upload = multer({storage: fileStorageEngine, fileFilter: filefilter});
-export const caruselupload = multer({storage: caruselfileStorageEngine, fileFilter: filefilter});
+export const homeupload = multer({storage: homefileStorageEngine, fileFilter: filefilter});
 

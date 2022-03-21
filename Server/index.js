@@ -2,7 +2,7 @@ import express from "express";
 import session  from 'express-session';
 import {connectDB} from "./src/config/dbconnect.js";
 import {routes} from "./src/routers/bookinfo.js";
-import { caruselroutes } from "./src/routers/caruselinfo.js";
+import { homeroutes } from "./src/routers/caruselinfo.js";
 import cors from "cors"; 
 import i18next from "i18next";
 import Backend from "i18next-fs-backend";
@@ -112,7 +112,7 @@ app.get("/",async(req,res)=>{
 
 
 app.use('/api/v1/' , routes)
-app.use('/api/v1/' , caruselroutes)
+app.use('/api/v1/' , homeroutes)
 
 
 

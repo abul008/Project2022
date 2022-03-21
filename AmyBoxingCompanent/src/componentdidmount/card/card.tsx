@@ -39,7 +39,7 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
   const dispatch = useDispatch()
   
 
- console.log(carddata)
+ 
 
  let a = "Russian" 
  let b = "Russian"

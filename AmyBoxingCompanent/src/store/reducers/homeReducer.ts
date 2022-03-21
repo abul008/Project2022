@@ -14,13 +14,16 @@ const initialState:Homestate = {
     instagram_url:"",
     telegram_url:"",
     copyright_column:""
-   }
+   },
+   getHomedata:[]
 }
 
 export const HomeReducer = (state = initialState, action: HomeAction): Homestate => {
     switch (action.type) {
         case HomeActionTypes.HOME_ADD_INFO:
             return {...state,data:action.payload}
+            case HomeActionTypes.HOME_GET_INFO:
+                return {...state,getHomedata:action.payload}
         default:
             return state
     }

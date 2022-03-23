@@ -1,0 +1,16 @@
+.social-media{
+    display: flex;
+    justify-content: space-between;
+}
+.social-media li{
+   padding-right: 4px;
+}
+.social-media li a {
+    display: flex;
+    padding: 8px;
+    color: white;
+}
+.social-media  li a svg{
+   width: 30px;
+   height: 30px;
+}

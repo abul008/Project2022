@@ -20,9 +20,16 @@
 .footer-top_center{
     max-width: 500px;
 }
+.footer-top_center p{
+    color: white;
+}
 .footer-top_center ul{
     display: flex;
     justify-content: space-between;
+}
+.footer-top_center ul a{
+    color: #2cdeb5;
+    font-weight: 700;
 }
 .footer-link{
     display: flex;
@@ -34,4 +41,11 @@
     align-items: center;
     justify-content: center;
     color: white;
+}
+.footer-logo-svg{
+    display: flex;
+}
+
+.footer-logo-svg img{
+   width: 100px;
 }

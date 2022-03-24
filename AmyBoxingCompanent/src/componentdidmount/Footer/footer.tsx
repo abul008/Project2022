@@ -48,11 +48,12 @@ let contact:Footerdata[] = [
                      </ul>
                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae qui totam recusandae. Aspernatur voluptas illum non nemo explicabo optio, ipsa magnam quo praesentium harum aut dolore dolorem consequuntur magni eligendi</p>
                  </div>
+                 <div className="footer-logo-svg">
+                     <img src="/svgfolder/logo.svg"></img> 
+                 </div>
             </div>
             <div className="footer-lina"></div>
             <div className="footer-bottom-section">
-             
-                {/* {ReactHtmlParser(a)} */}
                 {a}
             </div>
         </div>

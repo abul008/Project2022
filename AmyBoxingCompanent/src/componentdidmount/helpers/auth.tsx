@@ -3,8 +3,7 @@ import i18next from "i18next"
 import {useEffect} from "react"
 
 
-cookie.set('name', 'value')
-console.log(cookie.get("connect.sid"))
+
 
 
 export const getCookie = (key:any) => {
@@ -41,7 +40,7 @@ export const changelenguage = (data:any,name:string)=>{
     if(data !== undefined){
         let datas = data[(name +i18next.t('lang'))] ;
 
-         return datas.replace(/<\/?p[^>]*>/g, "");
+         return datas;
     }
 }catch(error){
    console.log(error)

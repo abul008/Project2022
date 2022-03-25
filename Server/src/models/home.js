@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 
 const homeScema = new Schema({
     
-    get_absolute_url:{
-        type:String,
-        required:true
-    },
+    // get_absolute_url:{
+    //     type:String,
+    //     required:true
+    // },
     phone_number:{
         type:String,
         required:true
@@ -48,6 +48,48 @@ const homeScema = new Schema({
         type:String,
         required:true
     },
+    litleinfo_am:{
+        type:String,
+        required:true
+    },
+    litleinfo_ru:{
+        type:String,
+        required:true
+    },
+    litleinfo_en:{
+        type:String,
+        required:true
+    },
+    // fileName:{
+    //     type: String,
+    //     required: true
+    // },
+    // fileHreaf:{
+    //     type:String,
+    //     required:true
+    // },
+    // filePath: {
+    //     type: String,
+    //     required: true
+    // },
+    // fileType: {
+    //     type: String,
+    //     required: true
+    // },
+    // fileSize: {
+    //     type: String,
+    //     required: true
+    // }
+}, {timestamps: true}); 
+
+
+
+const homeCaruselSchema = new Schema({
+    
+    get_absolute_url:{
+        type:String,
+        required:true
+    },
     fileName:{
         type: String,
         required: true
@@ -68,7 +110,11 @@ const homeScema = new Schema({
         type: String,
         required: true
     }
-}, {timestamps: true});
+}, {timestamps: true}); 
 
 
-export const Homeinfoschema = mongoose.model('caruselinfo' , homeScema )
+
+
+
+export const Homeinfoschema = mongoose.model('homeinfo' , homeScema )
+export const HomeCaruselInfoScema = mongoose.model('homecaruselinfo' , homeCaruselSchema)

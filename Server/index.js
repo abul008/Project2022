@@ -2,7 +2,7 @@ import express from "express";
 import session  from 'express-session';
 import {connectDB} from "./src/config/dbconnect.js";
 import {routes} from "./src/routers/bookinfo.js";
-import { homeroutes } from "./src/routers/caruselinfo.js";
+import { homeroutes } from "./src/routers/homeinfo.js";
 import cors from "cors"; 
 import i18next from "i18next";
 import Backend from "i18next-fs-backend";

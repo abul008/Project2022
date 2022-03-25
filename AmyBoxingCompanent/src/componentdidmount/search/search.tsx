@@ -62,7 +62,7 @@ export const Search:React.FC<Searchprops> = (props) =>{
 }
 
 
-console.log(searchData)
+
 
   
     return(

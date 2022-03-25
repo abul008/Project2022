@@ -6,7 +6,8 @@ export const AdminPanel:React.FC = ()=>{
     return( 
         <div className="admin-panel" >
              <Link to="/webadmin/addbookinfo">bookinfo</Link>
-             <Link to="/webadmin/addcaruselinfo">caruselinfo</Link>
+             <Link to="/webadmin/addhomeinfo">homeinfo</Link>
+             <Link to="/webadmin/addhomecarusel">homecaruselinfo</Link>
             <AdminTable />
         </div>
     )

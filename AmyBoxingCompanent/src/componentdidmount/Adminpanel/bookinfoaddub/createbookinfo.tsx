@@ -119,9 +119,9 @@ export const Bookinfoadd:React.FC = ()=>{
        <Bookinfoformname />
        <Bookinfoformall />
        <Bookauthorname />
-       <JoditReact  onChange={(content:string) => setCoverAm(content)}     defaultValue={coverAm} />
+       <JoditReact  onChange={(content:string) => setCoverAm(content)}   defaultValue={coverAm} />
        <JoditReact  onChange={(content:string) => setCoverRu(content)}   defaultValue={coverRu} />
-       <JoditReact  onChange={(content:string) => setCoverEn(content)}  defaultValue={coverEn} />
+       <JoditReact  onChange={(content:string) => setCoverEn(content)}   defaultValue={coverEn} />
        <Bookimg />
        <GeneralInfo />
        <BookinfoUrl />

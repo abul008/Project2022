@@ -11,7 +11,7 @@ router.post('/login',   admilogin)
 router.get('/logins', admilogins)
 
 router.get('/getusers' , getUSers)
-router.get('/getboobinfo',getBookinfo)
+router.get('/getbookinfo',getBookinfo)
 router.post('/photos/upload', upload.array('files') , uploadbookinfo);
 
 

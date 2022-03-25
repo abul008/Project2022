@@ -22,24 +22,37 @@ interface BookinformationCard {
   get_absolute_url:string,
   ցategory:string,
   _id:string,
-  files:any
+  files:FilesHref[]
 }
 
+
+interface FilesHref{
+  fileName:string,
+  fileHreaf:string,
+  filePath:string,
+  fileType:string,
+  fileSize:string
+}
 
 
 export const Home:React.FC = ()=>{
 
 
     const [carueseldb , setCaruseldb] = useState<Caruseldata[]>([])
+ 
     const [bookinfo , setBookinfo] = useState<[]>([])
     
     const {getHomedata} = useTypedSelector(state => state.home)
    
   
   
-
+      useEffect(()=>{
+         axios.get('/api/v1/gethomecarusel')
+         .then(res=>setCaruseldb(res.data))
+      },[])
+     
        useEffect(()=>{
-        axios.get("/api/v1/getboobinfo")
+        axios.get("/api/v1/getbookinfo")
         .then(res=>setBookinfo(res.data.map((data:BookinformationCard)=>{
              return{
               cardname_am:data.name_am,
@@ -53,7 +66,7 @@ export const Home:React.FC = ()=>{
               cardurl:data.get_absolute_url,
               cardgetgoti:data.ցategory,
               id:data._id,
-              cardfile:data.files.map((filterfile:any)=> filterfile.fileHreaf)
+              cardfile:data.files.map((filterfile:FilesHref)=> filterfile.fileHreaf)
              }
         })))
       },[])
@@ -61,7 +74,7 @@ export const Home:React.FC = ()=>{
       
     return( 
          <div className="home-page" >
-            <Carusel dataall={getHomedata}   />
+            <Carusel dataall={carueseldb}   />
             <Card carddata={bookinfo} />
          </div>
     )

@@ -41,9 +41,6 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
 
  
 
- let a = "Russian" 
- let b = "Russian"
- let d = "English"
 
 
     return(

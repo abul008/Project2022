@@ -19,8 +19,6 @@ export const FooterContactlink:React.FC = () =>{
     const {getHomedata} = useTypedSelector(state => state.home)
     
 
-    console.log(getHomedata)
-
 
     return(
      <ul >

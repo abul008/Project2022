@@ -76,7 +76,7 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
             </div>
             <div  className="page-product-card-head-settings">
             <div className="page-product-card-top-cantrol">
-            <a className="page-product-card-hrefA" target="_blank" href={"/book" + data.cardurl + "/" +data.id}>  
+            <a className="page-product-card-hrefA" target="_blank" href={ data.cardurl  + data.id}>  
             <span className="page-product-cards-linkimg-witdh" style={{backgroundImage:`url(${data.cardfile[0]})`}}></span>  
             </a>    
             <div className="page-product-card-link-information"><a href={"/home/techniquenav/product/"}>{changelenguage(data , 'cardauthor') }</a>  <span>

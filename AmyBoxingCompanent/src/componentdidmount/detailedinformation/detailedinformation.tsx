@@ -48,6 +48,7 @@ export const Detailedinformation = ({match}:any) =>{
             return{
               name:changelenguage(data ,"name"),
               autor:changelenguage(data ,"author"),
+              cover:changelenguage(data, "cover"),
               price:data.price,
               language:data.Language_am,
               pages:data.Numberofpages,
@@ -62,6 +63,8 @@ export const Detailedinformation = ({match}:any) =>{
     },[])
 
 
+  
+
     return(
         <div className="detailed-information-wrapper">
           <div className="detalied-information-wrapper-page">
@@ -73,7 +76,7 @@ export const Detailedinformation = ({match}:any) =>{
                 <div className="detalied-information-header-bottom">
                  <div className="detealied-superficial-information">
                    <div className="detalied-image-to-show">
-                       <img  className="detalied-image-list" src="/bookfoto/1647144953896--274292980_4851693304938240_162270347709443494_n.jpg" />
+                       <img  className="detalied-image-list" src={bookalldata ? bookalldata[0].file[0] : undefined} />
                      {/* {
                        bookalldata.map((datas,index)=>{
                          return(

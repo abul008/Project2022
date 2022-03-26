@@ -33,6 +33,7 @@ export const uploadbookinfo = ( async(req,res,next)=>{
         absolute_url
     } = req.body
 
+    console.log(req)
    
 
 

@@ -11,14 +11,12 @@ const initialState: bookstate = {
     author_am:"",
     author_ru:"",
     author_en:"",
-    Language_am:"",
-    // Language_ru:"",
-    // Language_en:"",
+    Language_am:"Armenian",
     Numberofpages:"",
     Weight:"",
     Publisher:"",
     price:"",
-    ցategory:"",
+    ցategory:"is available",
     cover_am:"",
     cover_ru:"",
     cover_en:"",
@@ -26,7 +24,6 @@ const initialState: bookstate = {
     absolute_url:"",
     file:"",
     getbookdata:""
-    // filename:""
    },
    getBookdata:[]
  

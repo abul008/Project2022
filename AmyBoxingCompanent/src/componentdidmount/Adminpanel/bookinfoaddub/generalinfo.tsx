@@ -37,6 +37,7 @@ export const GeneralInfo:React.FC = ()=>{
             <label>Գին:Am</label>
                 <input
                 type="text"
+                required
                 placeholder="Գին" 
                 value={data.price}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,price:e.target.value})}
@@ -46,6 +47,7 @@ export const GeneralInfo:React.FC = ()=>{
             <label>Ամսաթիվ:En</label>
                    <input
                     type="date"
+                    required
                     value={data.date}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,date:e.target.value})}
              />

@@ -73,7 +73,7 @@ export const Bookinfoadd:React.FC = ()=>{
       formData.append('author_ru', author_ru)
       formData.append('author_en', author_en)
       formData.append('Language_am',Language_am)
-      formData.append('ցategory',ցategory)
+      formData.append('ցategory', ցategory)
       formData.append('Numberofpages', Numberofpages)
       formData.append('Publisher',Publisher)
       formData.append('Weight',Weight)

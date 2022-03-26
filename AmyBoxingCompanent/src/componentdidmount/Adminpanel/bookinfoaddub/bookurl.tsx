@@ -14,7 +14,7 @@ export const  BookinfoUrl:React.FC =()=>{
     const {setBookPage} = useActions()
 
     useEffect(()=>{
-        setBookPage({...data, absolute_url:`/book/${data.name_en}`})
+        setBookPage({...data, absolute_url:`/book/${data.name_en}/`})
     },[data.name_en])
     
  

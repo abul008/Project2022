@@ -1,6 +1,15 @@
 {   "lang":"_en",
     "search":"Search",
 
+    "language":"Language",
+    "Publicationdate":"Publication date",
+    "publisher":"Publisher",
+    "pages":"Pages",
+    "printingcover":"Printing cover",
+    "autor":"Autor",
+    "weight":"Weight",
+    
+
 
     "faq":"FAQ",
     "about_us":"About Us",

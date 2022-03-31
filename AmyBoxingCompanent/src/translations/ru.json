@@ -1,6 +1,14 @@
 {   "lang":"_ru",
     "search":"Поиск",
 
+    "language":"Язык",
+    "Publicationdate":"Дата публикации",
+    "publisher":"Издательство",
+    "pages":"Страницы",
+    "printingcover":"Обложка",
+    "autor":"Автор",
+    "weight":"Масса",  
+
 
     "faq":"Часто задаваемые вопросы",
     "about_us":"О нас",

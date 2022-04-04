@@ -1,6 +1,12 @@
 {   "lang":"_en",
     "search":"Search",
 
+
+    "home":"Home",
+    "book":"Book",
+    "contact":"Contact us",
+
+
     "language":"Language",
     "Publicationdate":"Publication date",
     "publisher":"Publisher",

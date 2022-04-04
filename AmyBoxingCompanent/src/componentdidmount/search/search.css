@@ -43,6 +43,10 @@
   .search-page input:focus {
     background: #e7e7e7;
   }
+  .search-page input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color:#35a79c;
+    /* opacity: 1; Firefox */
+  }
   .searche-page-product-info-form{
     position: absolute;
     background: rgb(255, 255, 255);

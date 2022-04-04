@@ -18,8 +18,8 @@ export const SocialMedia:React.FC = () =>{
     return(
      <ul className="social-media">
        <li><a ><SvgFacebook /></a></li>  
-       <li><a href="#"><SvgInstagram /></a></li>  
-       <li><a href="#"><SvgTelegram /></a></li>
+       <li><a ><SvgInstagram /></a></li>  
+       <li><a ><SvgTelegram /></a></li>
        <li><a href={getHomedata[0] ? getHomedata[0].addres : undefined }><SvgLocetion /></a></li>        
      </ul>
     )

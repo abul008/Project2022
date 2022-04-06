@@ -8,6 +8,16 @@
     justify-content: center;
   }
   
+  .search-page .Search-on-the-svg{
+    position: absolute;
+    left: 5px;
+    z-index: 1;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .search-page form{
     align-items: center;
     display: flex;
@@ -38,10 +48,16 @@
     border-radius: 10px;
     outline: none;
     border: solid 1px #7c7979;
-    padding-left: 30px;
+    padding-left: 38px;
+    color: #35a79c
   }
   .search-page input:focus {
     background: #e7e7e7;
+    background: white;
+    color:black;
+  }
+  .search-page input:focus::placeholder {
+     color: rgb(0, 0, 0);
   }
   .search-page input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color:#35a79c;
@@ -51,7 +67,7 @@
     position: absolute;
     background: rgb(255, 255, 255);
     width: 100%;
-    top: 38px;
+    top: 50px;
     /* height: 410px; */
     max-height: 410px;
     border-radius: 0px 0px 10px 10px;
@@ -75,6 +91,21 @@
   .searche-page-product-info-form ul li a span{padding-right: 10px;}
   .searche-page-product-info-form ul li a span img{width: 30px;}
 
+
+  .loader {
+    margin: auto;
+    border: 3.5px solid #232526 ;
+    border-radius: 50%;
+    border-top: 3.5px solid #35a79c;
+    width: 35px;
+    height: 35px;
+    animation: spinner 4s linear infinite;
+  }
+  
+  @keyframes spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
   @media screen and (max-width: 615px) {
     .search-page{

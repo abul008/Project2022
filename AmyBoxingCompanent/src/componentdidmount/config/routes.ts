@@ -1,6 +1,7 @@
 import IRoute from '../InterFace/routes';
 import {Home} from "../HomePage/homePage";
 import { BookProduct } from '../BookPageScreen/bookPageProduct';
+import {Searchresult} from "../search/Searchresult";
 import { AdminLogin } from '../Adminpanel/adminlogin';
 import { isAuth } from '../helpers/auth';
 import {Detailedinformation} from "../detailedinformation/detailedinformation";
@@ -23,6 +24,12 @@ const routes: IRoute[] = [
         path: '/Book/:page/:id',
         name: 'Book Page',
         component: Detailedinformation,
+        exact: true
+    },
+    {
+        path: '/search/:id',
+        name: 'Book Page',
+        component: Searchresult,
         exact: true
     },
     {

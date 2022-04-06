@@ -1,6 +1,9 @@
-import React,{useEffect, useState ,KeyboardEvent} from "react";
+import React,{useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import "./search.css";
 import {ChangeLanguage} from "../Changelenguage/changelanguage";
+import { changelenguage } from "../helpers/auth";
+import {SvgSearch} from "../svgicon/svg";
 import axios from "axios";
 
 
@@ -24,75 +27,92 @@ interface Search{
 interface TypeFile{
 
 }
+
+
 export const Search:React.FC<Searchprops> = (props) =>{
-  const [searchBlur , setSearchBlur] = useState(false)
-  const [searchData ,setSearchdata] = useState<Search[]>([])
-  
+  const [searchBlur , setSearchBlur] = useState<boolean>(false)
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchResultsData, setSearchResultsData] = useState<Search[]>([]);
+  const [searchloader , setSearchloader] = useState<boolean>(true)
+  const history = useHistory(); 
    
+ 
 
-
-
+useEffect(()=>{
+ 
+  if(searchTerm.length >= 1){
+    const handle = setTimeout(()=>{
+      axios.get("/api/v1/getbookinfo/")           
+      .then(res=>{
+        setSearchResultsData(res.data.filter((info:Search) =>
+         (info.name_am).toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  || 
+         (info.name_ru).toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  || 
+         (info.name_en).toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  || 
+         info.author_am.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  ||
+         info.author_ru.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  ||
+         info.author_en.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
+          )
+          )
+          setSearchloader(false)
+      })
+    },500)
+      return () => {
+        clearTimeout(handle)
+      }
+  }else{
+    setSearchBlur(false)
+  }
+},[searchTerm])
 
 
   const searchsub = (e: React.FormEvent<HTMLFormElement>)=>{
       e.preventDefault()
+
+      history.push(`/search/${searchTerm}`);
+
+
   }
 
-  const SarchData = (e:KeyboardEvent<HTMLInputElement>) =>{
-
-    const searchvalue = (e.target as HTMLInputElement).value.replace(/  +/g, ' ')
-
-    
-    if((e.target as HTMLInputElement).value.length !== 0){
-    axios.get("/api/v1/getkoobinfo/")           
-    .then(res=>
-      setSearchdata(res.data.filter((info:Search) =>
-       (info.name_am).toLocaleLowerCase().includes(searchvalue.toLocaleLowerCase())  || 
-       (info.name_ru).toLocaleLowerCase().includes(searchvalue.toLocaleLowerCase())  || 
-       (info.name_en).toLocaleLowerCase().includes(searchvalue.toLocaleLowerCase())  || 
-       info.author_am.toLocaleLowerCase().includes(searchvalue.toLocaleLowerCase())  ||
-       info.author_ru.toLocaleLowerCase().includes(searchvalue.toLocaleLowerCase())  ||
-       info.author_en.toLocaleLowerCase().includes(searchvalue.toLocaleLowerCase())
-        )
-        
-        ))
-  }else if((e.target as HTMLInputElement).value.length === 0){
-    setSearchdata([])
-  }
-}
-
-
-
-
-  
+  console.log(searchBlur)
     return(
-      <div  className="search-page" onBlur={()=>{
-        setSearchBlur(false)
-      }}>
-       <form onSubmit={searchsub}  >
+      <div  className="search-page"
+      onFocus={()=>{
+        setSearchBlur(true)
+   }}
+      onBlur={()=>{
+        setTimeout(()=>{
+         setSearchBlur(false) 
+        },100)
+      }}
+      >
+         
+       <form onSubmit={searchsub} >   
           <input
-          style={{borderRadius:searchBlur ? "6px 6px 0px 0px" : "6px 6px 6px 6px"}}
-          onChange={()=>{
+          value={searchTerm}
+          style={{borderRadius:searchBlur ? "6px 6px 0px 0px" : "6px 6px 6px 6px" , paddingLeft:searchBlur ? "38px" :"12px"}}
+          onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{
+            setSearchTerm(e.target.value);
             setSearchBlur(true)
           }}
-          onBlur={()=>{console.log('hello')}}
-           onFocus={()=>{
-               setSearchBlur(true)
-          }} placeholder={props.placeholder}
-          onKeyUp={SarchData}
-          />
+           placeholder={props.placeholder}
+         />
+          <button 
+          style={{display:searchBlur ? "flex" : "none"}}
+          className="Search-on-the-svg" onClick={()=>console.log("hello")} >
+          <SvgSearch />
+          </button>
         </form>
-        <div onFocus={()=>{
-               setSearchBlur(true)
-          }}  style={{display:searchBlur ? "flex" : "none"}} className="searche-page-product-info-form">
+        <div 
+          style={{display:searchBlur  ? "flex" : "none"}} className="searche-page-product-info-form">
+          <div className="loader" style={{display:searchloader ? "block" : "none"}}></div>
           <ul>
             {
-              searchData.map((data,index)=>{
+              searchResultsData.map((data,index)=>{
                   return(
                     <li key={index}>
-                        <a href={"/book" + data.get_absolute_url + "/" + data._id} >
+                        <a href={ data.get_absolute_url  + data._id} >
                           <span><img src={data.files[0] ? data.files[0].fileHreaf : undefined} alt="searchfoto" /></span>
-                          {data.author_ru}  
+                           {changelenguage(data ,"author")}
                         </a></li>
                   )
               })

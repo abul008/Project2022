@@ -21,10 +21,9 @@ export const Footer:React.FC= () =>{
     return(
         <div className="footer-wrapper">
             <div className="footer-top-section"> 
-                <div className="footer-link">
-                 <FooterContactlink />
-                 <SocialMedia />
-                </div>
+                 <div className="footer-logo-svg">
+                     <img src="/svgfolder/logo.svg"></img> 
+                 </div>
                  <div className="footer-top_center">
                      <ul>
                          <li><Link to="/">{i18next.t('faq')}</Link></li>
@@ -33,9 +32,16 @@ export const Footer:React.FC= () =>{
                      </ul>
                      {ReactHtmlParser(`${changelenguage(getHomedata[0] , 'litleinfo')}`)}
                  </div>
-                 <div className="footer-logo-svg">
-                     <img src="/svgfolder/logo.svg"></img> 
-                 </div>
+                 <div className="footer-link-cantrol">
+                  <div className="footer-link">
+                   <FooterContactlink />
+                   <SocialMedia />
+                </div>
+                  <div className="link_section_svg">
+                     <img src="/svgfolder/logo.svg" /> 
+                  </div>
+                </div>
+                
             </div>
             <div className="footer-lina"></div>
             <div className="footer-bottom-section">

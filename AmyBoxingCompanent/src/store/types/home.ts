@@ -15,11 +15,14 @@ export interface Homeinfo{
 export interface Homestate{
     data:Homeinfo
     getHomedata:any
+    quantity:number
+
 }
 
 export enum HomeActionTypes {
     HOME_ADD_INFO = 'HOME_ADD_INFO',
     HOME_GET_INFO = 'HOME_GET_INFO',
+    HOME_CHANGE_QUANTITY = "HOME_CHANGE_QUANTITY"
 }
 
 
@@ -33,5 +36,11 @@ interface BookGetInfoAction {
     payload: any;
 }
 
+interface HomequanitityAction {
+    type: HomeActionTypes.HOME_CHANGE_QUANTITY;
+    payload: number;
+}
+
+
 export type HomeAction =
-HomeAddInfoAction | BookGetInfoAction
+HomeAddInfoAction | BookGetInfoAction | HomequanitityAction

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import i18next from "i18next";
 import { changelenguage } from "../helpers/auth";
 import ReactHtmlParser from 'html-react-parser';
+import {SvgTransform} from "../svgicon/svg";
 import "./detailedinformation.css"
 
 
@@ -16,7 +17,7 @@ author_am: string,
 author_en: string,
 author_ru:string,
 date:string,
-files: FilesHref[],
+files: FilesHref[] ,
 get_absolute_url: string,
 name_am: string,
 name_en: string,
@@ -39,6 +40,7 @@ export const Detailedinformation = ({match}:any) =>{
     
 
     const [detalieddata , setDetalieddata]= useState<any>()
+    const [headimg , setHeadimg] = useState<  number>(0)
 
 
     useEffect(()=>{
@@ -65,6 +67,9 @@ export const Detailedinformation = ({match}:any) =>{
     },[])
     
 
+    const filelength = detalieddata ? detalieddata[0].file.length - 1 : undefined
+    
+    console.log(detalieddata)
 
 
     return(
@@ -72,23 +77,30 @@ export const Detailedinformation = ({match}:any) =>{
           <div className="detalied-information-wrapper-page">
             <div className="detalied-information-wraper-page-cantrol">            
                               <div className="detalied-information-header-top">
-                                  <h2>{detalieddata ? detalieddata[0].autor : undefined}</h2>
+                                  <h2>{detalieddata ? detalieddata[0].name : undefined}</h2>
                                   <span>{detalieddata ? detalieddata[0].price : undefined}֏ </span>
                               </div>
                                       <div className="detalied-information-header-bottom">
                                             <div className="detealied-superficial-information">
                                                 <div className="detalied-image-to-show">
-                                                    <img  className="detalied-image-list" src={detalieddata ? detalieddata[0].file[0] : undefined} />
-                                                    <div className="detalied-all-image">
-                                                      {
-                                                      detalieddata ? detalieddata[0].file.map((datas:any,index:number)=>{
-                                                        return(
-                                                        <img key={index} src={`${datas}`}   className="detalied-image-small"></img>
-                                                          )
-                                                      }) : undefined
-                                                      }
+                                                  <div className="detalied-image-list-cantrol">
+                                                  <img  className="detalied-image-list" src={detalieddata ? detalieddata[0].file[headimg] : undefined} />
+                                                     <div  className="change-image-icon-svg">
+                                                         <button disabled={headimg === 0 ? true : false}  onClick={()=>{setHeadimg(headimg - 1)}} className="rotate-image-list list-left"><SvgTransform /></button>
+                                                         <button disabled={headimg === filelength ? true : false} onClick={()=>{setHeadimg(headimg + 1)}} className="rotate-image-list list-right"><SvgTransform /></button>
+                                                    </div>
                                                   </div>
-                                              </div>
+                                                      <div  className="detalied-all-image">
+                                                       {
+                                                       detalieddata ? detalieddata[0].file.map((datas:any,index:number)=>{
+                                                         return(
+                                                         <img onClick={()=>setHeadimg(index)} key={index} src={`${datas}`} alt="bookfoto"  className="detalied-image-small"></img>
+                                                           )
+                                                       }) : undefined
+                                                       }
+                                                     </div>
+
+                                              </div> 
                                               <div className="detalied-superficial-information-list">
                                                 <table>
                                                   <tbody>
@@ -120,11 +132,8 @@ export const Detailedinformation = ({match}:any) =>{
                                                 </table>
                                               </div>
                                             </div>
-
                                             <div className="dtelied-cover">
-                                             
                                               {ReactHtmlParser(`${detalieddata ? detalieddata[0].cover : undefined}`)}
-                                            
                                             </div>
                                     </div>
              </div>

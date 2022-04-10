@@ -27,3 +27,10 @@ export const setGetbookinfo = () => {
         }
     }
 }
+
+export function setChangequantity(count: number): HomeAction {
+    return {
+        type: HomeActionTypes.HOME_CHANGE_QUANTITY,
+         payload: count
+        }
+}

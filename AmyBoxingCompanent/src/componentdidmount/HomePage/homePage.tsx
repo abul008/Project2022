@@ -3,37 +3,16 @@ import { useEffect, useState } from "react"
 import {Carusel} from "../CaruselScreen/carusel";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import {Card} from "../card/card";
-import { any, string } from "prop-types";
+import {
+   BookinformationCard ,
+   FilesHref
+  } from "../BookPageScreen/bookPageInterface";
+import { any, string } from "prop-types"; 
 
 interface Caruseldata{
     get_absolute_url:string,
     fileHreaf:string,
 }
-
-interface BookinformationCard {
-  name_am:string,
-  name_ru:string,
-  name_en:string,
-  author_am:string ,
-  author_ru:string ,
-  author_en:string,
-  price:string,
-  Language_am:string,
-  get_absolute_url:string,
-  ցategory:string,
-  _id:string,
-  files:FilesHref[]
-}
-
-
-interface FilesHref{
-  fileName:string,
-  fileHreaf:string,
-  filePath:string,
-  fileType:string,
-  fileSize:string
-}
-
 
 export const Home:React.FC = ()=>{
 
@@ -41,9 +20,6 @@ export const Home:React.FC = ()=>{
     const [carueseldb , setCaruseldb] = useState<Caruseldata[]>([])
  
     const [bookinfo , setBookinfo] = useState<[]>([])
-    
-    const {getHomedata} = useTypedSelector(state => state.home)
-   
   
   
       useEffect(()=>{

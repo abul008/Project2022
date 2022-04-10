@@ -5,6 +5,7 @@ import routes from '../config/routes';
 import { isAuth } from '../helpers/auth';
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import { useActions } from '../../hooks/useActions';
+import {Shopicon} from "../shopping/shopicon";
 import routesadmin from "../config/routesadmin";
 import {Footer} from "../Footer/footer";
 import "./headPaheScreen.css";
@@ -21,7 +22,7 @@ export const HeadPage:React.FC=()=>{
 
     const {setHomePage ,setGetbookinfo } = useActions()
     useEffect(()=>{
-      setGetbookinfo()
+        setGetbookinfo()
     },[])
    
 //this function shows the location of the home page routes
@@ -31,6 +32,8 @@ export const HeadPage:React.FC=()=>{
          <div className="wrapper-page">
           {isAuth("role") ? null :  <Nav /> }
           <div className='header-section'>
+          <Shopicon />
+
              <Switch>
               {routes.map((route, index) => {
                         return (

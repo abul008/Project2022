@@ -47,8 +47,9 @@
     top: 0;
     font-family: sans-serif;
   }
-  .page-product-card-wrapper-cantrol img{
+  .page-product-card-wrapper-cantrol svg{
     width: 40px;
+    height: 40px;
   }
   .page-product-card-wrapper-cantrol:hover{
     box-shadow: 0 2px 4px rgba(0, 0, 0, .25);
@@ -68,12 +69,22 @@
     font-weight: 700;
     color: white;
     border: navajowhite;
+    /* background: #35a79c !important; */
     padding-bottom: 7px;
     font-size: 26px;
     justify-content: space-evenly;
     cursor: pointer;
     font-variant: initial;
     box-shadow: 0px 0px 1px 0px;
+  }
+  .page-product-card-wrapper-cantrol button:focus{
+    background: #35a79c;
+  }
+  .page-product-card-bottom-cantrol button:active{
+    opacity: 0.3;
+  }
+  .page-product-card-wrapper-cantrol button:hover{
+    background: #35a79c;
   }
   .page-product-card-wrapper-cantrol button::after{
       content: " ";

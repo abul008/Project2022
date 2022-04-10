@@ -1,0 +1,24 @@
+.shop-icon-wrapper{
+    position: fixed;
+    right: 0;
+    top: 50%;
+    z-index: 999;
+    /* background: #232526; */
+    /* background: -webkit-linear-gradient(to right, #414345, #232526);
+    background: linear-gradient(to right, #414345, #232526); */
+}
+.shop-icon-wrapper svg{
+    /* background-color: #232526; */
+    fill:#35a79c ;
+    position: relative;
+}
+.shop-icon-wrapper svg g{
+    transform: translate(4px, 3px) scale(1.6)  ;
+}
+.shop-icon-wrapper span{
+    position: absolute;
+    top: 46px;
+    left: 9px;
+    font-size: 20px;
+    font-weight: 700;
+}

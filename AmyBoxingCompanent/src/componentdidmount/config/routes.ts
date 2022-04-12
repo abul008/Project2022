@@ -1,7 +1,7 @@
 import IRoute from '../InterFace/routes';
 import {Home} from "../HomePage/homePage";
 import { BookProduct } from '../BookPageScreen/bookPageProduct';
-import {Searchresult} from "../search/Searchresult";
+import {Searchresult} from "../search/searchPage";
 import {ShopingList} from "../shopping/shoppingList";
 import { AdminLogin } from '../Adminpanel/adminlogin';
 import { isAuth } from '../helpers/auth';

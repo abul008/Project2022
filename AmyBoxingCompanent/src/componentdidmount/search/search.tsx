@@ -2,7 +2,11 @@ import React,{useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./search.css";
 import {ChangeLanguage} from "../Changelenguage/changelanguage";
+import {BookinformationCard} from "../InterFace/bookPageInterface";
 import { changelenguage } from "../helpers/auth";
+import {SearchData} from "../InterFace/searchinterface";
+import {SearchDesign} from "./InputResaultUl";
+import {SearchLoader} from "./searchLoader";
 import {SvgSearch} from "../svgicon/svg";
 import axios from "axios";
 
@@ -11,31 +15,15 @@ interface Searchprops {
     placeholder:string
 }
 
-interface Search{
-  name_am:string,
-  name_ru:string,
-  name_en:string,
-  author_am:string,
-  author_ru:string,
-  author_en:string,
-  get_absolute_url:string,
-  _id:string
-  files:any
-}
-
-
-interface TypeFile{
-
-}
 
 
 export const Search:React.FC<Searchprops> = (props) =>{
   const [searchBlur , setSearchBlur] = useState<boolean>(false)
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [searchResultsData, setSearchResultsData] = useState<Search[]>([]);
+  const [searchResultsData, setSearchResultsData] = useState<SearchData[]>([]);
   const [searchloader , setSearchloader] = useState<boolean>(true)
   const history = useHistory(); 
-   
+
  
 
 useEffect(()=>{
@@ -44,14 +32,24 @@ useEffect(()=>{
     const handle = setTimeout(()=>{
       axios.get("/api/v1/getbookinfo/")           
       .then(res=>{
-        setSearchResultsData(res.data.filter((info:Search) =>
+        setSearchResultsData(res.data.filter((info:BookinformationCard) =>
          (info.name_am).toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  || 
          (info.name_ru).toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  || 
          (info.name_en).toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  || 
          info.author_am.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  ||
          info.author_ru.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  ||
          info.author_en.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
-          )
+          ).map((data:BookinformationCard)=>{
+            return{
+              SearchName:changelenguage(data,"name"),
+              SearchAuthor:changelenguage(data,"author"),
+              SearchUrl:data.get_absolute_url,
+              SearchId:data._id,
+              SearchCaover:changelenguage(data,"cover"),
+              SearchPrice:data.price,
+              SearchFiles:data.files
+            }
+          })
           )
           setSearchloader(false)
       })
@@ -63,7 +61,7 @@ useEffect(()=>{
     setSearchBlur(false)
   }
 },[searchTerm])
-
+console.log(searchResultsData)
 
   const searchsub = (e: React.FormEvent<HTMLFormElement>)=>{
       e.preventDefault()
@@ -72,25 +70,23 @@ useEffect(()=>{
 
 
   }
-
-  console.log(searchBlur)
+ 
     return(
-      <div  className="search-page"
+  <div  className="search-page"
       onFocus={()=>{
-        setSearchBlur(true)
-   }}
+         setSearchBlur(true)
+      }}
       onBlur={()=>{
         setTimeout(()=>{
          setSearchBlur(false) 
         },100)
       }}
-      >
-         
+  >  
        <form onSubmit={searchsub} >   
-          <input
-          value={searchTerm}
-          style={{borderRadius:searchBlur ? "6px 6px 0px 0px" : "6px 6px 6px 6px" , paddingLeft:searchBlur ? "38px" :"12px"}}
-          onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{
+           <input
+           value={searchTerm}
+           style={{borderRadius:searchBlur ? "6px 6px 0px 0px" : "6px 6px 6px 6px" , paddingLeft:searchBlur ? "38px" :"12px"}}
+           onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{
             setSearchTerm(e.target.value);
             setSearchBlur(true)
           }}
@@ -102,25 +98,14 @@ useEffect(()=>{
           <SvgSearch />
           </button>
         </form>
-        <div 
-          style={{display:searchBlur  ? "flex" : "none"}} className="searche-page-product-info-form">
-          <div className="loader" style={{display:searchloader ? "block" : "none"}}></div>
-          <ul>
-            {
-              searchResultsData.map((data,index)=>{
-                  return(
-                    <li key={index}>
-                        <a href={ data.get_absolute_url  + data._id} >
-                          <span><img src={data.files[0] ? data.files[0].fileHreaf : undefined} alt="searchfoto" /></span>
-                           {changelenguage(data ,"author")}
-                        </a></li>
-                  )
-              })
-            }
-          </ul>
-        </div>
+                  <div 
+                     style={{display:searchBlur  ? "flex" : "none"}}
+                     className="searche-page-product-info-form">
+                     <SearchLoader loaderstyle={{display:searchloader ? "block" : "none"}} />
+                     <SearchDesign FindFilter={searchResultsData} />
+                  </div>
         <ChangeLanguage />
-      </div>
+  </div>
      
     )
 }

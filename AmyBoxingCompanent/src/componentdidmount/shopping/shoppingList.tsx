@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./shopingicon.css";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import {changelenguage} from "../helpers/auth";
-import {BookinformationCard } from "../BookPageScreen/bookPageInterface";
+import {BookinformationCard } from "../InterFace/bookPageInterface";
 import axios from "axios";
 import { useActions } from '../../hooks/useActions';
 

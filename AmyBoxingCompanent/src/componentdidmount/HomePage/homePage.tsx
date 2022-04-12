@@ -6,7 +6,7 @@ import {Card} from "../card/card";
 import {
    BookinformationCard ,
    FilesHref
-  } from "../BookPageScreen/bookPageInterface";
+  } from "../InterFace/bookPageInterface";
 import { any, string } from "prop-types"; 
 
 interface Caruseldata{

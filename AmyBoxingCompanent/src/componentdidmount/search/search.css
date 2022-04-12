@@ -77,38 +77,6 @@
     border-right: 1px solid #6b6b6b;
     padding: 13px 13px 14px 17px;
   }
-  .searche-page-product-info-form ul{
-    padding: 2px 0px 5px 5px;
-    line-height: 34px;
-    max-height: 410px;
-  
-  }
-  
-  .searche-page-product-info-form ul li{
-    list-style: none;
-  }
-  .searche-page-product-info-form ul li a{display: flex;}
-  .searche-page-product-info-form ul li a span{padding-right: 10px;}
-  .searche-page-product-info-form ul li a span img{width: 30px;}
+ 
 
 
-  .loader {
-    margin: auto;
-    border: 3.5px solid #232526 ;
-    border-radius: 50%;
-    border-top: 3.5px solid #35a79c;
-    width: 35px;
-    height: 35px;
-    animation: spinner 4s linear infinite;
-  }
-  
-  @keyframes spinner {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  @media screen and (max-width: 615px) {
-    .search-page{
-      width: 100%;
-    }
-  }

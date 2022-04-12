@@ -53,7 +53,9 @@ export const ShopingList:React.FC = () =>{
        })
       },[])
 
-
+  
+  
+  
    
   return(
       <div className="shop-list-wrapper">

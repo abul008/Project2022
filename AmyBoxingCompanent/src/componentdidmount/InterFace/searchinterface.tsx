@@ -5,7 +5,7 @@ export interface SearchData{
     SearchId:string,
     SearchCaover:string
     SearchPrice:string
-    SearchFiles:FilesHref[]
+    SearchFiles:string
 
 }
 

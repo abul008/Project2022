@@ -16,7 +16,7 @@ const initialState:Homestate = {
     copyright_column:""
    },
    getHomedata:[],
-   quantity:0
+   quantity:JSON.parse(localStorage.getItem('productdata') || "").length
 }
 
 export const HomeReducer = (state = initialState, action: HomeAction): Homestate => {

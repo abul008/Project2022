@@ -4,6 +4,7 @@ import {connectDB} from "./src/config/dbconnect.js";
 import {routes} from "./src/routers/bookinfo.js";
 import { homeroutes } from "./src/routers/homeinfo.js";
 import cors from "cors"; 
+import path from "path"
 import i18next from "i18next";
 import Backend from "i18next-fs-backend";
 import middleware from "i18next-http-middleware"
@@ -29,7 +30,6 @@ i18next.use(Backend).use(middleware.LanguageDetector)
 const app = express()
 
 app.use(secure);
-
 
 connectDB();
 
@@ -97,6 +97,8 @@ app.use(cors({
 }));;
 
 
+
+
 app.use(pasportini);
 app.use(pasportsession);
 
@@ -108,6 +110,8 @@ app.get("/",async(req,res)=>{
 
   res.send(a)
 })
+
+
 
 
 

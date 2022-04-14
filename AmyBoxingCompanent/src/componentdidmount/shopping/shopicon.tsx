@@ -20,7 +20,7 @@ export const Shopicon:React.FC = () =>{
   return(
       <Link to="/basket" className="shop-icon-wrapper">
          <SvgShop />
-        <span  >{array.length + 1}</span> 
+        <span  >{ quantity}</span> 
       </Link>
   )
 

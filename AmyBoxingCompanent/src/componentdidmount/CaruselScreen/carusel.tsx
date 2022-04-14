@@ -36,7 +36,7 @@ const [activeClass,setActiveclass] = useState<number | string>("")
         </ul>
         <div className="caruselButton">
                
-                {dataall.map((imgD,index)=><button 
+               {dataall.map((imgD,index)=><button 
                 className={`btn-carusel ${index === activeClass ? "active" : "" }`}
                  onClick={()=>{
                   setActiveclass(index)

@@ -1,11 +1,13 @@
 import React,{useEffect ,useState} from "react";
 import axios from "axios" ; 
 import {changelenguage} from "../helpers/auth";
+import {CardJson} from "../InterFace/card";
 import {SvgBasket} from "../svgicon/svg";
+import { BookinformationCard } from "../InterFace/bookPageInterface";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import { useActions } from "../../hooks/useActions";
 import "./card.css";
-import { any } from "prop-types";
+
 
 
 
@@ -15,19 +17,10 @@ import { any } from "prop-types";
 interface CardInfo {
   carddata:CardJson[]
 }
-interface CardJson{
-  cardname_am:string,
-  cardname_ru:string,
-  cardname_en:string,
-  cardauthor_am:string,
-  cardauthor_ru:string ,
-  cardauthor_en:string ,
-  cardprice:string,
-  cardlanguage:string,
-  cardurl:string,
-  cardgetgoti:string,
-  id:string,
-  cardfile:any
+
+interface ShopData{
+  name:string,
+  count:string
 }
 
  
@@ -37,10 +30,9 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
 
   const [btnquantity , setBtnquantity] = useState<number>(0)
   const {quantity} = useTypedSelector(state => state.home)
-  const [data  ,SetData] = useState([])
 
   const {setChangequantity} = useActions()
-
+  
 
  let array:any = localStorage.getItem('productdata') 
  array = JSON.parse(array)
@@ -56,7 +48,7 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
        }, {});
      let shopdata:any = []
      for (const property in map) {
-      let exav =  res.data.filter((filter:any)=>{return filter._id  === property}).map((data:any)=>{
+      let exav =  res.data.filter((filter:BookinformationCard)=>{return filter._id  === property}).map((data:ShopData)=>{
         return{
           name:changelenguage(data,"name"),
           count:map[property]
@@ -76,6 +68,7 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
       {
          carddata.map((data,index)=>{
          return(
+           
         <div 
           key={index}
           className="page-product-card-wrapper-cantrol">
@@ -91,9 +84,9 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
             >{"data.cardisavailabe"}</span>
             <div className="page-product-card-is-savalibe-flag" 
              style={{
-               backgroundImage: data.cardgetgoti === "Armenian" ? "url(/svgfolder/flagarm.svg)" : undefined ||
-               data.cardgetgoti === "Russian" ? "url(/svgfolder/flagrus.svg)" : undefined ||
-               data.cardgetgoti === "English" ? "url(/svgfolder/flaguse.svg)" : undefined 
+               backgroundImage: data.cardlanguage === "Armenian" ? "url(/svgfolder/flagarm.svg)" : undefined ||
+               data.cardlanguage === "Russian" ? "url(/svgfolder/flagrus.svg)" : undefined ||
+               data.cardlanguage === "English" ? "url(/svgfolder/flaguse.svg)" : undefined 
               
               }}
              >
@@ -122,8 +115,7 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
           onClick={()=>{
             array !== null ? 
             localStorage.setItem("productdata" , JSON.stringify([...array ,data.id]))
-           : localStorage.setItem('productdata'  , JSON.stringify([data.id]))
-            
+            : localStorage.setItem('productdata'  , JSON.stringify([data.id]))
              setChangequantity(quantity + 1)
             }}
           // disabled={data.cardisavailabe === "Առկա չէ" || btnquantity === 10 }

@@ -1,16 +1,18 @@
 import {SvgShop} from "../svgicon/svg";
-import "./shopingicon.css";
+import "./shop.css";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import { useActions } from '../../hooks/useActions';
+import {ShopingList} from "./shoppingList";
+import {ShopForm} from "./shoppingform";
 import { Link } from "react-router-dom";
 
 
-export const Shopicon:React.FC = () =>{
+export const Shop:React.FC = () =>{
  
     const {quantity} = useTypedSelector(state => state.home)
     
     const {setChangequantity} = useActions()
-    let array:string[] = JSON.parse(localStorage.getItem('productdata') || "") 
+    // let array:string[] = JSON.parse(localStorage.getItem('productdata') || "") 
     
 
 
@@ -18,10 +20,10 @@ export const Shopicon:React.FC = () =>{
 
    
   return(
-      <Link to="/basket" className="shop-icon-wrapper">
-         <SvgShop />
-        <span  >{ quantity}</span> 
-      </Link>
+     <div className="shop-page-wrapper" >
+        <ShopingList />
+        <ShopForm />
+     </div>
   )
 
 }

@@ -4,13 +4,16 @@ import {useTypedSelector} from "../../hooks/userTypedSelector";
 import {changelenguage} from "../helpers/auth";
 import {BookinformationCard } from "../InterFace/bookPageInterface";
 import axios from "axios";
+import {productdatas} from "../helpers/auth";
 import { useActions } from '../../hooks/useActions';
 import "./shoppingList.css"
 
 interface ShopingList{
   files: any;
   name:string,
+  author:string,
   _id:string,
+  price: number,
   count:number,
   filename:any[]
 }
@@ -22,7 +25,7 @@ export const ShopingList:React.FC = () =>{
 
     const [shoplist , setShoplist] = useState<ShopingList[]>([])
    
-    let array:string[] = JSON.parse(localStorage.getItem('productdata') || "") 
+    let array:string[] = productdatas() 
     
    
       useEffect(()=>{
@@ -39,8 +42,10 @@ export const ShopingList:React.FC = () =>{
          let filtershoplist =  res.data.filter((filter:BookinformationCard)=>{return filter._id  === property}).map((data:ShopingList)=>{
            return{
              name:changelenguage(data,"name"),
+             author:changelenguage(data,"author"),
              _id:data._id,
              count:map[property],
+             price:data.price,
              filename:data.files[0] ? data.files[0].fileHreaf : undefined
            }
          })  
@@ -59,16 +64,20 @@ export const ShopingList:React.FC = () =>{
   
    
   return(
-      <div className="shop-list-wrapper">
+      <div className="shop-list-section">
          {
            shoplist.map((data,index)=>{
              return(
                <div key={index} className="shop-list-card">
-                 <div className="shop-list-img" style={{backgroundImage:`url(${data.filename})`}}></ div>
-                   <div className="shop-list-info"></div>
+                 <div className="shop-list-product-info">
+                   <div className="shop-list-img" style={{backgroundImage:`url(${data.filename})`}}></ div>
+                    {/* <div className="shop-list-info"></div> */}
                      <div className="shop-list-name">
-                       {data.name} 
+                       <span>{data.name} </span>
+                       <span>{data.author} </span>
                      </div>
+                 </div>
+               
                        <div className="shop-list-count">
                           <span
                           onClick={()=>{
@@ -86,6 +95,7 @@ export const ShopingList:React.FC = () =>{
                           }
                             }>+</span>   
                        </div>
+                       <div className="shop-list-price">{data.price * data.count}֏</div>
                </div>
              )
            })

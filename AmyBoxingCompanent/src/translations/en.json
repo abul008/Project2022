@@ -19,5 +19,15 @@
 
     "faq":"FAQ",
     "about_us":"About Us",
-    "Howtoorder":"How to order"
+    "Howtoorder":"How to order",
+
+    "name":"name",
+    "lastname":"Last name",
+    "email":"email",
+    "phonenumber":"phonenumber",
+    "message":"message",
+    "order":"order"
+
+
+
 }

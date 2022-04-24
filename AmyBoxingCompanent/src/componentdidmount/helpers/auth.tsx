@@ -13,20 +13,29 @@ export const getCookie = (key:any) => {
    }
 };
 
+export const productdatas = () => {
+  
+   if (localStorage.getItem('productdata')) {
+       return JSON.parse(localStorage.getItem('productdata') || "");
+   } else {
+       return [];
+   }
+
+};
 
 export const isAuth =(name:string)=>{        
   
-   return localStorage.getItem(name)
+   // return localStorage.getItem(name)
 
    // if (window !== 'undefined') {
    //    const cookieChecked = cookie.getCookie('connect.sid');
       
    //    if (cookieChecked) {
-   //        if (localStorage.getItem(name)){
-   //            return localStorage.getItem(name);
-   //        } else {
-   //            return false;
-   //        }
+          if (localStorage.getItem(name)){
+              return localStorage.getItem(name || "");
+          } else {
+              return false;
+          }
       // }
 //   }
 }

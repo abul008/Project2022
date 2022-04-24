@@ -1,4 +1,5 @@
 import {Homestate,HomeActionTypes , HomeAction} from "../types/home";
+import {productdatas} from "../../componentdidmount/helpers/auth";
 
 
 
@@ -16,7 +17,7 @@ const initialState:Homestate = {
     copyright_column:""
    },
    getHomedata:[],
-   quantity:JSON.parse(localStorage.getItem('productdata') || "").length
+   quantity:productdatas().length
 }
 
 export const HomeReducer = (state = initialState, action: HomeAction): Homestate => {

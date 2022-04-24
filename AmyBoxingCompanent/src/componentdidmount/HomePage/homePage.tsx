@@ -7,7 +7,6 @@ import {
    BookinformationCard ,
    FilesHref
   } from "../InterFace/bookPageInterface";
-import { any, string } from "prop-types"; 
 
 interface Caruseldata{
     get_absolute_url:string,

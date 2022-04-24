@@ -3,6 +3,7 @@ import axios from "axios" ;
 import {changelenguage} from "../helpers/auth";
 import {CardJson} from "../InterFace/card";
 import {SvgBasket} from "../svgicon/svg";
+import {productdatas} from "../helpers/auth";
 import { BookinformationCard } from "../InterFace/bookPageInterface";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import { useActions } from "../../hooks/useActions";
@@ -34,8 +35,9 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
   const {setChangequantity} = useActions()
   
 
- let array:any = localStorage.getItem('productdata') 
- array = JSON.parse(array)
+
+ let array:string[] = productdatas()
+
  
 
    useEffect(()=>{

@@ -69,7 +69,7 @@ export const Detailedinformation = ({match}:any) =>{
 
     const filelength = detalieddata ? detalieddata[0].file.length - 1 : undefined
     
-    console.log(detalieddata)
+   
 
 
     return(

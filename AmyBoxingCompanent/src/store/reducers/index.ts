@@ -13,6 +13,7 @@ import {userReducer} from "./userReducer";
 import {traningReducer} from "./traningReduce";
 import {BookReducer} from "./bookReducer";
 import {HomeReducer} from "./homeReducer";
+import { TableReducer } from "./tablereducer";
 
 
 
@@ -21,7 +22,8 @@ export const rootReducer = combineReducers({
     todo: todoReducer,
     traning:traningReducer,
     book:BookReducer,
-    home:HomeReducer
+    home:HomeReducer,
+    table:TableReducer
     
 })
 

@@ -1,45 +1,48 @@
-import { useEffect, useState } from "react";
-import "./shopingicon.css";
+import { useEffect, useState ,useMemo, useCallback } from "react";
+import "./shoppingList.css";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import {changelenguage} from "../helpers/auth";
 import {BookinformationCard } from "../InterFace/bookPageInterface";
 import axios from "axios";
 import {productdatas} from "../helpers/auth";
 import { useActions } from '../../hooks/useActions';
+import {ShopingCard} from "./shopingCard";
+import {Pagination} from "../Pagination/pagination";
+import {ShopingTable} from "../InterFace/shopList";
+import {ShopForm} from "./shoppingform";
+
 import "./shoppingList.css"
+import i18next from "i18next";
 
-interface ShopingList{
-  files: any;
-  name:string,
-  author:string,
-  _id:string,
-  price: number,
-  count:number,
-  filename:any[]
-}
 
-export const ShopingList:React.FC = () =>{
+
+export const ShopingList:React.FC<any> = ({match}) =>{
+
   
     const {quantity} = useTypedSelector(state => state.home)
     const {setChangequantity} = useActions()
+    const [currentPage , setCurrentPage] = useState<number>(match.params.page);
+    const [postsPerPage, setPostsPerPage] = useState<number>(7);
+    const [formview , setFormview] = useState<boolean>(false)
 
-    const [shoplist , setShoplist] = useState<ShopingList[]>([])
+    const [shoplist , setShoplist] = useState<ShopingTable[]>([])
    
     let array:string[] = productdatas() 
+      
     
-   
-      useEffect(()=>{
-        axios.get('http://localhost:8080/api/v1/getbookinfo')
+
+      useMemo(()=>{
+        axios.get('/api/v1/getbookinfo')
         .then(res=>{
-          console.log(res.data)
           let map:string[] = array.reduce(function(prev:any, cur:any) {
            prev[cur] = (prev[cur]  || 0 ) + 1 ;
            return prev
-         
           }, {});
-        let shopdata:ShopingList[] = []
+        let shopdata:ShopingTable[] = []
         for (const property in map) {
-         let filtershoplist =  res.data.filter((filter:BookinformationCard)=>{return filter._id  === property}).map((data:ShopingList)=>{
+         let filtershoplist =  res.data.filter((filter:BookinformationCard)=>
+           {return filter._id  === property})
+           .map((data:ShopingTable)=>{
            return{
              name:changelenguage(data,"name"),
              author:changelenguage(data,"author"),
@@ -51,55 +54,53 @@ export const ShopingList:React.FC = () =>{
          })  
             shopdata =  [...shopdata , ...filtershoplist]   
          }
-
+         
          setShoplist(shopdata)
        })
-      },[quantity])
+      },[formview])
 
 
-
+    
   
+   const indexOfLastPost = match.params.page * postsPerPage;
+   const indexOfFirstPost = indexOfLastPost - postsPerPage;
+   const currentPosts = shoplist.slice(indexOfFirstPost,indexOfLastPost);
+   const paginate = (pageNumber:number) => setCurrentPage(pageNumber)  
 
-  
-  
+ 
+
+
+
+
    
   return(
-      <div className="shop-list-section">
+    <div className="shop-page-wrapper" >
+       <div className="shop-list-section">
+         <div className="shop-list-card-section">
          {
-           shoplist.map((data,index)=>{
-             return(
-               <div key={index} className="shop-list-card">
-                 <div className="shop-list-product-info">
-                   <div className="shop-list-img" style={{backgroundImage:`url(${data.filename})`}}></ div>
-                    {/* <div className="shop-list-info"></div> */}
-                     <div className="shop-list-name">
-                       <span>{data.name} </span>
-                       <span>{data.author} </span>
-                     </div>
-                 </div>
-               
-                       <div className="shop-list-count">
-                          <span
-                          onClick={()=>{
-                           let indexdelete:number = array.findIndex((element:string) => element === data._id)
-                           if (indexdelete > -1) {
-                            array.splice(indexdelete, 1).reverse()
-                           }
-
-                            localStorage.setItem('productdata', JSON.stringify(array))
-                            setChangequantity(quantity - 1)
-                          }}
-                          >-</span> {data.count} <span onClick={()=>{ 
-                            localStorage.setItem("productdata" , JSON.stringify([...array ,data._id]))
-                            setChangequantity(quantity + 1)
-                          }
-                            }>+</span>   
-                       </div>
-                       <div className="shop-list-price">{data.price * data.count}֏</div>
-               </div>
-             )
-           })
-         }
+          currentPosts.map((data,index)=>
+               <ShopingCard
+                key={index}
+                name={data.name} 
+                author={data.author} 
+                _id={data._id} 
+                price={data.price} 
+                count={data.count} 
+                filename={data.filename} 
+                />
+          )
+        }
+         </div>
+         <div className="shop-list-under">
+          <button onClick={()=>{setFormview(true)}}>{i18next.t('order')}</button> 
+          <Pagination postsPerPage={postsPerPage} totalPosts={shoplist.length} paginate={paginate} pageaktiv={match.params.page} />  
+         </div> 
+       </div>
+      <ShopForm 
+      data={shoplist}
+      formstyle={{display:formview ? "flex" : "none"}}
+      clossClick={()=>{setFormview(false)}}
+       />
       </div>
   )
 

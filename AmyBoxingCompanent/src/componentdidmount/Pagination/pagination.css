@@ -1,0 +1,16 @@
+.paginationWrapper{
+    display: flex;
+    justify-content: center;
+}
+.paginationWrapper ul{
+   display: flex;
+   
+}
+.paginationWrapper ul li a{
+    background: linear-gradient(to right, #414345, #232526);
+    border: solid 2px white;
+    padding: 10px;
+}
+.paginationWrapper ul li a{
+    color: #35a79c;
+}

@@ -1,0 +1,87 @@
+
+.shop-list-product-info{
+    display: flex;
+    /* align-items: center; */
+}
+.shop-list-section{
+    width: 70%;
+    min-height: 100vh;
+    padding: 6px 15px 12px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.shop-list-section:hover{
+    /* overflow: auto; */
+}
+
+.shop-list-section .shop-list-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.shop-list-img{
+    width: 100px;
+    height: 125px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.shop-list-name{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: 500;
+}
+.shop-list-name span{
+    margin: 2px 0px;
+}
+
+.shop-list-count{
+    display: flex;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.shop-list-count button:nth-child(1){
+    color: red;
+    border: none;
+    cursor: pointer;
+    /* position: relative; */
+}
+.shop-list-count button{ 
+    border: none;
+    cursor: pointer;
+    position: relative;
+    background: none;
+}
+.shop-list-count button::before{ 
+    display: block;
+    content: "";
+    width: 13px;
+    border-top: 2px solid;
+    margin: 0 auto;
+}
+.shop-list-count button:nth-child(3){
+    color: #35a79c;
+    border: none;
+    cursor: pointer;
+}
+.shop-list-count button:nth-child(3)::after{
+    display: block;
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 13px;
+    border-left: 2px solid;
+    margin: -6px -1px;
+}
+
+.shop-list-price{
+    font-weight: 700;
+}
+
+
+.counts-shop-list{
+    margin: 0px 10px;
+}

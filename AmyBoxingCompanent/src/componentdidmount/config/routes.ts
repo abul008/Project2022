@@ -23,9 +23,9 @@ const routes: IRoute[] = [
         exact: true
     }, 
     {
-        path: '/basket/',
+        path: '/basket/:page',
         name: 'Basket',
-        component: Shop,
+        component: ShopingList,
         exact: true
     },
     {

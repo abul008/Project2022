@@ -8,6 +8,7 @@ export const AdminPanel:React.FC = ()=>{
              <Link to="/webadmin/addbookinfo">bookinfo</Link>
              <Link to="/webadmin/addhomeinfo">homeinfo</Link>
              <Link to="/webadmin/addhomecarusel">homecaruselinfo</Link>
+             <Link to="/webadmin/order">order</Link>
             <AdminTable />
         </div>
     )

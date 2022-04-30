@@ -84,7 +84,7 @@ export const uploadbookinfo = ( async(req,res,next)=>{
 export const getBookinfo = (async(req,res)=>{
      
     const getAllinfo = await Bookinfoschema.find({})
-    console.log(getBookinfo)
+   
 
     res.send(getAllinfo)
 })

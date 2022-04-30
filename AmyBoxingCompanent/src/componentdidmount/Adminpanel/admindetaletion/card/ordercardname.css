@@ -1,0 +1,4 @@
+.order-card-name{
+    display: flex;
+    flex-direction: column;
+}

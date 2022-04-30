@@ -5,23 +5,21 @@ import { useActions } from '../../hooks/useActions';
 import {ShopingList} from "./shoppingList";
 import {ShopForm} from "./shoppingform";
 import { Link } from "react-router-dom";
+import { array } from "prop-types";
 
 
-export const Shop:React.FC = () =>{
+
+
+export const Shop:React.FC<any> = ({match}) =>{
  
     const {quantity} = useTypedSelector(state => state.home)
     
     const {setChangequantity} = useActions()
-    // let array:string[] = JSON.parse(localStorage.getItem('productdata') || "") 
-    
-
-
-
-
    
+   console.log("array")
   return(
      <div className="shop-page-wrapper" >
-        <ShopingList />
+        <ShopingList page={+match.params.page} />
         <ShopForm />
      </div>
   )

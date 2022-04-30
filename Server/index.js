@@ -3,6 +3,8 @@ import session  from 'express-session';
 import {connectDB} from "./src/config/dbconnect.js";
 import {routes} from "./src/routers/bookinfo.js";
 import { homeroutes } from "./src/routers/homeinfo.js";
+// import nodemailer from "nodemailer";
+import {order} from "./src/routers/order.js";
 import cors from "cors"; 
 import path from "path"
 import i18next from "i18next";
@@ -12,9 +14,6 @@ import bodyParser  from "body-parser"
 import cookieParser from "cookie-parser";
 import secure from 'express-force-https';
 import { Adminlogin } from "./src/models/login.js";
-
-
-
 import {pasportini ,pasportsession} from "./src/controllers/adminlogin.js";
 
 
@@ -33,6 +32,7 @@ app.use(secure);
 
 connectDB();
 
+app.use(bodyParser.urlencoded({ extended: true }))
 // app.use(session({
 
   
@@ -87,7 +87,8 @@ app.use(cookieParser("secretcode"))
 app.use(middleware.handle(i18next));
 // app.use(fileUpload());
 
-app.use(express.urlencoded({extended:false}))
+
+app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(bodyParser.json())
 
@@ -104,12 +105,6 @@ app.use(pasportsession);
 
 
 
-app.get("/",async(req,res)=>{
-   console.log(req.session)
-   let a = await Adminlogin.find({})
-
-  res.send(a)
-})
 
 
 
@@ -117,6 +112,53 @@ app.get("/",async(req,res)=>{
 
 app.use('/api/v1/' , routes)
 app.use('/api/v1/' , homeroutes)
+app.use('/api/v1/', order)
+
+// app.post("/send_mail", cors(), async (req, res) => {
+   
+//   const {
+//     name,
+//     lastname,
+//     phone,
+//     email,
+//     message,
+//     data
+//    } = req.body
+  
+//   // create reusable transporter object using the default SMTP transport
+//   let transporter = nodemailer.createTransport({
+//       service: "gmail",
+//       auth: {
+//           user: process.env.EMAIL_NAME, // ethereal user
+//           pass: process.env.EMAIL_PASSWORD, // ethereal password
+//       },
+//       tls:{
+//         rejectUnauthorized:false
+//       }
+
+//   });
+  
+//   let msg = {
+//       from:"albert.azroyan8@gmail.com", // sender address
+//       to: email, // list of receivers
+//       subject: "Patver", // Subject line
+//       html:  ` <b>name:</b><span>${name}</span>
+//                <b>lasname:</b> <span>${lastname}</span>
+//                <b>phone:</b><span>${phone}</span>
+//                <b>email:</b><span>${email}</span>
+//                <>text:<p>${message}</p>
+//            `, 
+//   }
+   
+//   transporter.sendMail(msg, function(err,sucess){
+//       if(err){
+//         console.log(err)
+//       }else{
+//         console.log("Email sent successfuly");
+//       }
+//   })
+
+// })
 
 
 

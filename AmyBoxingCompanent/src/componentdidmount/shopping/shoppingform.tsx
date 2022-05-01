@@ -1,12 +1,14 @@
 import {SvgShop} from "../svgicon/svg";
-import React, { useState ,memo ,useMemo } from "react";
-
+import React, { useState} from "react";
+import ReactDom from 'react-dom'
+import CSS from 'csstype';
 import "./shoppingform.css";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import { useActions } from '../../hooks/useActions';
 import i18next from "i18next";
 import axios from "axios";
 import {ShopingTable} from "../InterFace/shopList";
+import {ClossIcon} from "../cssicons/cssicons";
 
 
 interface FormType{
@@ -15,14 +17,23 @@ interface FormType{
     email:string ,
     phone:string,
     message:string,
-    data:ShopingTable
+    data:ShopingTable[]
 }
-export const  ShopForm:React.FC<any> = ({data  ,formstyle ,clossClick})=>{
+
+interface ShopForm{
+  data:ShopingTable[],
+  clossClick:(event: React.MouseEvent<HTMLButtonElement>) => void,
+  open:boolean
+}
+
+const modalRoot = document.getElementById("portal") as HTMLElement;
+export const  ShopForm:React.FC<ShopForm> = ({data   ,clossClick ,open})=>{
+
+  if (!open) return null
  
     const {quantity} = useTypedSelector(state => state.home)
 
-    
-
+   console.log(data)
     const [formdata ,setFormdata] = useState<FormType>({
         name:"" ,
         lastname:"",
@@ -84,17 +95,14 @@ const SendOrder = async (e:React.FormEvent<HTMLFormElement>)=>{
 
 }
 
-
-
-
-   
-  return(
-      <div className="shop-from-sec_" style={formstyle}>
-        
-        <div className="form-cantrol-sec_">
+return ReactDom.createPortal(
+      <div className="shop-from-sec_" style={MODAL_STYLES}>
+        <div className="form-cantrol-sec_" style={MODAL_CANTROL}>
           <div className="shop-form-title-sec">
-            <h2>Tvyalner{answer}</h2>
-            <span onClick={clossClick}>Closs</span>
+            <h2>{i18next.t('order')}{answer}</h2>
+            <div  className="closser">
+            <ClossIcon onClick={clossClick} />
+            </div>
         </div>
          <form onSubmit={SendOrder}>
              <div className="shop-form-input"> 
@@ -142,7 +150,26 @@ const SendOrder = async (e:React.FormEvent<HTMLFormElement>)=>{
              <button>{i18next.t('order')}</button>
          </form>
          </div>
-      </div>
+      </div> , document.getElementById('portal')  as HTMLElement
   )
 
+}
+const MODAL_CANTROL:CSS.Properties = {
+  margin: "auto",
+  width: "30%",
+  minWidth: "280px",
+  background: "white",
+  padding: "10px"
+}
+
+const MODAL_STYLES:CSS.Properties = {
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  backgroundColor: 'rgb(255 255 255 / 50%)',
+  padding: '50px',
+  zIndex: 1000,
+  width: "100%",
+  height: "100vh"
 }

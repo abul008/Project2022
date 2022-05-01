@@ -1,0 +1,10 @@
+.admin-head-page{
+    display: flex;
+    max-width: 80%;
+}
+.admin-panel-nav{
+    flex: 1;
+}
+.admin-table-section{
+    flex: 3;
+}

@@ -10,9 +10,6 @@ export const GeneralInfo:React.FC = ()=>{
 
     const {setBookPage} = useActions()
 
- 
-
-
     return( 
         < >
               <select

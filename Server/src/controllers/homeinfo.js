@@ -105,3 +105,18 @@ export const gethomecaruselinfo = (async(req,res)=>{
 
     res.send(homeCarusel)
 })
+
+export const DeleteHomeinfo = (async(req,res)=>{
+
+    console.log(req.params.id)
+
+    const {id} = req.params
+
+    const todo = await Homeinfoschema.findById(id);
+
+    if (!todo) return res.status(404).send("Todo not found...");
+  
+    const deletedTodo = await Homeinfoschema.findByIdAndDelete(id);
+  
+    res.send(deletedTodo);
+})

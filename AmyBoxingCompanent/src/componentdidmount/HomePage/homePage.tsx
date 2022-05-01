@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import {Carusel} from "../CaruselScreen/carusel";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import {Card} from "../card/card";
+import "./homePage.css";
 import {
    BookinformationCard ,
    FilesHref

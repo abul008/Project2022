@@ -1,4 +1,4 @@
-import {Table} from "../table/table";
+import {Table} from "./ordertable/table";
 // import {TableStyle} from "./"
 import {useTypedSelector} from "../../../hooks/userTypedSelector";
 import { useActions } from '../../../hooks/useActions';

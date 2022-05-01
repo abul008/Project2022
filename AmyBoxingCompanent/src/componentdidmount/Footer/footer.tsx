@@ -17,7 +17,7 @@ export const Footer:React.FC= () =>{
     
     const {getHomedata} = useTypedSelector(state => state.home)
 
-
+ 
     return(
         <div className="footer-wrapper">
             <div className="footer-top-section"> 

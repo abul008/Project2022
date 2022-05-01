@@ -1,5 +1,5 @@
-import {useTypedSelector} from "../../../hooks/userTypedSelector";
-import { useActions } from '../../../hooks/useActions';
+import {useTypedSelector} from "../../../../hooks/userTypedSelector";
+import { useActions } from '../../../../hooks/useActions';
 import { Link } from "react-router-dom";
 
 
@@ -10,12 +10,6 @@ export const TableTbody:React.FC = ()=>{
     const {setTablePage} = useActions()
     const {tabledata} = useTypedSelector(state => state.table)
   
-
-
-   
-
-    
-    
 
     return( 
          <tbody>  
@@ -33,8 +27,6 @@ export const TableTbody:React.FC = ()=>{
                     )
                 })
             }
-          
-        
         </ tbody>
     )
 }

@@ -16,12 +16,29 @@ export const getCookie = (key:any) => {
 export const productdatas = () => {
   
    if (localStorage.getItem('productdata')) {
-       return JSON.parse(localStorage.getItem('productdata') || "");
+       let data:string[] = JSON.parse(localStorage.getItem('productdata') || "");
+       return data
    } else {
        return [];
    }
 
 };
+
+
+
+export const orderDataCount = (countdata:string[]) =>{ 
+    if(localStorage.getItem('productdata')){
+        return countdata.reduce((prev:any, cur:string) =>{
+            prev[cur] = (prev[cur]  || 0 ) + 1 ;
+            return prev
+           }, {});
+    }else{
+        return[]
+    }
+      
+   }
+
+
 
 export const isAuth =(name:string)=>{        
   

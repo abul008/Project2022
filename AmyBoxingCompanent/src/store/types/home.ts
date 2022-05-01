@@ -1,20 +1,30 @@
 export interface Homeinfo{
     file:any,
+    _id:string,
     absalute_url:string,
     phone_number:string,
     phone_number2:string,
+    copyright_am: string
+    copyright_en: string
+    copyright_ru:string,
+    createdAt:string,
     email:string,
     addres:string,
     facebook_url:string,
     instagram_url:string,
     telegram_url:string,
-    copyright_column:string
+    litleinfo_am: string,
+    litleinfo_en: string,
+    litleinfo_ru: string,
+    copyright_column:string,
+    updatedAt:string
     // getHomedata:any
 }
 
+
 export interface Homestate{
-    data:Homeinfo
-    getHomedata:any
+    data:Homeinfo[]
+    getHomedata:Homeinfo[]
     quantity:number
 
 }

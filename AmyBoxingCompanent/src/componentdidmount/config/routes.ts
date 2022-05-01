@@ -3,8 +3,9 @@ import {Home} from "../HomePage/homePage";
 import { BookProduct } from '../BookPageScreen/bookPageProduct';
 import {Searchresult} from "../search/searchPage";
 import {ShopingList} from "../shopping/shoppingList";
+
 import {Shop} from "../shopping/shop";
-import { AdminLogin } from '../Adminpanel/adminlogin';
+import { AdminLogin } from '../Adminpanel/adminlogin/adminlogin';
 import { isAuth } from '../helpers/auth';
 import {Detailedinformation} from "../detailedinformation/detailedinformation";
 

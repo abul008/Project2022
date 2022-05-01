@@ -3,7 +3,7 @@ import axios from "axios" ;
 import {changelenguage} from "../helpers/auth";
 import {CardJson} from "../InterFace/card";
 import {SvgBasket} from "../svgicon/svg";
-import {productdatas} from "../helpers/auth";
+import {productdatas , orderDataCount} from "../helpers/auth";
 import { BookinformationCard } from "../InterFace/bookPageInterface";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import { useActions } from "../../hooks/useActions";
@@ -29,39 +29,37 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
 
 
 
-  const [btnquantity , setBtnquantity] = useState<number>(0)
   const {quantity} = useTypedSelector(state => state.home)
-
   const {setChangequantity} = useActions()
+  let array:string[] = productdatas()
   
 
-
- let array:string[] = productdatas()
-
  
-
-   useEffect(()=>{
-     axios.get('http://localhost:8080/api/v1/getbookinfo')
-     .then(res=>{
-       var map = array.reduce(function(prev:any, cur:any) {
-        prev[cur] = (prev[cur]  || 0 ) + 1 ;
-        return prev
+   
+  //  useEffect(()=>{
+  //    axios.get('http://localhost:8080/api/v1/getbookinfo')
+  //    .then(res=>{
+  //      var map = array.reduce(function(prev:any, cur:any) {
+  //       prev[cur] = (prev[cur]  || 0 ) + 1 ;
+  //       return prev
       
-       }, {});
-     let shopdata:any = []
-     for (const property in map) {
-      let exav =  res.data.filter((filter:BookinformationCard)=>{return filter._id  === property}).map((data:ShopData)=>{
-        return{
-          name:changelenguage(data,"name"),
-          count:map[property]
-        }
-      })  
-         shopdata =  [...shopdata , ...exav]   
-      }
+  //      }, {});
+  //    let shopdata:any = []
+  //    for (const property in map) {
+  //     let exav =  res.data.filter((filter:BookinformationCard)=>{return filter._id  === property}).map((data:ShopData)=>{
+  //       return{
+  //         name:changelenguage(data,"name"),
+  //         count:map[property]
+  //       }
+  //     })  
+  //        shopdata =  [...shopdata , ...exav]   
+  //     }
  
-    })
-   },[])
-  
+  //   })
+  //  },[])
+
+
+      
 
     return(
       <div className="page-product-card-wrapper" >
@@ -109,10 +107,10 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
           </div> 
         <div className="page-product-cards-shop-info"> 
         <div className="card-button-head">
-         <button style={{
+         <button disabled={ orderDataCount(array)[data.id] >= 10 ? true : false } style={{
              background:data.cardgetgoti === "out of stock" || 
              data.cardgetgoti === "Առկա չէ" ? "linear-gradient(to bottom, #d31027, #ea384d)" : undefined
-        ,    opacity:data.cardgetgoti === "Առկա չէ" || btnquantity === 10 ? "0.6" : undefined
+        ,    opacity:data.cardgetgoti === "Առկա չէ" || quantity === 10 ? "0.6" : undefined
         }}
           onClick={()=>{
             array !== null ? 

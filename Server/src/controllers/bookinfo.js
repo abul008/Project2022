@@ -82,11 +82,29 @@ export const uploadbookinfo = ( async(req,res,next)=>{
 
 
 export const getBookinfo = (async(req,res)=>{
+  
+    try{
+        const getAllinfo = await Bookinfoschema.find({})
+        res.send(getAllinfo)
+    }catch(error){
+        res.send(error)
+    }
      
-    const getAllinfo = await Bookinfoschema.find({})
-   
-
-    res.send(getAllinfo)
 })
 
+
+export const DeleteBookinfo = (async(req,res)=>{
+
+    console.log(req.params.id)
+
+    const {id} = req.params
+
+    const todo = await Bookinfoschema.findById(id);
+
+    if (!todo) return res.status(404).send("Todo not found...");
+  
+    const deletedTodo = await Bookinfoschema.findByIdAndDelete(id);
+  
+    res.send(deletedTodo);
+})
 

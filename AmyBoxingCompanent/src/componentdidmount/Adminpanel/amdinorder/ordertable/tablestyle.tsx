@@ -32,8 +32,10 @@ td,  th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
-    background-color: #04AA6D;
-    color: white;
+    background: #232526;
+    background: -webkit-linear-gradient(to right,#414345,#232526);
+    background: linear-gradient(to right,#414345,#232526);
+    color: #35a79c;
   }
 `
 

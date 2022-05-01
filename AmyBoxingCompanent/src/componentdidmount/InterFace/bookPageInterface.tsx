@@ -9,6 +9,7 @@ export  interface BookinformationCard {
     Language_am:string,
     get_absolute_url:string,
     ցategory:string,
+    date:string,
     _id:string,
     files:FilesHref[]
   }

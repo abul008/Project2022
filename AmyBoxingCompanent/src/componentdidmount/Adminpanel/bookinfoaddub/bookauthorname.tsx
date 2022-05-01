@@ -13,18 +13,9 @@ export const Bookauthorname:React.FC = ()=>{
     const {setBookPage,fetchTodos} = useActions()
    
 
-
-
-
-
-  
-
-   
-
-
     return( 
         < >
-             <div className="admin-input-cantrol">
+          <div className="admin-input-cantrol">
             <label>հեղինակ:Am</label>
                 <input
                 type="text"
@@ -35,7 +26,6 @@ export const Bookauthorname:React.FC = ()=>{
              />
             </div>
             <div className="admin-input-cantrol">
-            
             <label>հեղինակ:Ru</label>
                 <input
                 type="text"

@@ -10,7 +10,6 @@ import {ShopingCard} from "./shopingCard";
 import {Pagination} from "../Pagination/pagination";
 import {ShopingTable} from "../InterFace/shopList";
 import {ShopForm} from "./shoppingform";
-
 import "./shoppingList.css"
 import i18next from "i18next";
 
@@ -34,11 +33,11 @@ export const ShopingList:React.FC<any> = ({match}) =>{
       useMemo(()=>{
         axios.get('/api/v1/getbookinfo')
         .then(res=>{
-          let map:string[] = array.reduce(function(prev:any, cur:any) {
+          let map:string[] = array.reduce(function(prev:any, cur:string) {
            prev[cur] = (prev[cur]  || 0 ) + 1 ;
            return prev
           }, {});
-        let shopdata:ShopingTable[] = []
+        let shopdata:ShopingTable[] = []      
         for (const property in map) {
          let filtershoplist =  res.data.filter((filter:BookinformationCard)=>
            {return filter._id  === property})
@@ -68,11 +67,6 @@ export const ShopingList:React.FC<any> = ({match}) =>{
    const paginate = (pageNumber:number) => setCurrentPage(pageNumber)  
 
  
-
-
-
-
-   
   return(
     <div className="shop-page-wrapper" >
        <div className="shop-list-section">
@@ -97,8 +91,8 @@ export const ShopingList:React.FC<any> = ({match}) =>{
          </div> 
        </div>
       <ShopForm 
+      open={formview}
       data={shoplist}
-      formstyle={{display:formview ? "flex" : "none"}}
       clossClick={()=>{setFormview(false)}}
        />
       </div>

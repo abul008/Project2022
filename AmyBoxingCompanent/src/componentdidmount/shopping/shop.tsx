@@ -20,7 +20,7 @@ export const Shop:React.FC<any> = ({match}) =>{
   return(
      <div className="shop-page-wrapper" >
         <ShopingList page={+match.params.page} />
-        <ShopForm />
+        {/* <ShopForm /> */}
      </div>
   )
 

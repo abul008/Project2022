@@ -11,8 +11,12 @@ export  interface BookinformationCard {
     ցategory:string,
     date:string,
     _id:string,
+    Numberofpages: string,
+    Publisher: string,
+    Weight: string,
     files:FilesHref[]
   }
+  
 
  export interface FilesHref{
     fileName:string,

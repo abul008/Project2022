@@ -16,9 +16,6 @@ export const BookTable:React.FC = ()=>{
   },[])
     
 
-//   console.log(booktable)
-
-   
     return( 
         < >
          <Link to="/webadmin/book/add">Ավելացնել ինֆորմացիա</Link>
@@ -29,14 +26,16 @@ export const BookTable:React.FC = ()=>{
             /> 
             <tbody>
               {
-                  booktable?.map((bookdata,index)=>{
+                  booktable?.map((bookdata)=>{
                       return(
-                        <AdminTableTbody key={index}
+                        <AdminTableTbody key={bookdata._id}
                         infoone={bookdata.name_am} 
                         infotwo={bookdata.author_am} 
                         infotree={bookdata.Language_am}
                         infofour={bookdata.date} 
                         infofive={bookdata._id}
+                        files={bookdata.files}
+                        infoubdate={'ubdate'}
                         infourl={'/api/v1/bookdelete/'}
                        />
                       )
@@ -44,7 +43,6 @@ export const BookTable:React.FC = ()=>{
               }
           </tbody>
          </TableStyle>
-      
         </>
     )
 }

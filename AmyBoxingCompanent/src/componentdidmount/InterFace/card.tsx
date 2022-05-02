@@ -10,5 +10,6 @@ export interface CardJson{
     cardurl:string,
     cardgetgoti:string,
     id:string,
-    cardfile:any
+    cardfile:string[]
   }
+

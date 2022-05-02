@@ -1,7 +1,8 @@
 
 import axios from "axios";
-import { useState } from "react";
+import { Link } from "react-router-dom";
 import {SvgRefresh ,SvgDelete} from "../../svgicon/svg";
+import {FilesHref} from "../../InterFace/bookPageInterface";
 
 interface AdminTableTbodys{
  
@@ -10,7 +11,14 @@ interface AdminTableTbodys{
     infotree:string,
     infofour:string,
     infofive:string,
-    infourl:string
+    infourl:string,
+    infoubdate:string,
+    files:FilesHref[] 
+}
+
+interface TableDelete{
+    deleteId: string ,
+    filepath:string[] 
 }
 
 export const AdminTableTbody:React.FC<AdminTableTbodys> = ({
@@ -19,15 +27,21 @@ export const AdminTableTbody:React.FC<AdminTableTbodys> = ({
     infotree,
     infofour,
     infofive,
-    infourl
+    infourl,
+    infoubdate,
+    files
 })=>{
 
     
 
     const DeleteInfo =async (e:any)=>{
-            
+        
+        const  data:TableDelete = {
+            deleteId: infofive,
+            filepath:files.map((data:FilesHref)=>data.filePath ) 
+          }
             try{
-                 await axios.delete(`${infourl + e.target.id}`)
+                 await axios.delete(infourl , { data})
                  .then(res=>console.log(res.data))
     
             } catch(err){
@@ -37,18 +51,18 @@ export const AdminTableTbody:React.FC<AdminTableTbodys> = ({
 
 
     return( 
-    
         <tr>
              <td>{infoone}</td>
              <td>{infotwo}</td>
              <td>{infotree}</td>
              <td>{infofour}</td>
-             <td>
-                 <span id={infofive} onClick={DeleteInfo} > 
+             <td style={{display:"flex"}}>
+                <Link to={`${infoubdate}/${infofive}`}  > 
                      <SvgRefresh  />
-                 </ span>
-                 <SvgDelete/>
-              
+                </ Link>
+                <span  onClick={DeleteInfo}>
+                  <SvgDelete  />
+                </span>
                  </td>
          </tr>
    

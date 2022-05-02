@@ -5,8 +5,9 @@ import {Bookinfoadd} from "../Adminpanel/bookinfoaddub/createbookinfo"
 import {BookTable} from "../Adminpanel/bookinfoaddub/bookinfotable";
 import {Homeinfo}  from "../Adminpanel/homeinfo/homeform";
 import {HomeTable} from "../Adminpanel/homeinfo/hometable";
+import {CaruselTable} from "../Adminpanel/homeinfo/carduseltable";
 import {CaruselInfo} from "../Adminpanel/homeinfo/caruselimg";
-import {Adminorder} from "../Adminpanel/amdinorder/adminorder";
+import {OrderTable} from "../Adminpanel/amdinorder/adminorder";
 import {Admindetalied} from "../Adminpanel/admindetaletion/detaliedinfo";
 
 
@@ -15,13 +16,13 @@ const routesadmin:IRoute[] = [
     {
         path: '/webadmin',
         name: 'admin page',
-        component: AdminPanel,
+        component: HomeTable,
         exact: true
     },
     {
         path: '/webadmin/order/',
         name: 'create admin',
-        component: Adminorder,
+        component: OrderTable,
         exact: true
     },
     {
@@ -42,12 +43,12 @@ const routesadmin:IRoute[] = [
         component: Bookinfoadd,
         exact: true
     },    
-    {
-        path: '/webadmin/home',
-        name: 'homeinfo ',
-        component: HomeTable,
-        exact: true
-    },
+    // {
+    //     path: '/webadmin/home',
+    //     name: 'homeinfo ',
+    //     component: HomeTable,
+    //     exact: true
+    // },
     {
         path: '/webadmin/home/add',
         name: 'homeinfo ',
@@ -55,8 +56,14 @@ const routesadmin:IRoute[] = [
         exact: true
     },
     {
-        path: '/webadmin/addhomecarusel',
-        name: 'create admin',
+        path: '/webadmin/carusel/',
+        name: 'homecarusel',
+        component: CaruselTable,
+        exact: true
+    },
+    {
+        path: '/webadmin/carusel/add',
+        name: 'homecarusel',
         component: CaruselInfo,
         exact: true
     }

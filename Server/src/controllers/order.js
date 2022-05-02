@@ -93,3 +93,23 @@ export const Getorderinfo = (async(req,res)=>{
  
   res.send(getorder)
 })
+
+
+export const DeleteOrderInfo = (async(req,res)=>{
+
+  const { deleteId } = req.body
+     
+   
+   try{
+
+           const todo = await orderSchema.findById(deleteId);
+
+            if (!todo) return res.status(404).send("Todo not found...");
+        
+            const deletedTodo = await orderSchema.findByIdAndDelete(deleteId);
+        
+            res.send(deletedTodo);
+   }catch(error){
+        res.status(400).send(error.message)
+   }
+})

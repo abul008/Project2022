@@ -21,7 +21,7 @@ router.get('/logins', admilogins)
 router.get('/getusers' , getUSers)
 router.get('/getbookinfo',getBookinfo)
 router.post('/photos/upload', upload.array('files') , uploadbookinfo);
-router.delete('/bookdelete/:id', DeleteBookinfo);
+router.delete('/bookdelete/', DeleteBookinfo);
 
 
 

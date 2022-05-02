@@ -1,5 +1,6 @@
-import {Homeinfoschema , HomeCaruselInfoScema} from "../models/home.js"
-import {FileSizeFormatter} from "../config/fileSizeFormater.js"
+import {Homeinfoschema , HomeCaruselInfoScema} from "../models/home.js";
+import {FileSizeFormatter} from "../config/fileSizeFormater.js";
+import fs from "fs";
 
 
 export const homeinfo = ( async(req,res,next)=>{
@@ -21,21 +22,7 @@ export const homeinfo = ( async(req,res,next)=>{
          } = req.body
          
          
-       console.log(
-        phone_number,
-        phone_number2,
-        email,
-        addres,
-        facebook_url,
-        instagram_url,
-        telegram_url,
-        copyrightAm,
-        copyrightRu,
-        copyrightEn,
-        litleinfoAm,
-        litleinfoRu,
-        litleinfoEn
-       )
+
         
     try{
         const file = new Homeinfoschema({
@@ -107,16 +94,53 @@ export const gethomecaruselinfo = (async(req,res)=>{
 })
 
 export const DeleteHomeinfo = (async(req,res)=>{
+     
+    const { deleteId } = req.body
+     
+   
+   try{
 
-    console.log(req.params.id)
 
-    const {id} = req.params
+           const todo = await Homeinfoschema.findById(deleteId);
 
-    const todo = await Homeinfoschema.findById(id);
+            if (!todo) return res.status(404).send("Todo not found...");
+        
+            const deletedTodo = await Homeinfoschema.findByIdAndDelete(deleteId);
+        
+            res.send(deletedTodo);
+   }catch(error){
+        res.status(400).send(error.message)
+   }
+})
+
+export const DeleteHomeCaruselinfo = (async(req,res)=>{
+
+    const {
+        deleteId,
+        filepath
+    } = req.body
+
+    try{
+    
+    //  if (!filepath) return res.status(404).send("Todo not found...");
+ 
+    filepath.forEach(element =>{
+        fs.unlink(element, (err) => {
+            if (err) {
+                console.error(err)
+                return
+          }
+      });
+   })
+
+    const todo = await HomeCaruselInfoScema.findById(deleteId);
 
     if (!todo) return res.status(404).send("Todo not found...");
   
-    const deletedTodo = await Homeinfoschema.findByIdAndDelete(id);
+    const deletedTodo = await HomeCaruselInfoScema.findByIdAndDelete(deleteId);
   
     res.send(deletedTodo);
+    }catch(error){
+        res.status(400).send(error.message)
+    }
 })

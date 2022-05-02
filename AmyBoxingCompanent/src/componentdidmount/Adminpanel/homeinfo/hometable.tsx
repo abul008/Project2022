@@ -19,14 +19,16 @@ export const HomeTable:React.FC = ()=>{
             /> 
             <tbody>
               {
-                  getHomedata?.map((homedata,index)=>{
+                  getHomedata?.map((homedata)=>{
                       return(
-                        <AdminTableTbody key={index}
+                        <AdminTableTbody key={homedata._id}
                         infoone={homedata.phone_number} 
                         infotwo={homedata.phone_number2} 
                         infotree={homedata.email}
                         infofour={homedata.createdAt} 
                         infofive={homedata._id}
+                        files={[]}
+                        infoubdate={'home/ubdate'}
                         infourl={'/api/v1/homedelete/'}
                        />
                       )

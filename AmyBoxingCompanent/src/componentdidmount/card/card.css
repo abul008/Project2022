@@ -85,9 +85,7 @@
   .page-product-card-bottom-cantrol button:active{
     opacity: 0.3;
   }
-  .page-product-card-wrapper-cantrol button:hover{
-    /* background: #35a79c; */
-  }
+  
   .page-product-card-wrapper-cantrol button::after{
       content: " ";
       height: 14%;

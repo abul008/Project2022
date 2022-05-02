@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect ,StrictMode } from 'react';
 import {Nav} from "../Nav/nav";
 import routes from '../config/routes';
 import { useActions } from '../../hooks/useActions';
@@ -15,6 +15,7 @@ import {
 export const ClientPage:React.FC=()=>{
 
 
+
     const {setGetbookinfo } = useActions()
     useEffect(()=>{
         setGetbookinfo()
@@ -25,6 +26,7 @@ export const ClientPage:React.FC=()=>{
       <Router>
          <div className="wrapper-page">
          <Nav /> 
+         <StrictMode >
           <div className='header-section'>
           <Shopicon />
              <Switch>  
@@ -40,6 +42,7 @@ export const ClientPage:React.FC=()=>{
                     })}
           </Switch>
           </div>
+          </StrictMode>
         <Footer />
          </div>
       </Router>

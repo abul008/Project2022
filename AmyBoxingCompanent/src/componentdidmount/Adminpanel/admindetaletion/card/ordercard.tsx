@@ -24,7 +24,7 @@ export const OrderDetliedCard:React.FC =()=>{
                 {
                 tabledata[0] ? tabledata[0].order.map((data, index)=>{
                    return(
-                    <div key={index} className="order-card">
+                    <div key={data._id} className="order-card">
                        <OrderImg  src={data.filename} /> 
                        <OrderCardName name={data.name} lastnaem={data.author} />
                        <OrderCardCount count={data.count} />

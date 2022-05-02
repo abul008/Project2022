@@ -19,11 +19,6 @@ interface CardInfo {
   carddata:CardJson[]
 }
 
-interface ShopData{
-  name:string,
-  count:string
-}
-
  
 export const Card:React.FC<CardInfo> = ({carddata}) =>{
 
@@ -34,7 +29,7 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
   let array:string[] = productdatas()
   
 
- 
+
    
   //  useEffect(()=>{
   //    axios.get('http://localhost:8080/api/v1/getbookinfo')
@@ -66,11 +61,11 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
    
        <div style={{background:""}} className="page-product-card-bottom-cantrol">
       {
-         carddata.map((data,index)=>{
+         carddata.map((data)=>{
          return(
            
         <div 
-          key={index}
+          key={data.id}
           className="page-product-card-wrapper-cantrol">
            <div className="page-product-card-is-savaliabe">
             <span 

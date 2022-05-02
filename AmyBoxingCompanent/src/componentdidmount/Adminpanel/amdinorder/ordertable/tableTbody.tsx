@@ -16,7 +16,7 @@ export const TableTbody:React.FC = ()=>{
             {
                 tabledata.map((data,index)=>{
                     return(
-                        <tr key={index}>
+                        <tr key={data._id}>
                         <td>{data.names} {data.lastname}</td>
                         <td>{data.phone}</td>
                         <td>

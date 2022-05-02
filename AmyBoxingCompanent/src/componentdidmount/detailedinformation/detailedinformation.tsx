@@ -2,54 +2,46 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import i18next from "i18next";
 import { changelenguage } from "../helpers/auth";
+import {BookinformationCard} from "../InterFace/bookPageInterface";
 import ReactHtmlParser from 'html-react-parser';
 import {SvgTransform} from "../svgicon/svg";
 import "./detailedinformation.css"
 
 
-
-interface BookDetalied{
-Language_am: string,
-Numberofpages: string,
-Publisher: string,
-Weight: string,
-author_am: string,
-author_en: string,
-author_ru:string,
-date:string,
-files: FilesHref[] ,
-get_absolute_url: string,
-name_am: string,
-name_en: string,
-name_ru: string,
-price: string,
-ցategory: string,
-_id: string,
+interface Detalied{
+  id:string,
+  autor: string,
+  cover: string,
+  date: string,
+  file:string[],
+  language: string,
+  name: string,
+  pages: string,
+  price: string,
+  publisher: string,
+  weight: string,
 }
 
-interface FilesHref{
-  fileName:string,
-  fileHreaf:string,
-  filePath:string,
-  fileType:string,
-  fileSize:string
-}
+
 
 
 export const Detailedinformation = ({match}:any) =>{
     
 
-    const [detalieddata , setDetalieddata]= useState<any>()
+    const [detalieddata , setDetalieddata]= useState<Detalied[]>()
     const [headimg , setHeadimg] = useState<  number>(0)
-
+    
+    
 
     useEffect(()=>{
          axios.get('/api/v1/getbookinfo')
-         .then(res=>
-          setDetalieddata(res.data.filter((filter:BookDetalied)=>
+         .then(res=>{
+           console.log(res.data)
+          setDetalieddata(res.data.filter((filter:BookinformationCard)=>
           filter._id === match.params.id
-          ).map((data:BookDetalied)=>{
+          ).map((data:BookinformationCard)=>{
             return{
+              id:data._id,
               name:changelenguage(data ,"name"),
               autor:changelenguage(data ,"author"),
               cover:changelenguage(data, "cover"),
@@ -62,15 +54,15 @@ export const Detailedinformation = ({match}:any) =>{
               file:data.files.map((file)=>file.fileHreaf)
             }
           })
-          
-          ))
+        
+          )})
     },[])
     
 
     const filelength = detalieddata ? detalieddata[0].file.length - 1 : undefined
     
    
-
+   
 
     return(
         <div className="detailed-information-wrapper">
@@ -79,7 +71,7 @@ export const Detailedinformation = ({match}:any) =>{
                               <div className="detalied-information-header-top">
                                   <h2>{detalieddata ? detalieddata[0].name : undefined}</h2>
                                   <span>{detalieddata ? detalieddata[0].price : undefined}֏ </span>
-                              </div>
+                                   </div>
                                       <div className="detalied-information-header-bottom">
                                             <div className="detealied-superficial-information">
                                                 <div className="detalied-image-to-show">
@@ -92,9 +84,9 @@ export const Detailedinformation = ({match}:any) =>{
                                                   </div>
                                                       <div  className="detalied-all-image">
                                                        {
-                                                       detalieddata ? detalieddata[0].file.map((datas:any,index:number)=>{
+                                                       detalieddata ? detalieddata[0].file.map((datas,index)=>{
                                                          return(
-                                                         <img onClick={()=>setHeadimg(index)} key={index} src={`${datas}`} alt="bookfoto"  className="detalied-image-small"></img>
+                                                         <img onClick={()=>setHeadimg(index)} key={datas} src={`${datas}`} alt="bookfoto"  className="detalied-image-small"></img>
                                                            )
                                                        }) : undefined
                                                        }

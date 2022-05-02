@@ -4,22 +4,20 @@ import {Carusel} from "../CaruselScreen/carusel";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import {Card} from "../card/card";
 import "./homePage.css";
+import { CardJson } from "../InterFace/card";
+import {Caruseldata} from "../InterFace/carusel";
 import {
    BookinformationCard ,
    FilesHref
   } from "../InterFace/bookPageInterface";
 
-interface Caruseldata{
-    get_absolute_url:string,
-    fileHreaf:string,
-}
 
 export const Home:React.FC = ()=>{
 
 
     const [carueseldb , setCaruseldb] = useState<Caruseldata[]>([])
  
-    const [bookinfo , setBookinfo] = useState<[]>([])
+    const [bookinfo , setBookinfo] = useState<CardJson[]>([])
   
   
       useEffect(()=>{

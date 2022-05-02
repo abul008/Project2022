@@ -13,8 +13,7 @@ interface typeshref{
     footername:string
 }
 export const Footerlink:React.FC<Footerlink> = (props) =>{
-    console.log(props.footerdata)
-    console.log(props.footerdata.map(data=>data.footerhref))
+
 
 
     return(

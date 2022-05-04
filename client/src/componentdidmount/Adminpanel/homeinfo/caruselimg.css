@@ -1,0 +1,16 @@
+.carusel-add-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.carusel-add-section form label{
+    font-size: 18px;
+    color: #35a79c;
+}
+.carusel-add-section button{
+    background: #35a79c;
+    border:none;
+    padding: 10px;
+    cursor:  pointer;
+}

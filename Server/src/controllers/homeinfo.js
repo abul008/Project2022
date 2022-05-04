@@ -1,6 +1,7 @@
 import {Homeinfoschema , HomeCaruselInfoScema} from "../models/home.js";
 import {FileSizeFormatter} from "../config/fileSizeFormater.js";
 import fs from "fs";
+// import { session } from "passport";
 
 
 export const homeinfo = ( async(req,res,next)=>{
@@ -79,7 +80,8 @@ try{
 })
 
 export const gethomeinfo = ( async(req,res,next)=>{
-
+   
+    console.log(req.session)
      const homeinfo = await Homeinfoschema.find({})
    
      res.send(homeinfo)
@@ -106,7 +108,7 @@ export const DeleteHomeinfo = (async(req,res)=>{
             if (!todo) return res.status(404).send("Todo not found...");
         
             const deletedTodo = await Homeinfoschema.findByIdAndDelete(deleteId);
-        
+           
             res.send(deletedTodo);
    }catch(error){
         res.status(400).send(error.message)

@@ -1,0 +1,93 @@
+import {useEffect ,StrictMode, useState } from 'react';
+import {Nav} from "../Nav/nav";
+import routes from '../config/routes';
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/userTypedSelector';
+import {Shopicon} from "../shopping/shopingicon";
+import {isAuth} from "../helpers/auth";
+import {Footer} from "../Footer/footer";
+
+import AdminRoute  from "../Routing/adminrouting";
+import {AdminPanel} from "../Adminpanel/adminhome/adminhome";
+import { AdminLogin } from '../Adminpanel/adminlogin/adminlogin';
+import { Loadpage } from '../loader/loadpage';
+import { ErrorPage } from '../Errorpage/Errorpage';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Redirect,
+    Route
+  } from "react-router-dom";
+import "./headPaheScreen.css";
+import routesadmin from '../config/routesadmin';
+
+
+
+export const HeadPage:React.FC=()=>{
+
+
+  const {users} = useTypedSelector(state => state.user)
+
+
+    const { setGetbookinfo ,fetchUsers } = useActions()
+    useEffect(()=>{
+      if(isAuth('role')){
+         fetchUsers() 
+      }
+        setGetbookinfo()
+    },[])
+   
+
+
+  
+   
+//this function shows the location of the home page routes
+
+    return(
+  
+      <>
+      <Router>
+         <div className="wrapper-page">
+         <Loadpage />
+         <Nav /> 
+         <StrictMode >
+          <div className='header-section'>
+          <Shopicon />
+             <Switch>  
+              {routes.map((route, index) => {
+                        return (
+                            <Route 
+                                key={index}
+                                path={route.path}
+                                exact={route.exact}
+                                component={route.component}
+                            />
+                        );
+                    })}        
+            { 
+             users.role === "admin" ?  
+             <Route 
+             path="/webadmin"
+             component={AdminPanel}
+             />   :  
+             
+             <Route   
+             path="/webadmin"
+             component={AdminLogin}  />}
+             
+             <Route
+             path='*'
+             component={ErrorPage}  
+             />
+          </Switch>
+          </div>
+          </StrictMode>
+        <Footer />
+         </div>
+      </Router>
+  
+      </>
+    )
+  
+  
+  }

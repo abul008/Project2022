@@ -1,10 +1,13 @@
-import {Adminlogin} from "../models/login.js";
+import {User} from "../models/login.js";
 import passport from "passport";
 import passportLocal from "passport-local";
 
 
-export const pasportini = passport.initialize();
-export const pasportsession = passport.session();
+// export const pasportini = passport.initialize();
+// export const pasportsession = passport.session();
+
+// passport.session();
+// passport.initialize();
 
 
 
@@ -14,7 +17,7 @@ passport.use(new passportLocal.Strategy({
     
    async(email,password,done)=>{
   
-    const user = await Adminlogin.findOne({email})
+    const user = await User.findOne({email})
 
     try{
       if(user === null){
@@ -32,20 +35,19 @@ passport.use(new passportLocal.Strategy({
     }catch(err){
       console.log(err)
     }
-   
-  
       
     }));
 
-    passport.serializeUser((user, done) => {
-      
+
+    passport.serializeUser(function(user, done) {
       done(null, user.id);
-    });
-    passport.deserializeUser((id, done) => {
+    });  
     
-      done(null, admilogin.find((user) => user._id === id));
-    });
-    
+    passport.deserializeUser((id,done)=>{
+      User.findById(id,(err,user)=>{
+       done(err,user)
+     })
+    }) 
   
  export const admilogin = (async (req,res)=>{
   passport.authenticate('local',(error,user,info)=>{
@@ -65,7 +67,7 @@ passport.use(new passportLocal.Strategy({
       }
     });
 
-    req.session.user = user
+    req.session.user = user.id
 
     // user.isAuthenticated = true;
 
@@ -83,8 +85,34 @@ export const getUSers = ((req,res)=>{
 
 
 
-export const admilogins =  ( async  (req,res)=>{
-    const adminlogin = await Adminlogin.findOne({email:"azroyan1234@mail.ru"})
-    res.send(adminlogin)
+export const getAdminInfo =  ( async  (req,res)=>{
+
+     
+//  console.log(  req.params.id)
+console.log(req.user)
+    try{
+       
+      if(req.params.id){
+      
+        const adminlogin = await User.findById({_id:req.params.id}).select('-password')
+      
+        if(!adminlogin) return res.send('duq grancvac cheq');
+        
+  
+        if(adminlogin){
+          req.session.user = adminlogin
+          return res.send(req.session.user)
+        }
+      }    
+      
+      res.send('duq grancvac cheq')
+    
+
+    }catch(error){
+      res.status(400).send({name:"grancvac cheq"})
+    }
+    // if(!admilogin) return statu
+ 
 
 })
+

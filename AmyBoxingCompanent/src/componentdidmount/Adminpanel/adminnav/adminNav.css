@@ -1,8 +1,0 @@
-.admin-panel-nav{
-    flex: 1;
-}
-.admin-panel-nav ul{
-    display: flex;
-    flex-direction: column;
-    background: #35a79c;
-}

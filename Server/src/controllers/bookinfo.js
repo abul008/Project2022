@@ -1,9 +1,7 @@
-import {Bookinfo} from "../models/book.js";
+// import {Bookinfo} from "../models/book.js";
 import {Bookinfoschema} from "../models/book.js"
 import {FileSizeFormatter} from "../config/fileSizeFormater.js"
 import fs from "fs"
-
-
 
 
 
@@ -13,32 +11,7 @@ export const uploadbookinfo = ( async(req,res,next)=>{
 
     try{
 
-        
-    const  {
-        name_am,
-        name_ru,
-        name_en,
-        author_am,
-        author_ru,
-        author_en,
-        Language_am,
-        ցategory,
-        Numberofpages,
-        Weight,
-        Publisher,
-        price,
-        cover_am,
-        cover_ru,
-        cover_en,
-        date,
-        absolute_url
-    } = req.body
-
-    console.log(req)
-   
-
-
-    const filesArray = req.files.map(element => {
+      const filesArray = req.files.map(element => {
         return  {
             fileName: element.originalname,
             fileHreaf:`/bookfoto/${element.filename}`,
@@ -48,27 +21,9 @@ export const uploadbookinfo = ( async(req,res,next)=>{
           }
     });
 
+    const createdata = {...req.body ,files:filesArray}
 
-    const bookinfodb = new  Bookinfoschema({
-        name_am:name_am,
-        name_ru:name_ru,
-        name_en:name_en,
-        author_am:author_am,
-        author_ru:author_ru,
-        author_en:author_en,
-        Language_am:Language_am,
-        ցategory:ցategory,
-        Numberofpages:Numberofpages,
-        Weight:Weight,
-        Publisher: Publisher,
-        price:price,
-        cover_am:cover_am,
-        cover_ru:cover_ru,
-        cover_en:cover_en,
-        date:date,
-        get_absolute_url:absolute_url,
-        files:filesArray
-    })
+    const bookinfodb = new  Bookinfoschema(createdata)
 
     await  bookinfodb.save()
 
@@ -80,17 +35,37 @@ export const uploadbookinfo = ( async(req,res,next)=>{
 })
 
 
-
-
 export const getBookinfo = (async(req,res)=>{
-  
+
     try{
         const getAllinfo = await Bookinfoschema.find({})
+        
+        if (!getAllinfo) return res.status(404).send("book not found...");
+
         res.send(getAllinfo)
     }catch(error){
         res.send(error)
     }
      
+})
+
+export const UbdateBookinfo = (async(req,res)=>{
+    
+    const {_id} = req.body
+
+    try{
+        
+          const bookinfos = await Bookinfoschema.findById(_id);
+
+          if (!bookinfos) return res.status(404).send("book not found...");
+
+          await Bookinfoschema.findByIdAndUpdate( _id,req.body)
+
+          res.send('ubdate')
+        
+    }catch(error){
+        res.status(400).send(error.message)
+    }
 })
 
 
@@ -102,13 +77,11 @@ export const DeleteBookinfo = (async(req,res)=>{
     } = req.body
 
  
-    
     try{
-
  
-    filepath.forEach(element =>{
-        fs.unlink(element, (err) => {
-            if (err) {
+      filepath.forEach(element =>{
+         fs.unlink(element, (err) => {
+             if (err) {
                 console.error(err)
                 return
           }
@@ -126,7 +99,6 @@ export const DeleteBookinfo = (async(req,res)=>{
 }catch(error){
     res.status(400).send(error.message)
 }
-
 
 })
 

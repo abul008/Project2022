@@ -1,0 +1,28 @@
+{   "lang":"_ru",
+    "search":"Поиск",
+
+    "home":"Дома",
+    "book":"Книга",
+    "basket":"Корзина",
+    "contact":"Контакт",
+
+    "language":"Язык",
+    "Publicationdate":"Дата публикации",
+    "publisher":"Издательство",
+    "pages":"Страницы",
+    "printingcover":"Обложка",
+    "autor":"Автор",
+    "weight":"Масса",  
+
+
+    "faq":"Часто задаваемые вопросы",
+    "about_us":"О нас",
+    "Howtoorder":"Как заказать",
+
+    "name":"Имя",
+    "lastname":"Фамилия",
+    "email":"Эл. адрес",
+    "phonenumber":"Номер телефона",
+    "message":"Сообщение",
+    "order":"Заказать"
+}

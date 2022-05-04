@@ -1,20 +1,20 @@
 import express from "express";
 import session  from 'express-session';
+import passport from "passport";
+import MongoStore from 'connect-mongo';
 import {connectDB} from "./src/config/dbconnect.js";
 import {routes} from "./src/routers/bookinfo.js";
 import { homeroutes } from "./src/routers/homeinfo.js";
-// import nodemailer from "nodemailer";
+import {adminroutes} from "./src/routers/adminlogin.js";
 import {order} from "./src/routers/order.js";
 import cors from "cors"; 
-import path from "path"
 import i18next from "i18next";
 import Backend from "i18next-fs-backend";
 import middleware from "i18next-http-middleware"
 import bodyParser  from "body-parser"
 import cookieParser from "cookie-parser";
 import secure from 'express-force-https';
-import { Adminlogin } from "./src/models/login.js";
-import {pasportini ,pasportsession} from "./src/controllers/adminlogin.js";
+// import {pasportini ,pasportsession} from "./src/controllers/adminlogin.js";
 
 
 i18next.use(Backend).use(middleware.LanguageDetector)
@@ -33,50 +33,17 @@ app.use(secure);
 connectDB();
 
 app.use(bodyParser.urlencoded({ extended: true }))
-// app.use(session({
 
-  
-//     cookie: {
-//       maxAge: 1000 * 60 * 60 * 60,
-//       // secure: true
-//     //   domain: 'http://localhost:3000/'
-//     },
-//     // store: store, // For some reason it stores the sessions but doesn't work properly
-   
-//     proxy: true,
-//     httpOnly: true,
-//     secret: 'keyboard cat',
-//     resave: true,
-//     saveUninitialized: true,
-    
-//   }));
-
-  app.use(session({
-    // store: new RedisStore({
-    //   url: "http://localhost:3000/"
-    // }),
-    // secret:"ascnjskbc asjcabvkj aksjfcbaskjc askjcf",
-    // saveUninitialized: true,
-    // resave: false,
-    // cookie: {
-    //  httpOnly:true,
-    //  maxAge:6000
-
-    //       },
-
-    cookie: {
-      maxAge: 1000 * 60 * 60 * 60,
-    httpOnly: true,
-
-      // secure: true
-    },
-    // store: store, // For some reason it stores the sessions but doesn't work properly
-    proxy: true,
-    // httpOnly: true,
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: true
-  }));
+app.set('view engine', 'ejs')
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  store: MongoStore.create({ mongoUrl: process.env.MONGODB, collectionName: "sessions" }),
+  cookie: {
+      maxAge: 1000 * 60 * 60 * 24
+  }
+}))
 
   
 
@@ -100,19 +67,28 @@ app.use(cors({
 
 
 
-app.use(pasportini);
-app.use(pasportsession);
+app.use(passport.initialize())
+app.use(passport.session())
 
 
 
-
-
-
-
+app.get('/hello', (req, res) => {
+  console.log(req.isAuthenticated())
+  // let ar = isAuthenticated()
+  if (req.isAuthenticated() === false) {
+      return res.send({name:"hello"})
+  }
+  // return("true")
+  res.send("hello")
+})
 
 app.use('/api/v1/' , routes)
 app.use('/api/v1/' , homeroutes)
 app.use('/api/v1/', order)
+app.use('/api/v1/', adminroutes)
+
+
+
 
 // app.post("/send_mail", cors(), async (req, res) => {
    

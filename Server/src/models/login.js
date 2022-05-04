@@ -15,4 +15,4 @@ const adminlogin = new Schema({
 },{titmestamps:true})
 
 
-export const Adminlogin = mongoose.model('adminlogin' , adminlogin )
+export const User = mongoose.model('adminlogin' , adminlogin )

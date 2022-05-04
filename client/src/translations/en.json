@@ -1,0 +1,35 @@
+{   "lang":"_en",
+    "search":"Search",
+
+
+    "home":"Home",
+    "book":"Book",
+    "basket":"Basket",
+    "contact":"Contact",
+    
+
+
+    "language":"Language",
+    "Publicationdate":"Publication date",
+    "publisher":"Publisher",
+    "pages":"Pages",
+    "printingcover":"Printing cover",
+    "autor":"Autor",
+    "weight":"Weight",
+    
+
+
+    "faq":"FAQ",
+    "about_us":"About Us",
+    "Howtoorder":"How to order",
+
+    "name":"name",
+    "lastname":"Last name",
+    "email":"email",
+    "phonenumber":"phonenumber",
+    "message":"message",
+    "order":"order"
+
+
+
+}

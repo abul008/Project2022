@@ -6,7 +6,7 @@ import {useTypedSelector} from "../../hooks/userTypedSelector";
 import { FooterContactlink } from "./contact";
 import {changelenguage} from "../helpers/auth";
 import ReactHtmlParser from 'html-react-parser';
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 
@@ -17,12 +17,13 @@ export const Footer:React.FC= () =>{
     
     const {getHomedata} = useTypedSelector(state => state.home)
 
- 
+
     return(
         <div className="footer-wrapper"  id="footer">
             <div className="footer-top-section"> 
                  <div className="footer-logo-svg">
                      <img src="/svgfolder/logo.svg"></img> 
+                     <img src="./erevan.png"></img> 
                  </div>
                  <div className="footer-top_center">
                      <ul>

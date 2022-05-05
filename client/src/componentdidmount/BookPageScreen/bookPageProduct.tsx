@@ -1,4 +1,3 @@
-import i18next from "i18next";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import { useActions } from '../../hooks/useActions';
 import { useEffect, useState } from "react";

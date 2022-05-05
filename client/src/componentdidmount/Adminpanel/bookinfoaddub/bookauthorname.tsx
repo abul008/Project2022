@@ -7,10 +7,10 @@ import {InputSequential} from "../formdesign/formdesign";
 export const Bookauthorname:React.FC = ()=>{
 
     
-    const {data,getBookdata} = useTypedSelector(state => state.book)
-    const {users} = useTypedSelector(state => state.user)
+    const {data} = useTypedSelector(state => state.book)
 
-    const {setBookPage,fetchTodos} = useActions()
+
+    const {setBookPage} = useActions()
    
 
     return( 

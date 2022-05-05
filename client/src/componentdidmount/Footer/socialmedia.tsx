@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "react-router-dom"
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import {SvgFacebook ,SvgInstagram,SvgLocetion ,SvgTelegram} from "../svgicon/svg";
 import "./socialmedia.css" ;

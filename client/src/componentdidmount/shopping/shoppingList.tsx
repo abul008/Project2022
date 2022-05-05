@@ -1,4 +1,4 @@
-import { useEffect, useState ,useMemo, useCallback } from "react";
+import { useEffect, useState  } from "react";
 import "./shoppingList.css";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import {changelenguage} from "../helpers/auth";
@@ -18,7 +18,7 @@ import i18next from "i18next";
 export const ShopingList:React.FC<any> = ({match}) =>{
 
   
-    const {quantity} = useTypedSelector(state => state.home)
+
     const {setViewLoader} = useActions()
     const [currentPage , setCurrentPage] = useState<number>(match.params.page);
     const [postsPerPage, setPostsPerPage] = useState<number>(7);

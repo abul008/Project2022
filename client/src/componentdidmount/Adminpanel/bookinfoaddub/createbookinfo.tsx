@@ -12,7 +12,7 @@ import Progress from '../../proptypes/proptypes';
 import Message from "../../proptypes/message";
 import axios from "axios";
 import 'jodit/build/jodit.min.css';
-import { useState  ,useEffect} from "react";
+import { useState  } from "react";
 
 
 

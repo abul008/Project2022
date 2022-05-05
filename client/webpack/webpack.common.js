@@ -2,12 +2,13 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const srcPath = path.join(__dirname, '..', 'media')
 
 const cssLoaders =(exstra)=>{
  
-  
+ 
   const loaders =  [ 
      {
       loader:MiniCssExtractPlugin.loader ,
@@ -53,19 +54,7 @@ module.exports = {
           },
         ],
       },
-      // {
-      //   test: /\.(gif|png|jpg|svg)(\?.*$|$)/,
-      //   use: [
-      //     {
-      //       loader: 'url-loader' ,
-      //       options: {
-      //         limit: 8192,
-      //         name: '[name].[ext]',
-      //         publicPath: '/media'
-      //       },
-      //     },
-      //   ],
-      // },
+    
       {
         test: /\.html$/i,
         loader: "html-loader",
@@ -108,6 +97,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '..', './src/index.html'),
     }),
+    new CopyPlugin( {patterns:[
+      {
+        from: path.resolve(__dirname, '..', 'media'),  
+        to: path.resolve(__dirname, '..', './build'),
+      },
+    ]}),
     new CleanWebpackPlugin(),  //Լռելյայնորեն, այս փլագինը կհեռացնի բոլոր ֆայլերը վեբ փաթեթի output.pathգրացուցակում, ինչպես նաև վեբ փաթեթի բոլոր չօգտագործված ակտիվները յուրաքանչյուր հաջող վերակառուցումից հետո:
     new MiniCssExtractPlugin({
       filename:"[name].[contenthash].css"

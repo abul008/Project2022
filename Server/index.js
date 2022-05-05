@@ -2,6 +2,9 @@ import express from "express";
 import session  from 'express-session';
 import passport from "passport";
 import MongoStore from 'connect-mongo';
+import path from "path";
+import { fileURLToPath } from 'url';
+
 import {connectDB} from "./src/config/dbconnect.js";
 import {routes} from "./src/routers/bookinfo.js";
 import { homeroutes } from "./src/routers/homeinfo.js";
@@ -69,25 +72,40 @@ app.use(cors({
 
 app.use(passport.initialize())
 app.use(passport.session())
+// const __filename = new URL('', import.meta.url).pathname;
+const __dirname = new URL('.', import.meta.url).pathname;
+// const pathToAdjacentFooFile = new URL('./foo.txt', import.meta.url).pathname;
+// const pathToUpperBarFile = new URL('../client/build', import.meta.url).pathname;
+const pathToUpperBarFile1 = new URL('../client/build/index.html', import.meta.url).pathname;
+const __filename = fileURLToPath(import.meta.url)
+
+// const somePath = join(__dirname, '../some-dir-or-some-file')
+
+// console.log(somePath)
+// const __dirname = dirname(__filename)
+// let a  = path.join(__filename)
+
+// console.log(__filename)
+// console.log(__dirname)
+// console.log(pathToAdjacentFooFile)
+// console.log(pathToUpperBarFile)
+// console.log(pathToUpperBarFile1)
 
 
 
-app.get('/hello', (req, res) => {
-  console.log(req.isAuthenticated())
-  // let ar = isAuthenticated()
-  if (req.isAuthenticated() === false) {
-      return res.send({name:"hello"})
-  }
-  // return("true")
-  res.send("hello")
-})
+console.log(`${__dirname}index.html`)
+
 
 app.use('/api/v1/' , routes)
 app.use('/api/v1/' , homeroutes)
 app.use('/api/v1/', order)
 app.use('/api/v1/', adminroutes)
 
-
+// console.log(path.resolve("../client/build/index.html"))
+app.use(express.static(path.resolve("../client/build/")))
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve("../client/build/index.html"));
+})
 
 
 // app.post("/send_mail", cors(), async (req, res) => {

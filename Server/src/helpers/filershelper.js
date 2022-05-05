@@ -1,8 +1,8 @@
 import multer from "multer";
-
+import path from "path";
 
 const fileStorageEngine = multer.diskStorage({
-    destination: '../AmyBoxingCompanent/media/bookfoto/', //important this is a direct path fron our current file to storage location
+    destination: path.resolve("../client/media/bookfoto"), 
     filename: (req, file, cb) => {
       cb(null, Date.now() + "--" + file.originalname);
     },
@@ -10,7 +10,7 @@ const fileStorageEngine = multer.diskStorage({
 
 
   const homefileStorageEngine = multer.diskStorage({
-    destination: '../AmyBoxingCompanent/media/carusel/', 
+    destination: path.resolve("../client/media/carusel"), 
     filename: (req, file, cb) => {
       cb(null, Date.now() + "--" + file.originalname);
     },

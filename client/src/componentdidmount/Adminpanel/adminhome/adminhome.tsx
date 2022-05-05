@@ -1,5 +1,4 @@
 import "./adminhome.css";
-import { HomeTable } from "../homeinfo/hometable";
 import routesadmin from "../../config/routesadmin";
 import {AdminPanelNav} from "../adminnav/adminNav";
 

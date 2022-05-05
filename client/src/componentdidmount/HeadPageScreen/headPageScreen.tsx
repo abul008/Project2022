@@ -6,8 +6,6 @@ import { useTypedSelector } from '../../hooks/userTypedSelector';
 import {Shopicon} from "../shopping/shopingicon";
 import {isAuth} from "../helpers/auth";
 import {Footer} from "../Footer/footer";
-
-import AdminRoute  from "../Routing/adminrouting";
 import {AdminPanel} from "../Adminpanel/adminhome/adminhome";
 import { AdminLogin } from '../Adminpanel/adminlogin/adminlogin';
 import { Loadpage } from '../loader/loadpage';
@@ -15,7 +13,6 @@ import { ErrorPage } from '../Errorpage/Errorpage';
 import {
     BrowserRouter as Router,
     Switch,
-    Redirect,
     Route
   } from "react-router-dom";
 import "./headPaheScreen.css";

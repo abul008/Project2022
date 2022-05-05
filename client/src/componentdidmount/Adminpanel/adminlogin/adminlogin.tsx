@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 import axios from "axios"
-// import { useTypedSelector } from "../../../hooks/userTypedSelector";
 import { useActions } from "../../../hooks/useActions";
-import Cookies from 'js-cookie';
 import "./adminlogin.css";
 import { useHistory } from "react-router-dom";
 interface Login{

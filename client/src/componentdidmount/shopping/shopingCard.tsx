@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import "./shopingCard.css";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import {productdatas} from "../helpers/auth";

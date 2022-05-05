@@ -1,7 +1,4 @@
-import React,{useState,useEffect} from "react";
-// import FileUpload from "../fileUpload/fileupload";
-import axios  from "axios";
-import {Link, Redirect} from 'react-router-dom';
+import React,{useState} from "react";
 import "./carusel.css" ;
 
 

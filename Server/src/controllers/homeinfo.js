@@ -60,13 +60,12 @@ export const HomeCaruselinfo = ( async(req,res,next)=>{
 
     const { absolute_url } = req.body
 
-    console.log(absolute_url , req.file )
     
 try{
    const file = new HomeCaruselInfoScema({
        get_absolute_url:absolute_url,
        fileName: req.file.originalname,
-       fileHreaf:`/carusel/${req.file.filename}`,
+       fileHreaf:`${process.env.DOMAIN}carusel/${req.file.filename}`,
        filePath: req.file.path,
        fileType: req.file.mimetype,
        fileSize: FileSizeFormatter(req.file.size, 2) // 0.00
@@ -81,7 +80,7 @@ try{
 
 export const gethomeinfo = ( async(req,res,next)=>{
    
-    console.log(req.session)
+
      const homeinfo = await Homeinfoschema.find({})
    
      res.send(homeinfo)

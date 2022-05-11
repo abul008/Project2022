@@ -1,18 +1,21 @@
 import multer from "multer";
 import path from "path";
 
+
 const fileStorageEngine = multer.diskStorage({
-    destination: path.resolve("../client/media/bookfoto"), 
+    destination: path.resolve("./media/bookfoto/"), 
     filename: (req, file, cb) => {
       cb(null, Date.now() + "--" + file.originalname);
     },
   });
 
+ 
+
 
   const homefileStorageEngine = multer.diskStorage({
-    destination: path.resolve("../client/media/carusel"), 
+    destination: path.resolve("./media/carusel"), 
     filename: (req, file, cb) => {
-      cb(null, Date.now() + "--" + file.originalname);
+      cb(null,  Date.now() + "--" + file.originalname);
     },
   });
 

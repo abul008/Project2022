@@ -26,9 +26,12 @@ export const AdminLogin:React.FC = ()=>{
                 "/api/v1/login",
                 { email:email, password:password } 
               ).then(res=>{
-                localStorage.setItem( "role",res.data)})
-                await  history.push("/webadmin");
-                await   window.location.reload();
+                console.log(res)
+                localStorage.setItem( "acessToken",res.data.user)
+                localStorage.setItem( "acessTokenRefresh",res.data.refreshToken)
+              })
+                // await  history.push("/webadmin");
+                // await   window.location.reload();
                 setViewLoader(true)            
           }catch(error){
             console.log(error)

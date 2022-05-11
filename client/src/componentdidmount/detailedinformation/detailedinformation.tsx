@@ -36,7 +36,6 @@ export const Detailedinformation = ({match}:any) =>{
     useEffect(()=>{
          axios.get('/api/v1/getbookinfo')
          .then(res=>{
-           console.log(res.data)
           setDetalieddata(res.data.filter((filter:BookinformationCard)=>
           filter._id === match.params.id
           ).map((data:BookinformationCard)=>{

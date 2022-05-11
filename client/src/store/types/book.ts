@@ -10,6 +10,7 @@ export interface Bookinfo{
     Weight:string,
     Publisher:string,
     price: string,
+    discount:string,
     ցategory:string,
     cover_am:string,
     cover_ru:string,

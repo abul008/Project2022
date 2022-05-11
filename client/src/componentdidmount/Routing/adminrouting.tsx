@@ -9,15 +9,7 @@ const AdminRoute =  ({ booleans, component: Component, ...rest  }:any) =>{
 
     const {users} = useTypedSelector(state => state.user)
 
-    // console.log(users.role == "admin")
-    
-   
-    // const a:any = users.role === "admin"
-
-
-    // console.log("a")
-
-    // console.log(booleans)
+  
 
   
  

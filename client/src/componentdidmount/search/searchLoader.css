@@ -13,7 +13,7 @@
     100% { transform: rotate(360deg); }
   }
 
-  @media screen and (max-width: 615px) {
+  @media screen and (max-width: 681px) {
     .search-page{
       width: 100%;
     }

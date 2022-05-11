@@ -46,6 +46,7 @@ export const ShopingCard:React.FC<ShopingCardTyp> = ({
                       </div>
                        <div className="shop-list-count">
                           <button
+                          disabled={counts  <= 0 ? true  : false}
                           onClick={()=>{  
                             setCounts(counts - 1)
                            let indexdelete:number = array.findIndex((element:string) => element === _id)
@@ -57,7 +58,9 @@ export const ShopingCard:React.FC<ShopingCardTyp> = ({
                           }}
                           ></button>
                              <div className="counts-shop-list"> {counts}</div>
-                           <button onClick={()=>{ 
+                           <button
+                           disabled={counts  === 10 ? true  : false} 
+                           onClick={()=>{ 
                             setCounts(counts + 1)
                             localStorage.setItem("productdata" , JSON.stringify([...array ,_id]))
                             setChangequantity(quantity + 1)

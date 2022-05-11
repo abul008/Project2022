@@ -1,4 +1,11 @@
 
 .header-section{
     padding-top: 66px;
+    min-height: 100vh;
 }
+@media screen and (max-width: 704px) {
+    .header-section{
+        padding-top: 104px;
+    }
+  }
+  

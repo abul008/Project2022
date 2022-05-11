@@ -4,7 +4,7 @@ import {FileSizeFormatter} from "../config/fileSizeFormater.js"
 import fs from "fs"
 
 
-
+process.env.DOMAIN
 
 export const uploadbookinfo = ( async(req,res,next)=>{
 
@@ -14,7 +14,7 @@ export const uploadbookinfo = ( async(req,res,next)=>{
       const filesArray = req.files.map(element => {
         return  {
             fileName: element.originalname,
-            fileHreaf:`/bookfoto/${element.filename}`,
+            fileHreaf:`${process.env.DOMAIN}bookfoto/${element.filename}`,
             filePath: element.path,
             fileType: element.mimetype,
             fileSize: FileSizeFormatter(element.size, 2)
@@ -36,6 +36,8 @@ export const uploadbookinfo = ( async(req,res,next)=>{
 
 
 export const getBookinfo = (async(req,res)=>{
+     
+// console.log(session)
 
     try{
         const getAllinfo = await Bookinfoschema.find({})

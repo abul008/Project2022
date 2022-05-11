@@ -1,10 +1,8 @@
 import express from "express";
 import session  from 'express-session';
 import passport from "passport";
-import MongoStore from 'connect-mongo';
+import jwt from "jsonwebtoken";
 import path from "path";
-import { fileURLToPath } from 'url';
-
 import {connectDB} from "./src/config/dbconnect.js";
 import {routes} from "./src/routers/bookinfo.js";
 import { homeroutes } from "./src/routers/homeinfo.js";
@@ -12,11 +10,13 @@ import {adminroutes} from "./src/routers/adminlogin.js";
 import {order} from "./src/routers/order.js";
 import cors from "cors"; 
 import i18next from "i18next";
+import cypto from "crypto";
 import Backend from "i18next-fs-backend";
 import middleware from "i18next-http-middleware"
 import bodyParser  from "body-parser"
 import cookieParser from "cookie-parser";
 import secure from 'express-force-https';
+import { token } from "morgan";
 // import {pasportini ,pasportsession} from "./src/controllers/adminlogin.js";
 
 
@@ -27,7 +27,6 @@ i18next.use(Backend).use(middleware.LanguageDetector)
         loadPath:"./locales/{{lng}}/translations.json"
     }
 })
-
 
 const app = express()
 
@@ -42,7 +41,7 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
-  store: MongoStore.create({ mongoUrl: process.env.MONGODB, collectionName: "sessions" }),
+  // store: MongoStore.create({ mongoUrl: process.env.MONGODB, collectionName: "sessions" }),
   cookie: {
       maxAge: 1000 * 60 * 60 * 24
   }
@@ -72,36 +71,37 @@ app.use(cors({
 
 app.use(passport.initialize())
 app.use(passport.session())
-// const __filename = new URL('', import.meta.url).pathname;
-const __dirname = new URL('.', import.meta.url).pathname;
-// const pathToAdjacentFooFile = new URL('./foo.txt', import.meta.url).pathname;
-// const pathToUpperBarFile = new URL('../client/build', import.meta.url).pathname;
-const pathToUpperBarFile1 = new URL('../client/build/index.html', import.meta.url).pathname;
-const __filename = fileURLToPath(import.meta.url)
-
-// const somePath = join(__dirname, '../some-dir-or-some-file')
-
-// console.log(somePath)
-// const __dirname = dirname(__filename)
-// let a  = path.join(__filename)
-
-// console.log(__filename)
-// console.log(__dirname)
-// console.log(pathToAdjacentFooFile)
-// console.log(pathToUpperBarFile)
-// console.log(pathToUpperBarFile1)
 
 
+// console.log(process.env.TOKEN_SECRET)
 
-console.log(`${__dirname}index.html`)
 
+const generateAccessToken =(param)=>{
+  return jwt.sign(param, process.env.TOKEN_SECRET, { expiresIn: '1800s'});
+}
+
+
+app.get('/api/ubdate',(req,res)=>{
+   const data = {
+     name:"hello",
+     username:"chelo"
+   }
+
+   const tokem = generateAccessToken(data)
+ 
+   res.send(tokem)
+})
 
 app.use('/api/v1/' , routes)
 app.use('/api/v1/' , homeroutes)
 app.use('/api/v1/', order)
 app.use('/api/v1/', adminroutes)
 
-// console.log(path.resolve("../client/build/index.html"))
+
+
+app.use(express.static(path.resolve("./media")))
+
+
 app.use(express.static(path.resolve("../client/build/")))
 app.get('*', (req, res) => {
   res.sendFile(path.resolve("../client/build/index.html"));
@@ -155,5 +155,7 @@ app.get('*', (req, res) => {
 // })
 
 
+const port = process.env.PORT || 8080;
 
-app.listen(process.env.PORT || 3000)
+
+app.listen(port)

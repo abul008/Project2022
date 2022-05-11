@@ -20,7 +20,6 @@ export const Admindetalied:React.FC<any> =({match})=>{
     
 
 
-    console.log()
   
     
     return(

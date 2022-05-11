@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 
 export const connectDB = async () => {
-    await mongoose.connect(process.env.MONGODB, {
+    await mongoose.connect(process.env.MONGODB || "mongodb+srv://books:books1234@abul.m5g87.mongodb.net/books?retryWrites=true&w=majority", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     }).then(()=>{

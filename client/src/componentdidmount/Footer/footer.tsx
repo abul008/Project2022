@@ -1,13 +1,13 @@
 import "./footer.css";
 import i18next from "i18next";
-import { Footerlink } from "./footelink";
+import {SvgLogo} from "../svgicon/svg"
 import { SocialMedia } from "./socialmedia";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import { FooterContactlink } from "./contact";
 import {changelenguage} from "../helpers/auth";
 import ReactHtmlParser from 'html-react-parser';
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link ,useLocation } from "react-router-dom";
 
 
 
@@ -16,14 +16,18 @@ export const Footer:React.FC= () =>{
    
     
     const {getHomedata} = useTypedSelector(state => state.home)
+    
+    const {pathname} = useLocation()
+    
+    if(pathname.includes('/webadmin')) return null
 
 
     return(
         <div className="footer-wrapper"  id="footer">
             <div className="footer-top-section"> 
                  <div className="footer-logo-svg">
-                     <img src="/svgfolder/logo.svg"></img> 
-                     <img src="./erevan.png"></img> 
+                     <SvgLogo />
+                     {/* <img src="/svgfolder/logo.svg" /> */}
                  </div>
                  <div className="footer-top_center">
                      <ul>
@@ -39,7 +43,7 @@ export const Footer:React.FC= () =>{
                    <SocialMedia />
                 </div>
                   <div className="link_section_svg">
-                     <img src="/svgfolder/logo.svg" /> 
+                     {/* <img src="/svgfolder/logo.svg" />  */}
                   </div>
                 </div>
                 

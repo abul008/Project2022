@@ -51,6 +51,10 @@ const Schema = mongoose.Schema;
         type:String,
         required:true
     },
+    discount:{
+         type:String,
+         required:true
+    },
     cover_am:{
         type:String,
         required:true

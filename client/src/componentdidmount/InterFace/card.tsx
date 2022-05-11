@@ -6,6 +6,8 @@ export interface CardJson{
     cardauthor_ru:string ,
     cardauthor_en:string ,
     cardprice:string,
+    carddiscount:string,
+    cardisisavailabe:string,
     cardlanguage:string,
     cardurl:string,
     cardgetgoti:string,

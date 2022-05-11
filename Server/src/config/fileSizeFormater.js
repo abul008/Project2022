@@ -1,8 +1,4 @@
 
-
-
-
-
 export const FileSizeFormatter = (bytes, decimal) => {
     if(bytes === 0){
         return '0 Bytes';

@@ -16,6 +16,7 @@ const initialState: bookstate = {
     Weight:"",
     Publisher:"",
     price:"",
+    discount:"",
     ցategory:"is available",
     cover_am:"",
     cover_ru:"",

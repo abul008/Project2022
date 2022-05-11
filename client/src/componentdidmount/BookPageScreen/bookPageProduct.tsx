@@ -26,6 +26,7 @@ export const BookProduct:React.FC = ()=>{
              cardauthor_ru:data.author_ru ,
              cardauthor_en:data.author_en ,
              cardprice:data.price,
+             carddiscount:data.discount,
              cardlanguage:data.Language_am,
              cardurl:data.get_absolute_url,
              cardgetgoti:data.ցategory,
@@ -37,8 +38,6 @@ export const BookProduct:React.FC = ()=>{
     })       
     },[])
 
-  
-    
     return( 
         <div className="Book-file-wrapper" >
             <Card carddata={bookdata}  />

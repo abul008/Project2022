@@ -40,14 +40,22 @@ export const GeneralInfo:React.FC = ()=>{
                      <option>Not available</option>
                  </select>
                  </div>
-            <div className="admin-input-cantrol">
-            <label>Գին:Am</label>
+            <div style={{display:"flex"}} className="admin-input-cantrol">
+    
                 <input
                 type="text"
                 required
                 placeholder="Գին" 
                 value={data.price || ''}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,price:e.target.value})}
+             />
+          
+                <input
+                type="text"
+                required
+                placeholder="Զեխճված գին" 
+                value={data.discount || ''}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,discount:e.target.value})}
              />
             </div>
             <div className="admin-input-cantrol">

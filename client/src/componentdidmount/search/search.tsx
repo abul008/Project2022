@@ -61,7 +61,7 @@ useEffect(()=>{
     setSearchBlur(false)
   }
 },[searchTerm])
-console.log(searchResultsData)
+
 
   const searchsub = (e: React.FormEvent<HTMLFormElement>)=>{
       e.preventDefault()

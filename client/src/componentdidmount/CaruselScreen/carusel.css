@@ -42,14 +42,16 @@
       position: absolute;
       bottom: 36px;
       width: 100%;
+      padding: 16px;
       display: flex;
       justify-content: center;
      
   }
   .caruselButton .btn-carusel{
       width: 30px;
-      height: 5px;
-      background: grey;
+      height: 7px;
+      /* background: grey; */
+      background: #232526;
       margin-left: 2px;
       margin-right: 3px;
       /* background: #faef03; */
@@ -57,7 +59,7 @@
       cursor: pointer;
   }
   .caruselButton .active{
-      background: black;
+      background: #35a79c;
   }
   .btn-carusel-aktive:active{
      background: green;

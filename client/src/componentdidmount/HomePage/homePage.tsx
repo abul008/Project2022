@@ -13,8 +13,13 @@ import {
 
 
 
+
+
+
 export const Home:React.FC = ()=>{
 
+
+   
 
     const [carueseldb , setCaruseldb] = useState<Caruseldata[]>([])
     const [bookinfo , setBookinfo] = useState<CardJson[]>([])
@@ -39,10 +44,12 @@ export const Home:React.FC = ()=>{
               cardname_am:data.name_am,
               cardname_ru:data.name_ru,
               cardname_en:data.name_en,
+              cardisisavailabe:data.ցategory,
               cardauthor_am:data.author_am ,
               cardauthor_ru:data.author_ru ,
               cardauthor_en:data.author_en ,
               cardprice:data.price,
+              carddiscount:data.discount,
               cardlanguage:data.Language_am,
               cardurl:data.get_absolute_url,
               cardgetgoti:data.ցategory,

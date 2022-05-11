@@ -102,6 +102,10 @@ module.exports = {
         from: path.resolve(__dirname, '..', 'media'),  
         to: path.resolve(__dirname, '..', './build'),
       },
+      {
+        from: path.resolve(__dirname,'..' , 'src/favicon.ico'),  //copy a anum verevi icon
+        to: path.resolve(__dirname,'..' , './build'),
+      },
     ]}),
     new CleanWebpackPlugin(),  //Լռելյայնորեն, այս փլագինը կհեռացնի բոլոր ֆայլերը վեբ փաթեթի output.pathգրացուցակում, ինչպես նաև վեբ փաթեթի բոլոր չօգտագործված ակտիվները յուրաքանչյուր հաջող վերակառուցումից հետո:
     new MiniCssExtractPlugin({

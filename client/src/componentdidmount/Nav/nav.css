@@ -48,9 +48,12 @@
 .nav-ul_cantrol ul li a img{
   width: 30px;
 }
+.nav-ul_cantrol ul li a svg{
+  width: 30px;
+}
 
 
-@media screen and (max-width: 615px) {
+@media screen and (max-width: 681px) {
   .nav-ul_cantrol{
     width: 100%;
   }

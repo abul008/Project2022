@@ -14,12 +14,14 @@ export const SocialMedia:React.FC = () =>{
     const {getHomedata} = useTypedSelector(state => state.home)
 
     
+
+    
     return(
      <ul className="social-media">
-       <li><a ><SvgFacebook /></a></li>  
-       <li><a ><SvgInstagram /></a></li>  
-       <li><a ><SvgTelegram /></a></li>
-       <li><a href={getHomedata[0] ? getHomedata[0].addres : undefined }><SvgLocetion /></a></li>        
+       <li><a href={getHomedata[0] ? getHomedata[0].facebook_url : undefined } target="_blank"  ><SvgFacebook /></a></li>  
+       <li><a href={getHomedata[0] ? getHomedata[0].instagram_url : undefined } target="_blank"  ><SvgInstagram /></a></li>  
+       <li><a href={getHomedata[0] ? getHomedata[0].telegram_url : undefined } target="_blank"  ><SvgTelegram /></a></li>
+       <li><a href={getHomedata[0] ? getHomedata[0].addres : undefined } target="_blank" ><SvgLocetion /></a></li>        
      </ul>
     )
 }

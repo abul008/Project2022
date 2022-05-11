@@ -4,7 +4,7 @@
     /* align-items: center; */
 }
 .shop-list-section{
-    width: 70%;
+    width: 100%;
     min-height: 100vh;
     padding: 6px 15px 12px 5px;
     display: flex;
@@ -19,9 +19,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 .shop-list-img{
-    width: 100px;
+    min-width: 100px;
     height: 125px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -38,6 +39,7 @@
 
 .shop-list-count{
     display: flex;
+    justify-content: center;
     font-size: 14px;
     font-weight: 800;
 }
@@ -85,3 +87,7 @@
 .counts-shop-list{
     margin: 0px 10px;
 }
+
+@media screen and (max-width: 600px) {
+    .shop-list-count , .shop-list-price{margin: auto;}
+  }

@@ -35,9 +35,11 @@ export const Bookinfoadd:React.FC<any> = ({match})=>{
    //     .then(res=> console.log(res.data))
    //  },[])
 
+   console.log(coverAm , coverRu,coverEn)
+
     const cretebookinfo = async(e:React.FormEvent<HTMLFormElement>)=>{
      
-    console.log("hello")
+   
        e.preventDefault()
        const {
          name_am,
@@ -52,6 +54,7 @@ export const Bookinfoadd:React.FC<any> = ({match})=>{
          Weight,
          Publisher,
          price,
+         discount,
          date,
          get_absolute_url,
          file,
@@ -79,6 +82,7 @@ export const Bookinfoadd:React.FC<any> = ({match})=>{
       formData.append('Publisher',Publisher)
       formData.append('Weight',Weight)
       formData.append('price', price)
+      formData.append('discount', discount)
       formData.append('cover_am', coverAm)
       formData.append('cover_ru', coverRu)
       formData.append('cover_en', coverEn)
@@ -114,7 +118,7 @@ export const Bookinfoadd:React.FC<any> = ({match})=>{
     }
      
 
- console.log(coverAm)
+
     return( 
       <FormHead >
        <Form>

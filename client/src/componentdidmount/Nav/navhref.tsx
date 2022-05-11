@@ -1,5 +1,6 @@
 import { Link , NavLink } from "react-router-dom";
 import "./navhref.css";
+import {SvgLogo} from "../svgicon/svg"
 import i18next from "i18next";
 
 export const Navhref:React.FC = ()=>{
@@ -41,7 +42,8 @@ export const Navhref:React.FC = ()=>{
             </li>
             <li>
                 <Link to="/">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/SVG_Logo.svg/512px-SVG_Logo.svg.png" alt="logo" />
+                    <SvgLogo />
+                {/* <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/SVG_Logo.svg/512px-SVG_Logo.svg.png" alt="logo" /> */}
                 </Link>
             </li> 
         </ul>

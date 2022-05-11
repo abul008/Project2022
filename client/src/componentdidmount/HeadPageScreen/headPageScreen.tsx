@@ -50,6 +50,7 @@ export const HeadPage:React.FC<any>=()=>{
   const {users} = useTypedSelector(state => state.user)
   
 
+
     const { setGetbookinfo ,fetchUsers } = useActions()
     useEffect(()=>{
       if(isAuth('acessToken')){
@@ -86,7 +87,7 @@ export const HeadPage:React.FC<any>=()=>{
                         );
                     })}        
             { 
-             users.role === "admin" ?  
+             users.userType === "admin" ?  
              <Route 
              path="/webadmin"
              component={AdminPanel}

@@ -3,6 +3,7 @@ import {Home} from "../HomePage/homePage";
 import { BookProduct } from '../BookPageScreen/bookPageProduct';
 import {Searchresult} from "../search/searchPage";
 import {ShopingList} from "../shopping/shoppingList";
+import {SingIn} from "../signIn/singup";
 import {ErrorPage} from "../Errorpage/Errorpage";
 import { AdminLogin } from '../Adminpanel/adminlogin/adminlogin';
 import { isAuth } from '../helpers/auth';
@@ -15,6 +16,12 @@ const routes: IRoute[] = [
         path: '/',
         name: 'Home Page',
         component: Home,
+        exact: true
+    },
+    {
+        path: '/singin',
+        name: 'Home Page',
+        component: SingIn,
         exact: true
     },
     {

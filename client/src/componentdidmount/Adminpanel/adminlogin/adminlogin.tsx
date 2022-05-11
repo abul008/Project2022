@@ -15,6 +15,7 @@ export const AdminLogin:React.FC = ()=>{
     const {setViewLoader} = useActions()
     let history = useHistory();
 
+
     const logininfo = async(e: React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault()
         const {email ,password} = adminlogin
@@ -26,12 +27,10 @@ export const AdminLogin:React.FC = ()=>{
                 "/api/v1/login",
                 { email:email, password:password } 
               ).then(res=>{
-                console.log(res)
-                localStorage.setItem( "acessToken",res.data.user)
-                localStorage.setItem( "acessTokenRefresh",res.data.refreshToken)
+                localStorage.setItem( "acessToken", JSON.stringify(res.data))
               })
-                // await  history.push("/webadmin");
-                // await   window.location.reload();
+                await  history.push("/webadmin");
+                await   window.location.reload();
                 setViewLoader(true)            
           }catch(error){
             console.log(error)

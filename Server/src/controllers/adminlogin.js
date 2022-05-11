@@ -1,22 +1,12 @@
 import {User} from "../models/login.js";
 import passport from "passport";
 import  JWT  from "jsonwebtoken";
-import  createError from "http-errors"
+import bcrypt from "bcrypt";
+import {Register} from "../models/register.js";
 import {generateAccessToken ,createRefreshToken} from "../config/token.js";
 import passportLocal from "passport-local";
 import {UserToken} from "../models/userToken.js";
-import { verifyAccessToken } from "../helpers/jwt.helpers.js";
 
-const tokenList = {}
-
-let refreshTokens = [
- 
-  {
-    status: 'Logged in',
-    user: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjIxZTUwZjFmMGQ1ZTVkMzUxZmRmODJkIiwiaWF0IjoxNjUyMjI4MDM1LCJleHAiOjE2NTIyMjk4MzV9.6T2xa15i7pEFJhPD_0RIltzGHeICs4s5B7ANyDI2hXA',
-    refreshToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjIxZTUwZjFmMGQ1ZTVkMzUxZmRmODJkIiwiaWF0IjoxNjUyMjI4MDM1LCJleHAiOjE2NTIyNDYwMzV9.f104RlB_UhkSApKCGkl9m09raPGJmEePnRDW_Vjc5Vw'
-  }
-]
 
 
 
@@ -27,16 +17,14 @@ passport.use(new passportLocal.Strategy({
     
    async(email,password,done)=>{
   
-    const user = await User.findOne({email})
+    const user = await Register.findOne({email})
 
     try{
       if(user === null){
         return done(null, null, {message: "Incorrect email"});
     }
      
-    // console.log(req.session.admin)
- 
-    if(await user.password === password){
+    if(await bcrypt.compare(password, user.password)){
         
           return done(null, user);
     }
@@ -54,7 +42,7 @@ passport.use(new passportLocal.Strategy({
     });  
     
     passport.deserializeUser((id,done)=>{
-      User.findById(id,(err,user)=>{
+      Register.findById(id,(err,user)=>{
        done(err,user)
      })
     }) 
@@ -122,7 +110,6 @@ passport.use(new passportLocal.Strategy({
    
   
    const response = {
-    "status": "Logged in",
     "user": token,
     "refreshToken": refreshToken,
     }
@@ -147,6 +134,26 @@ passport.use(new passportLocal.Strategy({
   })(req, res)
 })
 
+export const register = (async(req,res)=>{
+    const {name ,lastname , email ,password , userType} = req.body
+ 
+    const hashedPwd = await bcrypt.hash(password, 10);
+       
+ 
+   
+    const register =  new  Register({
+      name,
+      lastname,
+      email,
+      password:hashedPwd,
+      userType
+    })
+
+    await  register.save()
+
+    res.send("login")
+})
+
 
 export const getUSers = ((req,res)=>{  
 
@@ -162,7 +169,7 @@ export const getAdminInfo =  (async (req,res)=>{
    
     if(req.payload.user){
   
-    const adminlogin = await User.findById({_id:req.payload.user}).select('-password')
+    const adminlogin = await Register.findById({_id:req.payload.user}).select('-password')
   
     if(!adminlogin) return res.send('duq grancvac cheq');
     

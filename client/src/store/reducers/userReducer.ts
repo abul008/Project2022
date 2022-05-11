@@ -1,19 +1,35 @@
 import {UserAction,UserState,UserActionTypes} from "../types/user"
 
 const initialState: UserState = {
-    users: [],
+    users:{
+    name:"",
+    lastname:"",
+    email:"",
+    password:"",
+    userType:"",
+    _id:""
+    },
+    createUser:{
+        name:"",
+        lastname:"",
+        email:"",
+        password:"",
+        userType:""
+    },
     loading: true,
-    error: null
+    error: null,
 }
 
 export const userReducer = (state = initialState, action: UserAction): UserState => {
     switch (action.type) {
         case UserActionTypes.FETCH_USERS:
-            return {loading: true, error: null, users: []}
+            return {... state, loading: true, error: null, users: []}
         case UserActionTypes.FETCH_USERS_SUCCESS:
-            return {loading: false, error: null, users: action.payload}
+            return {... state, loading: false, error: null, users: action.payload}
         case UserActionTypes.FETCH_USERS_ERROR:
-            return {loading: false, error: action.payload, users: []}
+            return {... state, loading: false, error: action.payload, users: []}
+        case UserActionTypes.CREATE_USERS_SING_UP:
+            return {... state, createUser: action.payload}   
         default:
             return state
     }

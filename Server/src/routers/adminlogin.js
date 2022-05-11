@@ -1,6 +1,7 @@
 import express from "express";
 import {
     admilogin ,
+    register,
     getAdminInfo ,
     getUSers,
     refreshToken 
@@ -12,6 +13,7 @@ const router = express.Router();
 
 
 router.post('/login',   admilogin)
+router.post('/register', register )
 router.post('/refresh' , refreshToken)
 router.get('/getadmin/' ,verifyAccessToken, getAdminInfo)
 router.get('/getusers' , getUSers)

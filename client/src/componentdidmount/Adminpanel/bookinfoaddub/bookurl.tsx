@@ -1,8 +1,6 @@
-
-
 import {useTypedSelector} from "../../../hooks/userTypedSelector";
 import { useActions } from '../../../hooks/useActions';
-import { useEffect } from "react";
+import React,{ useEffect } from "react";
 
 
 
@@ -15,6 +13,7 @@ export const  BookinfoUrl:React.FC =()=>{
 
     useEffect(()=>{
         setBookPage({...data, get_absolute_url:`/book/${data.name_en}/`})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[data.name_en])
     
  

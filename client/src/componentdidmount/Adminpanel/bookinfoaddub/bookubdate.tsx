@@ -1,3 +1,4 @@
+import React,{ useState  ,useEffect} from "react";
 import {useTypedSelector} from "../../../hooks/userTypedSelector";
 import { useActions } from '../../../hooks/useActions';
 import {Bookinfoformname} from "./bookinfofromname";
@@ -8,11 +9,10 @@ import {BookinfoUrl} from "./bookurl";
 import {GeneralInfo} from "./generalinfo";
 import  {FormHead ,Form ,ButtonF } from "../formdesign/formdesign";
 import {Jodit} from "../joditReact/bookJodit";
-import Message from "../../proptypes/message";
+// import Message from "../../proptypes/message";
 import axios from "axios";
 import {useParams,useHistory} from "react-router-dom";
 import 'jodit/build/jodit.min.css';
-import { useState  ,useEffect} from "react";
 
 
 
@@ -23,7 +23,7 @@ export const BookinfoUbdate:React.FC = ()=>{
     const [coverAm,setCoverAm] = useState<string>("");
     const [coverRu,setCoverRu] = useState<string>("");
     const [coverEn,setCoverEn] = useState<string>("");
-    const [message, setMessage] = useState<string>('');
+    // const [message, setMessage] = useState<string>('');
     const {data} = useTypedSelector(state => state.book);
     const {setBookPage } = useActions();
     
@@ -34,14 +34,15 @@ export const BookinfoUbdate:React.FC = ()=>{
     useEffect(()=>{
        axios.get('/api/v1/getbookinfo')
        .then(res=>{
-          let bookFilter =  res.data.filter((filter: BookinformationCard) => filter._id === id)
+          const bookFilter =  res.data.filter((filter: BookinformationCard) => filter._id === id)
           setBookPage({...bookFilter[0]})
           setCoverAm(bookFilter[0] ? bookFilter[0].cover_am : undefined)  
           setCoverRu(bookFilter[0] ? bookFilter[0].cover_ru : undefined)  
           setCoverEn(bookFilter[0] ? bookFilter[0].cover_en : undefined)
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
-    let history = useHistory();
+    const history = useHistory();
     const cretebookinfo = async(e:React.FormEvent<HTMLFormElement>)=>{
      
        e.preventDefault()
@@ -62,7 +63,7 @@ export const BookinfoUbdate:React.FC = ()=>{
       <FormHead >
        <Form>
           <h3>Թարմացնել Գրքի ինֆորմացիան </h3>
-       {message ? <Message msg={message} /> : null}
+       {/* {message ? <Message msg={message} /> : null} */}
     <form onSubmit={cretebookinfo}>
        <Bookinfoformname />
        <Bookinfoformall />

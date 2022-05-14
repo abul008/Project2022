@@ -12,8 +12,9 @@ interface NavBackground {
 
 export const ChangeLanguage:React.FC   = () =>{
 const [navbackground , setNavbackground] = useState<NavBackground>({home:"",book:"" , about:"" ,profile:"",changelenguage:""});
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const [accessfield, setAccessfield] = useState<boolean>(false);
-const [changeflag , setChangeflag] = useState<boolean>(false);
+// const [changeflag , setChangeflag] = useState<boolean>(false);
 const [changelangcantrol, setChangelangcantrol] = useState<boolean>(false);
 
 
@@ -35,20 +36,20 @@ const lang = localStorage.getItem("lang") || "en";
          </div> 
          <div style={{display:changelangcantrol ? "flex" : "none" }} className="change-leng-cantrol">
            <div 
-              onClick={(e)=>{
+              onClick={()=>{
               localStorage.setItem("lang", "am" )
               window.location.reload()
            }}
        
             className="change-leng-cantrol-img" ><img src="/svgfolder/flagarm.svg"/></div>
                  <div
-             onClick={(e)=>{
+             onClick={()=>{
              localStorage.setItem("lang", "ru" )   
              window.location.reload()
            }}
             className="change-leng-cantrol-img" ><img src="/svgfolder/flagrus.svg"/></div>
            <div
-             onClick={(e)=>{
+             onClick={()=>{
              localStorage.setItem("lang", "en" )   
              window.location.reload()
            }}

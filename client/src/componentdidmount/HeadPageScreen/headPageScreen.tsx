@@ -1,4 +1,4 @@
-import {useEffect ,StrictMode, useState } from 'react';
+import React,{useEffect ,StrictMode } from 'react';
 import {Nav} from "../Nav/nav";
 import routes from '../config/routes';
 import { useActions } from '../../hooks/useActions';
@@ -16,7 +16,6 @@ import {
     Route
   } from "react-router-dom";
 import "./headPaheScreen.css";
-import routesadmin from '../config/routesadmin';
 
 
 
@@ -43,7 +42,7 @@ import routesadmin from '../config/routesadmin';
 
 //  functions(arrat)
 
-export const HeadPage:React.FC<any>=()=>{
+export const HeadPage:React.FC=()=>{
 
 
 
@@ -57,6 +56,7 @@ export const HeadPage:React.FC<any>=()=>{
          fetchUsers() 
       }
         setGetbookinfo()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
    
 

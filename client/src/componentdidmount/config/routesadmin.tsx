@@ -1,9 +1,6 @@
 import IRoute from '../InterFace/routes';
-import {Home} from "../HomePage/homePage";
-import { AdminPanel } from '../Adminpanel/adminhome/adminhome';
 import {Bookinfoadd} from "../Adminpanel/bookinfoaddub/createbookinfo";
 import {BookinfoUbdate} from "../Adminpanel/bookinfoaddub/bookubdate";
-
 import {BookTable} from "../Adminpanel/bookinfoaddub/bookinfotable";
 import {Homeinfo}  from "../Adminpanel/homeinfo/homeform";
 import {HomeTable} from "../Adminpanel/homeinfo/hometable";
@@ -11,7 +8,7 @@ import {CaruselTable} from "../Adminpanel/homeinfo/carduseltable";
 import {CaruselInfo} from "../Adminpanel/homeinfo/caruselimg";
 import {OrderTable} from "../Adminpanel/amdinorder/adminorder";
 import {Admindetalied} from "../Adminpanel/admindetaletion/detaliedinfo";
-import {ErrorPage} from "../Errorpage/Errorpage"
+
 
 const routesadmin:IRoute[] = [
     

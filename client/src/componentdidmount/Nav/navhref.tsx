@@ -1,3 +1,4 @@
+import React from "react";
 import { Link , NavLink } from "react-router-dom";
 import "./navhref.css";
 import {SvgLogo} from "../svgicon/svg"
@@ -17,6 +18,7 @@ export const Navhref:React.FC = ()=>{
       
     
     return( 
+        <div className="nav-ul_cantrol">
         <ul>
             <li>
                 <NavLink
@@ -47,5 +49,6 @@ export const Navhref:React.FC = ()=>{
                 </Link>
             </li> 
         </ul>
+     </div>
     )
 }

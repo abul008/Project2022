@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React , { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import i18next from "i18next";
 import { changelenguage } from "../helpers/auth";
 import {BookinformationCard} from "../InterFace/bookPageInterface";
@@ -25,19 +26,19 @@ interface Detalied{
 
 
 
-export const Detailedinformation = ({match}:any) =>{
+export const Detailedinformation:React.FC = () =>{
     
 
     const [detalieddata , setDetalieddata]= useState<Detalied[]>()
     const [headimg , setHeadimg] = useState<  number>(0)
-    
+    const { id } = useParams <{id?: string  | undefined}>();
     
 
     useEffect(()=>{
          axios.get('/api/v1/getbookinfo')
          .then(res=>{
           setDetalieddata(res.data.filter((filter:BookinformationCard)=>
-          filter._id === match.params.id
+          filter._id === id
           ).map((data:BookinformationCard)=>{
             return{
               id:data._id,
@@ -55,6 +56,7 @@ export const Detailedinformation = ({match}:any) =>{
           })
         
           )})
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
     
 

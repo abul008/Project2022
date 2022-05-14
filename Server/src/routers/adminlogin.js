@@ -1,9 +1,8 @@
 import express from "express";
 import {
-    admilogin ,
+    loginPage ,
     register,
-    getAdminInfo ,
-    getUSers,
+    getUserInfo ,
     refreshToken 
 } from "../controllers/adminlogin.js";
 import {verifyAccessToken} from "../helpers/jwt.helpers.js"
@@ -12,10 +11,10 @@ const router = express.Router();
 
 
 
-router.post('/login',   admilogin)
+router.post('/login',   loginPage)
 router.post('/register', register )
 router.post('/refresh' , refreshToken)
-router.get('/getadmin/' ,verifyAccessToken, getAdminInfo)
-router.get('/getusers' , getUSers)
+router.get('/getadmin/' ,verifyAccessToken, getUserInfo)
+
 
 export const adminroutes = router

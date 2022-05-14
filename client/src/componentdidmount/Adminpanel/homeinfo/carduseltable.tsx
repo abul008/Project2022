@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {AdminTableThead} from "../table/admintablethead";
 import {AdminTableTbody} from "../table/adminTabletTbody";
@@ -19,6 +19,7 @@ export const CaruselTable:React.FC = ()=>{
       setCaruselable(res.data)
       setViewLoader(true)
     })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   

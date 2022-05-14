@@ -1,20 +1,29 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios"
 import React, { useEffect } from "react"
+import { useParams  }  from "react-router-dom";
 import {Orderinfo} from "./orderinfo";
-import {OrderDetliedCard} from "./card/ordercard"
+import {OrderDetliedCard} from "./card/ordercard";
+import {Order} from "../../InterFace/order";
 import { useActions } from '../../../hooks/useActions';
-import { useTypedSelector } from "../../../hooks/userTypedSelector";
 import "./detaliedinfo.css"
 
 
-export const Admindetalied:React.FC<any> =({match})=>{
+export const Admindetalied:React.FC =()=>{
+  
   
     const {setTablePage} = useActions()
-
+    
+    const { id } = useParams <{id?: string  | undefined}>();
+    
+   
 
     useEffect(()=>{
        axios.get('/api/v1/getorder')
-       .then(res=>setTablePage(res.data.filter((filter:any)=>filter._id === match.params.id)))
+       .then(res=>{
+          const filterik = res.data.filter((filter:Order)=>filter._id === id)
+         setTablePage(filterik)
+      })
     },[])
 
     

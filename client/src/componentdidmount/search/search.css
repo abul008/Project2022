@@ -77,6 +77,12 @@
     border-right: 1px solid #6b6b6b;
     padding: 13px 13px 14px 17px;
   }
+
+  @media screen and (max-width: 681px) {
+    .search-page{
+      width: 100%;
+    }
+  }
  
 
 

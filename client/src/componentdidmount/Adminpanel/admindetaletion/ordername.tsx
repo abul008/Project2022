@@ -1,10 +1,9 @@
-import axios from "axios"
-import React, { useEffect } from "react"
+import React from "react"
 import {useTypedSelector} from "../../../hooks/userTypedSelector";
 
 
 
-export const Ordername:React.FC<any> =({match})=>{
+export const Ordername:React.FC =()=>{
   
 
     const {tabledata} = useTypedSelector(state => state.table)

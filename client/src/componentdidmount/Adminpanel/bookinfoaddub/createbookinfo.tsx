@@ -1,5 +1,5 @@
+import React,{ useState  } from "react";
 import {useTypedSelector} from "../../../hooks/userTypedSelector";
-import { useActions } from '../../../hooks/useActions';
 import {Bookinfoformname} from "./bookinfofromname";
 import {Bookauthorname} from "./bookauthorname";
 import {Bookinfoformall} from "./bookinforamtionall";
@@ -12,18 +12,17 @@ import Progress from '../../proptypes/proptypes';
 import Message from "../../proptypes/message";
 import axios from "axios";
 import 'jodit/build/jodit.min.css';
-import { useState  } from "react";
 
 
 
-export const Bookinfoadd:React.FC<any> = ({match})=>{
+export const Bookinfoadd:React.FC = ()=>{
 
    
-    const {setTodoPage ,timerstop} = useActions()
+    // const {setTodoPage ,timerstop} = useActions()
     const [coverAm,setCoverAm] = useState<string>("")
     const [coverRu,setCoverRu] = useState<string>("")
     const [coverEn,setCoverEn] = useState<string>("")
-    const [uploadedFile ,setUploadedFile] = useState<any>({});
+    // const [uploadedFile ,setUploadedFile] = useState<any>({});
     const [uploadPercentage, setUploadPercentage] = useState<number>(0);
     const [message, setMessage] = useState<string>('');
     const {data} = useTypedSelector(state => state.book)
@@ -35,7 +34,7 @@ export const Bookinfoadd:React.FC<any> = ({match})=>{
    //     .then(res=> console.log(res.data))
    //  },[])
 
-   console.log(coverAm , coverRu,coverEn)
+
 
     const cretebookinfo = async(e:React.FormEvent<HTMLFormElement>)=>{
      
@@ -140,14 +139,14 @@ export const Bookinfoadd:React.FC<any> = ({match})=>{
        <ButtonF>send</ButtonF>
     </form>
     <Progress percentage={uploadPercentage} />
-    {uploadedFile ? (
+    {/* {uploadedFile ? (
         <div className='row mt-5'>
           <div className='col-md-6 m-auto'>
             <h3 className='text-center'>{uploadedFile.fileName}</h3>
-            {/* <img style={{ width: '100%' }} src={require("/media/bookfoto/1646856043961.JPG")} alt='name' /> */}
+            <img style={{ width: '100%' }} src={require("/media/bookfoto/1646856043961.JPG")} alt='name' />
           </div>
         </div>
-      ) : null}
+      ) : null} */}
       </Form>
     </FormHead>
     )

@@ -31,7 +31,13 @@ export const setGetbookinfo = () => {
         } catch (e) {
             dispatch({
                 type: HomeActionTypes.HOME_GET_INFO,
-                payload: 'Произошла ошибка при загрузке списка дел'
+                _payload: 'Произошла ошибка при загрузке списка дел',
+                get payload() {
+                    return this._payload;
+                },
+                set payload(value) {
+                    this._payload = value;
+                },
             })
         }
     }

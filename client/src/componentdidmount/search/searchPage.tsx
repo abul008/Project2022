@@ -1,6 +1,6 @@
 import axios from "axios";
-import { changelenguage } from "../helpers/auth";
-import "./searchpage.css"
+import "./searchpage.css";
+import { useParams } from "react-router-dom";
 import {BookinformationCard , FilesHref} from "../InterFace/bookPageInterface";
 import React, { useEffect ,useState} from "react";
 import {CardJson} from "../InterFace/card"
@@ -9,11 +9,14 @@ import { Card } from "../card/card";
 
 
 
-export const Searchresult:React.FC = ({match}:any)=>{
+export const Searchresult:React.FC = ()=>{
     
   const [searchResultsData, setSearchResultsData] = useState<CardJson[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { id } = useParams <{id?: any}>();
+    const searchTerm = id
 
-    const searchTerm = match.params.id
+
 
     useEffect(()=>{
  
@@ -60,6 +63,7 @@ export const Searchresult:React.FC = ({match}:any)=>{
             clearTimeout(handle)
           }
  
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
 

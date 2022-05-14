@@ -3,7 +3,7 @@ import React,{useEffect} from "react";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import ReactDom from 'react-dom'
 
-export const Loadpage:React.FC<any>=()=>{
+export const Loadpage:React.FC=()=>{
 
   
 
@@ -20,6 +20,7 @@ export const Loadpage:React.FC<any>=()=>{
     return () => {
       document.body.removeChild(container)
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
 

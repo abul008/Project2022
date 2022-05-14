@@ -22,7 +22,7 @@ export const OrderDetliedCard:React.FC =()=>{
     return(
        <div className="order-card-wrapper">
                 {
-                tabledata[0] ? tabledata[0].order.map((data, index)=>{
+                tabledata[0] ? tabledata[0].order.map((data)=>{
                    return(
                     <div key={data._id} className="order-card">
                        <OrderImg  src={data.filename} /> 

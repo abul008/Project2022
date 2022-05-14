@@ -5,22 +5,18 @@ export interface User{
     email:string,
     password:string,
     userType:string,
+    photo_url:string,
     _id:string
 }
 
-export interface CreateUsers{
-    name:string,
-    lastname:string,
-    email:string,
-    password:string,
-    userType:string
-}
+
 
 export interface UserState{
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     users:any,
     loading:boolean,
     error: null | string,
-    createUser:CreateUsers,
+    createUser:User,
     // create:string
 }
 
@@ -37,6 +33,7 @@ interface FetchUsersAction{
 }
 interface FetchUsersSuccessAction{
     type:UserActionTypes.FETCH_USERS_SUCCESS;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     payload:any
 }
 interface FetchUsersErrorAction{

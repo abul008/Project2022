@@ -1,13 +1,15 @@
-import { useState } from "react";
+import React,{ useState } from "react";
 import "./caruselimg.css";
 import {FormHead, Form, ButtonF} from "../formdesign/formdesign"
 import axios from "axios";
 
+
+
 export const CaruselInfo = () =>{
     const [absolutUrl , setAbsolutUrl] = useState<string>("")
-    const [file , setFile] = useState<any>([])
-
-    const onChange = (e: React.ChangeEvent<HTMLInputElement >)=>{
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const [file , setFile] = useState<any >()
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
         setFile(e.target.files)
     }
     
@@ -32,7 +34,7 @@ export const CaruselInfo = () =>{
                    'Content-Type': "multipart/form-data"
                },
             })
-
+             console.log(res.data)
             window.location.reload();
    
            //  setUploadedFile({fileName, filePath}) 
@@ -41,6 +43,8 @@ export const CaruselInfo = () =>{
              console.log(error)
           }
     }
+
+
 
     return(
         < FormHead>

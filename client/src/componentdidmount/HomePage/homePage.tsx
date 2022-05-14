@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios"
-import { useEffect, useState } from "react"
+import React,{ useEffect, useState } from "react"
 import {Carusel} from "../CaruselScreen/carusel";
 import {Card} from "../card/card";
 import "./homePage.css";
@@ -60,6 +61,7 @@ export const Home:React.FC = ()=>{
         )
         setViewLoader(true)
       })
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       },[])
   
    

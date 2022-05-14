@@ -1,4 +1,5 @@
 export interface Homeinfo{
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     file:any,
     absalute_url:string,
     phone_number:string,
@@ -13,13 +14,22 @@ export interface Homeinfo{
     _id:string
 }
 
+// export interface FilesHref{
+//     fileName:string,
+//     fileHreaf:string,
+//     filePath:string,
+//     fileType:string,
+//     fileSize:string
+//   }
+
+
 
 export interface Homestate{
     data:Homeinfo
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     getHomedata:Homeinfo[]
     quantity:number,
     loaderpage:boolean
-
 }
 
 export enum HomeActionTypes {
@@ -32,12 +42,12 @@ export enum HomeActionTypes {
 
 interface HomeAddInfoAction {
     type: HomeActionTypes.HOME_ADD_INFO;
-    payload: Homeinfo;
+    payload: Homeinfo ;
 }
 
 interface BookGetInfoAction {
     type: HomeActionTypes.HOME_GET_INFO;
-    payload: any;
+    payload: Homeinfo[];
 }
 
 interface HomequanitityAction {

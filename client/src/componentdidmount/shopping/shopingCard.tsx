@@ -1,9 +1,9 @@
-import {  useState } from "react";
+import React,{  useState } from "react";
 import "./shopingCard.css";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import {productdatas} from "../helpers/auth";
 import { useActions } from '../../hooks/useActions';
-import "./shoppingList.css"
+import "./shoppingList.css";
 
 
 
@@ -30,7 +30,7 @@ export const ShopingCard:React.FC<ShopingCardTyp> = ({
     
     const [counts , setCounts] = useState(count)
    
-    let array:string[] = productdatas() 
+    const array:string[] = productdatas() 
 
   
    
@@ -46,10 +46,10 @@ export const ShopingCard:React.FC<ShopingCardTyp> = ({
                       </div>
                        <div className="shop-list-count">
                           <button
-                          disabled={counts  <= 0 ? true  : false}
+                          disabled={counts  <= 1 ? true  : false}
                           onClick={()=>{  
                             setCounts(counts - 1)
-                           let indexdelete:number = array.findIndex((element:string) => element === _id)
+                           const indexdelete:number = array.findIndex((element:string) => element === _id)
                            if (indexdelete > -1) {
                             array.splice(indexdelete, 1).reverse()
                            }

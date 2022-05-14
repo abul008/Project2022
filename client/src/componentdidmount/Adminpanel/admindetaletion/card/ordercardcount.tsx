@@ -2,7 +2,7 @@ import React from "react"
 
 
 interface Price{
-   count:string
+   count:number
 }
 
 export const OrderCardCount:React.FC<Price> =({count})=>{

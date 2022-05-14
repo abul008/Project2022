@@ -7,10 +7,10 @@ import "./contact.css" ;
 
 
 
-interface typeshref{
-    footerhref:string,
-    footername:string
-}
+// interface typeshref{
+//     footerhref:string,
+//     footername:string
+// }
 export const FooterContactlink:React.FC = () =>{
 
 

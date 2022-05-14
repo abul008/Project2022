@@ -23,6 +23,11 @@ const register = new Schema({
         type:String,
         required:true
     },
+    photo_url:{
+        type:String,
+        required:false
+    }
+    
 },{titmestamps:true})
 
 

@@ -1,3 +1,4 @@
+import React from "react";
 import "./Errorpage.css";
 
 export const ErrorPage = ()=>{

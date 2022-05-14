@@ -1,15 +1,13 @@
-import axios from "axios"
-import React, { useEffect } from "react"
+
+import React  from "react"
 import {Ordername} from "./ordername";
 import {OrderContact} from "./ordercantact";
 import { OrderCountPrice } from "./orderCountPrice";
-import {useTypedSelector} from "../../../hooks/userTypedSelector";
-import { useActions } from '../../../hooks/useActions';
 
 
-export const Orderinfo:React.FC<any> =({match})=>{
+export const Orderinfo:React.FC =()=>{
   
-    const {setTablePage} = useActions()
+
 
 
     

@@ -1,9 +1,9 @@
-import { useEffect, useState  } from "react";
+import React,{ useEffect, useState  } from "react";
 import "./shoppingList.css";
-import {useTypedSelector} from "../../hooks/userTypedSelector";
 import {changelenguage} from "../helpers/auth";
 import {BookinformationCard } from "../InterFace/bookPageInterface";
 import axios from "axios";
+// import { useParams } from "react-router-dom";
 import {productdatas} from "../helpers/auth";
 import { useActions } from '../../hooks/useActions';
 import {ShopingCard} from "./shopingCard";
@@ -15,51 +15,64 @@ import i18next from "i18next";
 
 
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const ShopingList:React.FC<any> = ({match}) =>{
 
   
 
     const {setViewLoader} = useActions()
+    // const { page } = useParams <{page?: string  | undefined}>();
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [currentPage , setCurrentPage] = useState<number>(match.params.page);
-    const [postsPerPage, setPostsPerPage] = useState<number>(7);
+    const [postsPerPage] = React.useState<number>(7)
     const [formview , setFormview] = useState<boolean>(false)
 
     const [shoplist , setShoplist] = useState<ShopingTable[]>([])
-   
-    let array:string[] = productdatas() 
+    const array:string[] = productdatas() 
       
-    
+   
+  
 
       useEffect(()=>{
-        setViewLoader(false)
-        axios.get('/api/v1/getbookinfo')
-        .then(res=>{
-          let map:string[] = array.reduce(function(prev:any, cur:string) {
-           prev[cur] = (prev[cur]  || 0 ) + 1 ;
-           return prev
-          }, {});
-        let shopdata:ShopingTable[] = []      
-        for (const property in map) {
-         let filtershoplist =  res.data.filter((filter:BookinformationCard)=>
-           {return filter._id  === property})
-           .map((data:ShopingTable)=>{
-           return{
-             name:changelenguage(data,"name"),
-             author:changelenguage(data,"author"),
-             _id:data._id,
-             count:map[property],
-             price:data.price,
-             filename:data.files[0] ? data.files[0].fileHreaf : undefined
-           }
-         })  
-            shopdata =  [...shopdata , ...filtershoplist]   
-         }    
-         setShoplist(shopdata)
-         setViewLoader(true)
-       })
-      },[formview])
+      
+      
+          setViewLoader(false)
+          axios.get('/api/v1/getbookinfo')
+          .then(res=>{
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const map:string[] = array.reduce(function(prev:any, cur:string) {
+              prev[cur] = (prev[cur]  || 0 ) + 1 ;
+              return prev
+             }, {});
+          let shopdata:ShopingTable[] = []      
+          for (const property in map) {
+           const filtershoplist =  res.data.filter((filter:BookinformationCard)=>
+             {return filter._id  === property})
+             .map((data:ShopingTable)=>{
+             return{
+               name:changelenguage(data,"name"),
+               author:changelenguage(data,"author"),
+               _id:data._id,
+               count:map[property],
+               price:data.price,
+               filename:data.files[0] ? data.files[0].fileHreaf : undefined
+             }
+           })  
+              shopdata =  [...shopdata , ...filtershoplist]   
+           }    
+           setShoplist(shopdata)
+           setViewLoader(true)
+         })
+
+         
+
+       
+     
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      },[])
 
 
+      if(!array[0]) return null
     
   
    const indexOfLastPost = match.params.page * postsPerPage;

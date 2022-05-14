@@ -3,8 +3,6 @@ import {changelenguage} from "../helpers/auth";
 import {CardJson} from "../InterFace/card";
 import {SvgBasket} from "../svgicon/svg";
 import {productdatas , orderDataCount} from "../helpers/auth";
-import { BookinformationCard } from "../InterFace/bookPageInterface";
-// import {Discounticon} from "../cssicons/cssicons";
 import {DiscountCard} from "./carddiscount";
 import {PriceCard} from "./cardprice";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
@@ -28,11 +26,12 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
 
   const {quantity} = useTypedSelector(state => state.home)
   const {setChangequantity} = useActions()
-  let array:string[] = productdatas()
-  
+  const array:string[] = productdatas()
+
+ 
 
 
-
+console.log(carddata)
       
 
     return(
@@ -61,7 +60,7 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
             <div  className="page-product-card-head-settings">
             <div className="page-product-card-top-cantrol">
 
-            <a className="page-product-card-hrefA" target="_blank" href={ data.cardurl  + data.id}>  
+            <a className="page-product-card-hrefA" target="blank" href={ data.cardurl  + data.id}>  
             <span className="page-product-cards-linkimg-witdh" style={{backgroundImage:`url(${data.cardfile[0]})`}}></span>  
             </a>    
             <div id="link" className="page-product-card-link-information"><a href={"/home/techniquenav/product/"}>{changelenguage(data , 'cardauthor') }</a>  <span>

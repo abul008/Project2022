@@ -1,5 +1,5 @@
 import React from "react";
-import {Discounticon} from "../cssicons/cssicons";
+
 
 interface DiscountCard{
     price:string,
@@ -7,7 +7,8 @@ interface DiscountCard{
 
 }
 
-export const PriceCard:React.FC<DiscountCard > = React.memo(({discount , price})=>{
+ // eslint-disable-next-line react/display-name
+ export const PriceCard:React.FC<DiscountCard> = React.memo(({discount , price})=>{
     
     if(!discount) return <div className="page-product-cards-bottom"><b>{price}AMD</b></div>
     
@@ -18,3 +19,4 @@ export const PriceCard:React.FC<DiscountCard > = React.memo(({discount , price})
     </div> 
     )
 })
+

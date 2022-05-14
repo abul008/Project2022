@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import { UserAction, UserActionTypes ,CreateUsers} from "../types/user";
+import { UserAction, UserActionTypes ,User} from "../types/user";
 import axiosInstance from "../../componentdidmount/utils/axiosInstance";
 
 
@@ -19,7 +19,7 @@ export const fetchUsers = () => {
     }
 }
 
-export const setCreateUser = (createUser:CreateUsers)=>{
+export const setCreateUser = (createUser:User)=>{
     return{
         type:UserActionTypes.CREATE_USERS_SING_UP,
         payload:createUser

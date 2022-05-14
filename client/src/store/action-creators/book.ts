@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ActionCreator, Dispatch } from 'redux';
+import {  Dispatch } from 'redux';
 import {BookAction, BookActionTypes ,Bookinfo} from "../types/book";
 
 export function setBookPage(bookdata: Bookinfo): BookAction {

@@ -1,9 +1,10 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import {AdminTableThead} from "../table/admintablethead";
 import {AdminTableTbody} from "../table/adminTabletTbody";
 import {TableStyle} from "../amdinorder/ordertable/tablestyle";
 import {useTypedSelector} from "../../../hooks/userTypedSelector";
-import {ErrorPage} from "../../Errorpage/Errorpage";
+// import {ErrorPage} from "../../Errorpage/Errorpage";
 export const HomeTable:React.FC = ()=>{
 
     const {getHomedata} = useTypedSelector(state => state.home)
@@ -14,7 +15,7 @@ export const HomeTable:React.FC = ()=>{
    
     return( 
         < >
-         <Link to="/webadmin/home/add">Ավելացնել ինֆորմացիա</Link>
+         <Link data-testid="createHrefHome" to="/webadmin/home/add">Ավելացնել ինֆորմացիա</Link>
          <TableStyle>
             <AdminTableThead 
             titleone="Հեռախոսահամար" titletwo="Հեռախոսահամար" titlwtree="էլ- հասցե" titlefour="ամսաթիվ" titlefive="ավելին" 

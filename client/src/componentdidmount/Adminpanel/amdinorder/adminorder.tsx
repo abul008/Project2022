@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 // import {Table} from "./ordertable/table";
 // // import {TableStyle} from "./"
 // import {useTypedSelector} from "../../../hooks/userTypedSelector";
@@ -30,7 +31,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {BookinformationCard} from "../../InterFace/bookPageInterface";
 import {Tableinfo} from "../../InterFace/table";
 import {AdminTableThead} from "../table/admintablethead";
 import {AdminTableTbody} from "../table/adminTabletTbody";
@@ -50,6 +50,7 @@ export const OrderTable:React.FC = ()=>{
       setOrdertable(res.data)
       setViewLoader(true)
     })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
     
 

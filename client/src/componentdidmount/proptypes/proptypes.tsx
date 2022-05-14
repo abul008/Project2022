@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 interface PropT{
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     percentage:any
 }
 

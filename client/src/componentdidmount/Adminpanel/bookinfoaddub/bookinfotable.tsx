@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React,{ useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {BookinformationCard} from "../../InterFace/bookPageInterface";
 import {AdminTableThead} from "../table/admintablethead";
@@ -19,6 +19,7 @@ export const BookTable:React.FC = ()=>{
       setBooktable(res.data)
       setViewLoader(true)
     })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   
@@ -26,7 +27,7 @@ export const BookTable:React.FC = ()=>{
 
     return( 
         < >
-         <Link to="/webadmin/book/create">Ավելացնել ինֆորմացիա</Link>
+         <Link to="/webadmin/book/create" data-testid="createBook"  >Ավելացնել ինֆորմացիա</Link>
          <TableStyle>
             <AdminTableThead 
             titleone="Անուն" titletwo="Հեղինակ" titlwtree="Լեզու" titlefour="ամսաթիվ" titlefive="ավելին" 

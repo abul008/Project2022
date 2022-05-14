@@ -1,4 +1,4 @@
-import {useTypedSelector} from "../../hooks/userTypedSelector";
+import React from "react";
 import { useActions } from '../../hooks/useActions';
 import { useEffect, useState } from "react";
 import { BookinformationCard , FilesHref } from "../InterFace/bookPageInterface";
@@ -9,8 +9,7 @@ import axios from "axios";
 export const BookProduct:React.FC = ()=>{
    
 
-    const {getBookdata} = useTypedSelector(state => state.book)
-    const {fetchTodos} = useActions()
+
     const [bookdata , setBookdata] = useState<CardJson[]>([])
     const {setViewLoader} = useActions()
     
@@ -36,6 +35,7 @@ export const BookProduct:React.FC = ()=>{
        }))
        setViewLoader(true)
     })       
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     return( 

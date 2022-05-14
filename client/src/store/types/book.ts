@@ -17,9 +17,13 @@ export interface Bookinfo{
     cover_en:string,
     date:string,
     get_absolute_url:string,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     file:any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     getbookdata:any
 }
+
+
 
 // export interface GetBookInfo{
 //     getBookdata:any
@@ -31,6 +35,7 @@ export interface FetchBookdata{
 }
 export interface bookstate{
     data:Bookinfo,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     getBookdata:any
 }
 
@@ -47,6 +52,7 @@ interface BookAddInfoAction {
 
 interface BookGetInfoAction {
     type: BookActionTypes.BOOK_GET_INFO;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     payload: any;
 }
 export type BookAction =

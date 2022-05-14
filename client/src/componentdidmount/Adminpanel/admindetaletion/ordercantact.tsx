@@ -1,12 +1,11 @@
 
-import React, { useEffect } from "react"
+import React from "react"
 import {useTypedSelector} from "../../../hooks/userTypedSelector";
-import { useActions } from '../../../hooks/useActions';
 
 
-export const OrderContact:React.FC<any> =({match})=>{
+export const OrderContact:React.FC =()=>{
   
-    const {setTablePage} = useActions()
+
     const {tabledata} = useTypedSelector(state => state.table)
   
 

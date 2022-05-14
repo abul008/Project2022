@@ -1,4 +1,3 @@
-import {User} from "../models/login.js";
 import passport from "passport";
 import  JWT  from "jsonwebtoken";
 import bcrypt from "bcrypt";
@@ -57,10 +56,14 @@ passport.use(new passportLocal.Strategy({
     
     JWT.verify(refreshToken, process.env.TOKEN_RAFRESH,  async (err, user) => {
       err && console.log(err);
+       
+      try{
 
   
       const newAccessToken = generateAccessToken({user:user.user});
       const newRefreshToken = createRefreshToken({user:user.user});
+
+      if(!(newAccessToken && newRefreshToken)) return res.status(401).json("Сheck your login details")
        
       const UserTokenFind = UserToken.findOneAndUpdate({userId:user.user} , {
         userId:user.user,
@@ -80,13 +83,18 @@ passport.use(new passportLocal.Strategy({
         user: newAccessToken,
         refreshToken: newRefreshToken,
       });
+
+    }catch(error){
+      res.send(error.message)
+    } 
     });
+    
   
 
   }
  )   
   
- export const admilogin = (async (req,res)=>{
+ export const loginPage = (async (req,res)=>{
   passport.authenticate('local',async (error,user,info)=>{
             if (error) {
       return res.status(500).json({
@@ -123,10 +131,7 @@ passport.use(new passportLocal.Strategy({
      
   
 
-
     req.session.userid = response
-
-    
 
   
     return res.json(req.session.userid);
@@ -135,44 +140,34 @@ passport.use(new passportLocal.Strategy({
 })
 
 export const register = (async(req,res)=>{
-    const {name ,lastname , email ,password , userType} = req.body
+    const {name ,lastname , email ,password , userType , photo_url} = req.body
  
     const hashedPwd = await bcrypt.hash(password, 10);
        
- 
+    
    
     const register =  new  Register({
       name,
       lastname,
       email,
       password:hashedPwd,
-      userType
+      userType,
+      photo_url
     })
 
     await  register.save()
 
-    res.send("login")
+    res.send("Registration completed successfully")
 })
 
 
-export const getUSers = ((req,res)=>{  
-
-  req.session.user = "hello"
-   res.send(req.session)
-})
-
-
-// console.log(verifyAccessToken())
-
-export const getAdminInfo =  (async (req,res)=>{
+export const getUserInfo =  (async (req,res)=>{
   try{
    
     if(req.payload.user){
   
     const adminlogin = await Register.findById({_id:req.payload.user}).select('-password')
-  
-    if(!adminlogin) return res.send('duq grancvac cheq');
-    
+      
 
     if(adminlogin){
       req.session.user = adminlogin
@@ -180,10 +175,10 @@ export const getAdminInfo =  (async (req,res)=>{
     }
   }    
 
-  res.send('duq grancvac cheq')
+  res.send('try again')
 
 }catch(error){
-  res.status(400).send({name:"grancvac cheq"})
+  res.status(400).send({name:"The query did not work"})
 }
 }
 )

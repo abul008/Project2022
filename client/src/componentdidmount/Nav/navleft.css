@@ -1,0 +1,15 @@
+.nav-left_{
+    position: relative;
+    display: flex;
+    /* align-items: center; */
+    width: 36%;
+    width: 380px;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  @media screen and (max-width: 681px) {
+    .nav-left_{
+      width: 100%;
+    }
+  }

@@ -1,5 +1,6 @@
 // /// <reference path="./definitions/definitions.d.ts" />
 // declare let __webpack_public_path__;
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {Provider} from "react-redux";

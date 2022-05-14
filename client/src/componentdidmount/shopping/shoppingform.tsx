@@ -1,10 +1,7 @@
-import {SvgShop} from "../svgicon/svg";
 import React, { useState ,useEffect} from "react";
 import ReactDom from 'react-dom'
 import CSS from 'csstype';
 import "./shoppingform.css";
-import {useTypedSelector} from "../../hooks/userTypedSelector";
-import { useActions } from '../../hooks/useActions';
 import i18next from "i18next";
 import axios from "axios";
 import {ShopingTable} from "../InterFace/shopList";
@@ -54,6 +51,7 @@ export const  ShopForm:React.FC<ShopForm> = ({data   ,clossClick ,open})=>{
       return () => {
         document.body.removeChild(Formcontainer)
       }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
 
@@ -68,14 +66,10 @@ export const  ShopForm:React.FC<ShopForm> = ({data   ,clossClick ,open})=>{
 
 const SendOrder = async (e:React.FormEvent<HTMLFormElement>)=>{
   e.preventDefault();
-  const config:any = {
-    header: {
-      'Content-Type': 'application/json'
-    },
-  };
+ 
   
 
-  let datas:FormType = {
+  const datas:FormType = {
    name:formdata.name,
    lastname:formdata.lastname,
    phone:formdata.phone,

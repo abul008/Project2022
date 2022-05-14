@@ -26,7 +26,10 @@ const axiosInstance = axios.create({
     headers:{authorization: `Bearer ${authTokens?.user}`}
 });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 axiosInstance.interceptors.request.use(async (req:any)=>{
+
+  
     if(!authTokens){
        authTokens = localStorage.getItem('acessToken') ? JSON.parse(localStorage.getItem('acessToken') || "") : null
        req.headers.authorization = `Barer ${authTokens.user}` 
@@ -39,6 +42,7 @@ axiosInstance.interceptors.request.use(async (req:any)=>{
     if(!isExpried) return req
 
       const res = await axios.post("/api/v1/refresh/", { token:authTokens.refreshToken });
+     
       localStorage.setItem( "acessToken",JSON.stringify(res.data))
       req.headers.authorization = `Barer ${res.data.user}`
     return req

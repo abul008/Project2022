@@ -1,4 +1,4 @@
-import { string } from "prop-types"
+
 
 export interface Tableinfo{
     email: string
@@ -18,7 +18,7 @@ export interface Tableinfo{
 
  export interface TableOrder{
     author: string
-    count:  string
+    count:  number
     filename: string
     name: string
     price: string

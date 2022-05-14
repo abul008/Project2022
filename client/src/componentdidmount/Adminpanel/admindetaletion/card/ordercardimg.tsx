@@ -1,5 +1,4 @@
 import React from "react"
-import {useTypedSelector} from "../../../../hooks/userTypedSelector";
 import "./ordercardimg.css"
 
 interface Src{
@@ -9,7 +8,7 @@ interface Src{
 export const OrderImg:React.FC<Src> =({src})=>{
   
 
-    const {tabledata} = useTypedSelector(state => state.table)
+
 
     
 

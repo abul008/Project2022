@@ -1,5 +1,4 @@
 import {Tablestate,TableActionTypes , TableAction} from "../types/table";
-import {productdatas} from "../../componentdidmount/helpers/auth";
 
 
 

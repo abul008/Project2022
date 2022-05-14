@@ -7,6 +7,7 @@ const initialState: UserState = {
     email:"",
     password:"",
     userType:"",
+    photo_url:"",
     _id:""
     },
     createUser:{
@@ -14,7 +15,9 @@ const initialState: UserState = {
         lastname:"",
         email:"",
         password:"",
-        userType:""
+        userType:"",
+        photo_url:"",
+       _id:""
     },
     loading: true,
     error: null,

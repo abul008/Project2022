@@ -1,4 +1,5 @@
 export interface TodoState {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     todos: any[];
     loading: boolean;
     error: null | string;
@@ -17,6 +18,7 @@ interface FetchTodoAction {
 }
 interface FetchTodoSuccessAction {
     type: TodoActionTypes.FETCH_TODOS_SUCCESS;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     payload: any[];
 }
 interface FetchTodoErrorAction {

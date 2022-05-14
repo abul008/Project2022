@@ -1,10 +1,14 @@
 
 const path = require('path')
+// import path from "path";
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const srcPath = path.join(__dirname, '..', 'media')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin')
+// const srcPath = path.join(__dirname, '..', 'media')
 
 const cssLoaders =(exstra)=>{
  
@@ -24,11 +28,11 @@ const cssLoaders =(exstra)=>{
 }
 
 
-const rules = []
+// const rules = []
 
-const includePaths = [
-  srcPath
-]
+// const includePaths = [
+//   srcPath
+// ]
 
 module.exports = {
   // context:path.resolve(__dirname, '/src'),
@@ -51,6 +55,13 @@ module.exports = {
         use: [
           {
             loader: 'babel-loader',
+            options: {
+              presets: [
+                "@babel/preset-env",
+                ["@babel/preset-react", {"runtime": "automatic"}],
+                "@babel/preset-typescript",
+              ],
+            },
           },
         ],
       },
@@ -110,7 +121,12 @@ module.exports = {
     new CleanWebpackPlugin(),  //Լռելյայնորեն, այս փլագինը կհեռացնի բոլոր ֆայլերը վեբ փաթեթի output.pathգրացուցակում, ինչպես նաև վեբ փաթեթի բոլոր չօգտագործված ակտիվները յուրաքանչյուր հաջող վերակառուցումից հետո:
     new MiniCssExtractPlugin({
       filename:"[name].[contenthash].css"
-    })
+    }),
+    new ForkTsCheckerWebpackPlugin({ async:false}),
+    new ESLintPlugin({
+      extensions: [ "js","jsx", "ts", "tsx"],
+    }),
+    
   ],
   stats: 'errors-only',
 } 

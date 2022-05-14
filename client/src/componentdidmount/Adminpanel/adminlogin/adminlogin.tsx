@@ -1,4 +1,4 @@
-import {  useState } from "react"
+import React,{  useState } from "react"
 import axios from "axios"
 import { useActions } from "../../../hooks/useActions";
 import "./adminlogin.css";
@@ -13,7 +13,7 @@ export const AdminLogin:React.FC = ()=>{
     const [adminlogin ,setAdminlogin] = useState<Login>({email:"" , password:""})
     // const {} = useTypedSelector(state =>state.home)
     const {setViewLoader} = useActions()
-    let history = useHistory();
+    const history = useHistory();
 
 
     const logininfo = async(e: React.FormEvent<HTMLFormElement>)=>{
@@ -53,7 +53,7 @@ export const AdminLogin:React.FC = ()=>{
                  type="password" 
                  placeholder="password"
                   />
-                  <button>send</button>
+                  <button type="submit">send</button>
             </form>
         </div>
     )

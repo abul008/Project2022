@@ -1,4 +1,5 @@
 
+import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import {SvgRefresh ,SvgDelete} from "../../svgicon/svg";
@@ -34,7 +35,7 @@ export const AdminTableTbody:React.FC<AdminTableTbodys> = ({
 
     
 
-    const DeleteInfo =async (e:any)=>{
+    const DeleteInfo =async ()=>{
         
         const  data:TableDelete = {
             deleteId: infofive,

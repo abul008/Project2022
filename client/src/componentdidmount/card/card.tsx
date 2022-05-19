@@ -27,11 +27,11 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
   const {quantity} = useTypedSelector(state => state.home)
   const {setChangequantity} = useActions()
   const array:string[] = productdatas()
-
+  // const datas:string[] = JSON.parse(localStorage.getItem('data') || "")
  
 
 
-console.log(carddata)
+
       
 
     return(
@@ -85,6 +85,12 @@ console.log(carddata)
         ,    opacity:data.cardgetgoti === "Առկա չէ" || quantity === 10 ? "0.6" : undefined
         }}
           onClick={()=>{
+            // const filter = datas.indexOf(data.id)
+            // console.log(filter)
+            // localStorage.setItem("data" ,JSON.stringify([...datas, {
+            //        id:data.id,
+            //        count:1
+            // }]))
             array !== null ? 
             localStorage.setItem("productdata" , JSON.stringify([...array ,data.id]))
             : localStorage.setItem('productdata'  , JSON.stringify([data.id]))

@@ -94,8 +94,9 @@ passport.use(new passportLocal.Strategy({
   }
  )   
   
- export const loginPage = (async (req,res)=>{
+ export const loginPage = (async (req,res ,next)=>{
   passport.authenticate('local',async (error,user,info)=>{
+    try{
             if (error) {
       return res.status(500).json({
         message: error || "Something happend",
@@ -122,21 +123,20 @@ passport.use(new passportLocal.Strategy({
     "refreshToken": refreshToken,
     }
 
-  
-    
   await UserToken({
       userId:user.id,
       token: refreshToken
     }).save()
      
-  
 
     req.session.userid = response
 
-  
     return res.json(req.session.userid);
+  }catch(error){
+    return next(error.message)
+  }
 
-  })(req, res)
+  })(req, res,next)
 })
 
 export const register = (async(req,res)=>{

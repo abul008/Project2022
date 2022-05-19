@@ -4,7 +4,7 @@ import {
     register,
     getUserInfo ,
     refreshToken 
-} from "../controllers/adminlogin.js";
+} from "../controllers/login.js";
 import {verifyAccessToken} from "../helpers/jwt.helpers.js"
 
 const router = express.Router();

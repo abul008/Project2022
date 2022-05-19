@@ -20,27 +20,7 @@ import "./headPaheScreen.css";
 
 
 
-// for(let i = 0 ;i < arrat.length ; i++ ){
-//   for(let j = i + 1 ; j < arrat.length -1; j++ ){
-//     if(arrat[i] >  arrat[j]){
-//       [arrat[j],arrat[i]] = [arrat[i],arrat[j ]]     
-//     }
- 
-//   }
- 
-// }
 
-
-// arrat.find(2)
-
-//   const functions = (arrats:any) =>{
-      
-//     arrats.map((data:any , index:number)=>{
-//          return data.find(index)
-//     })
-//   }
-
-//  functions(arrat)
 
 export const HeadPage:React.FC=()=>{
 

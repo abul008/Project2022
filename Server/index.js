@@ -6,11 +6,10 @@ import path from "path";
 import {connectDB} from "./src/config/dbconnect.js";
 import {routes} from "./src/routers/bookinfo.js";
 import { homeroutes } from "./src/routers/homeinfo.js";
-import {adminroutes} from "./src/routers/adminlogin.js";
+import {adminroutes} from "./src/routers/authentication.js";
 import {order} from "./src/routers/order.js";
 import cors from "cors"; 
 import i18next from "i18next";
-import cypto from "crypto";
 import Backend from "i18next-fs-backend";
 import middleware from "i18next-http-middleware"
 import bodyParser  from "body-parser"

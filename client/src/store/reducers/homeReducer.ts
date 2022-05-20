@@ -1,5 +1,5 @@
 import {Homestate,HomeActionTypes , HomeAction} from "../types/home";
-import {productdatas} from "../../componentdidmount/helpers/auth";
+// import {productdatas} from "../../componentdidmount/helpers/auth";
 
 
 
@@ -19,7 +19,7 @@ const initialState:Homestate = {
     _id:""
    },
    getHomedata:[],
-   quantity:productdatas().length,
+   quantity:JSON.parse(localStorage.getItem('data') || "").length,
    loaderpage:true
 
 }

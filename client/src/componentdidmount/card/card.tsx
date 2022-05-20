@@ -2,6 +2,7 @@ import React from "react";
 import {changelenguage} from "../helpers/auth";
 import {CardJson} from "../InterFace/card";
 import {SvgBasket} from "../svgicon/svg";
+import {shopList} from "../helpers/auth";
 import {productdatas , orderDataCount} from "../helpers/auth";
 import {DiscountCard} from "./carddiscount";
 import {PriceCard} from "./cardprice";
@@ -18,6 +19,13 @@ import "./card.css";
 interface CardInfo {
   carddata:CardJson[]
 }
+interface CardShopList{
+  id:string,
+  count:number,
+  name:string,
+  author:string,
+  file_url:string,
+}
 
  
 export const Card:React.FC<CardInfo> = ({carddata}) =>{
@@ -27,12 +35,11 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
   const {quantity} = useTypedSelector(state => state.home)
   const {setChangequantity} = useActions()
   const array:string[] = productdatas()
-  // const datas:string[] = JSON.parse(localStorage.getItem('data') || "")
+  // const datas:CardShopList[] = JSON.parse(localStorage.getItem('data') || "")
+  const datas = shopList()
  
 
 
-
-      
 
     return(
       <div className="page-product-card-wrapper" >
@@ -85,15 +92,22 @@ export const Card:React.FC<CardInfo> = ({carddata}) =>{
         ,    opacity:data.cardgetgoti === "Առկա չէ" || quantity === 10 ? "0.6" : undefined
         }}
           onClick={()=>{
-            // const filter = datas.indexOf(data.id)
-            // console.log(filter)
-            // localStorage.setItem("data" ,JSON.stringify([...datas, {
-            //        id:data.id,
-            //        count:1
-            // }]))
-            array !== null ? 
-            localStorage.setItem("productdata" , JSON.stringify([...array ,data.id]))
-            : localStorage.setItem('productdata'  , JSON.stringify([data.id]))
+            const filter =  datas.findIndex((index:CardShopList)=>index.id === data.id)
+            if(filter === -1){
+              localStorage.setItem("data" , JSON.stringify([...datas ,{
+              id:data.id,
+              name:data.cardname_am,
+              author:data.cardauthor_am,
+              price:data.cardprice,
+              file_url:data.cardfile[0],
+              count:1
+            }]))}else{
+            datas[filter].count ++
+            localStorage.setItem("data" , JSON.stringify(datas))
+            }   
+            // array !== null ? 
+            // localStorage.setItem("productdata" , JSON.stringify([...array ,data.id]))
+            // : localStorage.setItem('productdata'  , JSON.stringify([data.id]))
              setChangequantity(quantity + 1)
             }}
           // disabled={data.cardisavailabe === "Առկա չէ" || btnquantity === 10 }

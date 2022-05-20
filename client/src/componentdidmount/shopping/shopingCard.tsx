@@ -1,8 +1,9 @@
 import React,{  useState } from "react";
 import "./shopingCard.css";
-import {useTypedSelector} from "../../hooks/userTypedSelector";
-import {productdatas} from "../helpers/auth";
-import { useActions } from '../../hooks/useActions';
+import { shopList } from "../helpers/auth";
+// import {useTypedSelector} from "../../hooks/userTypedSelector";
+// import {productdatas} from "../helpers/auth";
+// import { useActions } from '../../hooks/useActions';
 import "./shoppingList.css";
 
 
@@ -16,6 +17,14 @@ interface ShopingCardTyp{
   filename:string
 }
 
+interface CardShopList{
+  id:string,
+  count:number,
+  name:string,
+  author:string,
+  file_url:string,
+}
+
 export const ShopingCard:React.FC<ShopingCardTyp> = ({
     name,
     author,
@@ -25,14 +34,10 @@ export const ShopingCard:React.FC<ShopingCardTyp> = ({
     filename
 }) =>{
   
-    const {quantity} = useTypedSelector(state => state.home)
-    const {setChangequantity} = useActions()
+
     
     const [counts , setCounts] = useState(count)
-   
-    const array:string[] = productdatas() 
-
-  
+    const datas = shopList()
    
   return(
       
@@ -45,25 +50,25 @@ export const ShopingCard:React.FC<ShopingCardTyp> = ({
                      </div>
                       </div>
                        <div className="shop-list-count">
-                          <button
-                          disabled={counts  <= 1 ? true  : false}
-                          onClick={()=>{  
+                           <button
+                            disabled={counts  <= 1 ? true  : false}
+                            onClick={()=>{  
                             setCounts(counts - 1)
-                           const indexdelete:number = array.findIndex((element:string) => element === _id)
-                           if (indexdelete > -1) {
-                            array.splice(indexdelete, 1).reverse()
-                           }
-                            localStorage.setItem('productdata', JSON.stringify(array))
-                            setChangequantity(quantity - 1)
+                            const filter:number =  datas.findIndex((index:CardShopList)=>index.id === _id)
+                            datas[filter].count --
+                            localStorage.setItem("data" , JSON.stringify(datas))
+                            // setChangequantity(quantity - 1)
                           }}
                           ></button>
                              <div className="counts-shop-list"> {counts}</div>
                            <button
                            disabled={counts  === 10 ? true  : false} 
                            onClick={()=>{ 
+                            const filter:number =  datas.findIndex((index:CardShopList)=>index.id === _id)
+                            datas[filter].count ++
+                            localStorage.setItem("data" , JSON.stringify(datas))
                             setCounts(counts + 1)
-                            localStorage.setItem("productdata" , JSON.stringify([...array ,_id]))
-                            setChangequantity(quantity + 1)
+                            // setChangequantity(quantity + 1)
                           }
                             }></button>   
                        </div>

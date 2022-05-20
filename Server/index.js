@@ -107,51 +107,6 @@ app.get('*', (req, res) => {
 })
 
 
-// app.post("/send_mail", cors(), async (req, res) => {
-   
-//   const {
-//     name,
-//     lastname,
-//     phone,
-//     email,
-//     message,
-//     data
-//    } = req.body
-  
-//   // create reusable transporter object using the default SMTP transport
-//   let transporter = nodemailer.createTransport({
-//       service: "gmail",
-//       auth: {
-//           user: process.env.EMAIL_NAME, // ethereal user
-//           pass: process.env.EMAIL_PASSWORD, // ethereal password
-//       },
-//       tls:{
-//         rejectUnauthorized:false
-//       }
-
-//   });
-  
-//   let msg = {
-//       from:"albert.azroyan8@gmail.com", // sender address
-//       to: email, // list of receivers
-//       subject: "Patver", // Subject line
-//       html:  ` <b>name:</b><span>${name}</span>
-//                <b>lasname:</b> <span>${lastname}</span>
-//                <b>phone:</b><span>${phone}</span>
-//                <b>email:</b><span>${email}</span>
-//                <>text:<p>${message}</p>
-//            `, 
-//   }
-   
-//   transporter.sendMail(msg, function(err,sucess){
-//       if(err){
-//         console.log(err)
-//       }else{
-//         console.log("Email sent successfuly");
-//       }
-//   })
-
-// })
 
 
 const port = process.env.PORT || 8080;

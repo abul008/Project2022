@@ -4,7 +4,7 @@ import CSS from 'csstype';
 import "./shoppingform.css";
 import i18next from "i18next";
 import axios from "axios";
-import {ShopingTable} from "../InterFace/shopList";
+import {CardShopList} from "../InterFace/shopList";
 import {ClossIcon} from "../cssicons/cssicons";
 
 
@@ -14,11 +14,11 @@ interface FormType{
     email:string ,
     phone:string,
     message:string,
-    data:ShopingTable[]
+    data:CardShopList[]
 }
 
 interface ShopForm{
-  data:ShopingTable[],
+  data:CardShopList[],
   clossClick:(event: React.MouseEvent<HTMLButtonElement>) => void,
   open:boolean
 }

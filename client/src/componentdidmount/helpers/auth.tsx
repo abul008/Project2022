@@ -1,6 +1,14 @@
 import i18next from "i18next"
 
 
+interface CardShopList{
+    id:string,
+    count:number,
+    name:string,
+    author:string,
+    file_url:string,
+  }
+
 
 
 
@@ -15,8 +23,16 @@ export const productdatas = () => {
    } else {
        return [];
    }
-
 };
+
+export const shopList = ()=>{
+    if(localStorage.getItem('data')){
+        const data:CardShopList[] =JSON.parse(localStorage.getItem('data') || "")
+        return data
+    }else{
+        return [];
+    }
+}
 
 
 

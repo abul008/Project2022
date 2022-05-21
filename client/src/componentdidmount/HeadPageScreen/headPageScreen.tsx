@@ -3,7 +3,6 @@ import {Nav} from "../Nav/nav";
 import routes from '../config/routes';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/userTypedSelector';
-import {Shopicon} from "../shopping/shopingicon";
 import {isAuth} from "../helpers/auth";
 import {Footer} from "../Footer/footer";
 import {AdminPanel} from "../Adminpanel/adminhome/adminhome";
@@ -54,7 +53,7 @@ export const HeadPage:React.FC=()=>{
          <Nav /> 
          <StrictMode >
           <div className='header-section'>
-          <Shopicon />
+          {/* <Shopicon /> */}
              <Switch>  
               {routes.map((route, index) => {
                         return (

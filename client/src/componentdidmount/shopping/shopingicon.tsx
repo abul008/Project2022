@@ -1,20 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect  } from "react";
 import {SvgShop} from "../svgicon/svg";
+import ReactDom from 'react-dom'
 import "./shopingicon.css";
 import { shopList } from "../helpers/auth";
 import {CardShopList} from "../InterFace/shopList";
 import {useTypedSelector} from "../../hooks/userTypedSelector";
 import { useActions } from '../../hooks/useActions';
-import { Link ,useLocation } from "react-router-dom";
+import { Link ,useLocation  } from "react-router-dom";
 
 
 // eslint-disable-next-line react/display-name
-export const Shopicon:React.FC = React.memo(() =>{
+export const Shopicon:React.FC = () =>{
  
     const {quantity} = useTypedSelector(state => state.home)
     const {setChangequantity} = useActions()
     const shopallcount = shopList().reduce((data:number , datas:CardShopList)=>datas.count +=data,0)
-      
+ 
 
     useEffect(()=>{
       setChangequantity(shopallcount)
@@ -27,11 +28,12 @@ export const Shopicon:React.FC = React.memo(() =>{
     if(pathname.includes("/webadmin") || pathname.includes('/basket')) return null
 
     
-  return(
-      <Link to="/basket/1" className="shop-icon-wrapper">
+  return ReactDom.createPortal(
+      <Link to="/basket/1"  className="shop-icon-wrapper">
          <SvgShop />
         <span  >{ quantity}</span> 
-      </Link>
+      </Link> 
+      , document.getElementById('root-icon') as HTMLElement
   )
 
-})
+}

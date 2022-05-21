@@ -24,7 +24,7 @@ interface ShopForm{
 }
 
 
-export const  ShopForm:React.FC<ShopForm> = ({data   ,clossClick ,open})=>{
+export const  ShopForm:React.FC<ShopForm> = ({data,clossClick,open})=>{
    
 
 

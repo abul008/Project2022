@@ -4,6 +4,7 @@ import i18next from "i18next"
 interface CardShopList{
     id:string,
     count:number,
+    price:number,
     name:string,
     author:string,
     file_url:string,

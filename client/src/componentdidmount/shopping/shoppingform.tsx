@@ -24,7 +24,8 @@ interface ShopForm{
 }
 
 
-export const  ShopForm:React.FC<ShopForm> = ({data,clossClick,open})=>{
+// eslint-disable-next-line react/display-name
+export const  ShopForm:React.FC<ShopForm> = React.memo(({data,clossClick,open})=>{
    
 
 
@@ -78,6 +79,7 @@ const SendOrder = async (e:React.FormEvent<HTMLFormElement>)=>{
    data:data
   }   
   
+  console.log(data)
 
   try {
     
@@ -165,7 +167,7 @@ return ReactDom.createPortal(
       </div> , Formcontainer 
   )
 
-}
+})
 const MODAL_CANTROL:CSS.Properties = {
   margin: "auto",
   width: "30%",

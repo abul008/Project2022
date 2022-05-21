@@ -9,7 +9,7 @@ import { useActions } from '../../hooks/useActions';
 import { Link ,useLocation  } from "react-router-dom";
 
 
-// eslint-disable-next-line react/display-name
+
 export const Shopicon:React.FC = () =>{
  
     const {quantity} = useTypedSelector(state => state.home)

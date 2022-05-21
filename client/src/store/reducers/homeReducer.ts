@@ -19,7 +19,7 @@ const initialState:Homestate = {
     _id:""
    },
    getHomedata:[],
-   quantity:JSON.parse(localStorage.getItem('data') || "").length,
+   quantity:0,
    loaderpage:true
 
 }

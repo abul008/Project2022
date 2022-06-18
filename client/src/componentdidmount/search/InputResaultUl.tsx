@@ -1,17 +1,12 @@
 import React from "react";
 import "./inputResaultUl.css";
-import {SearchData} from "../InterFace/searchinterface";
-
-
+import {SearchData} from "../../types/index";
 
 interface FilterSearch{
     FindFilter:SearchData[]
 }
 
-
 export const SearchDesign:React.FC<FilterSearch> = ({FindFilter}) =>{
-
-   
  
     return(
           <ul>

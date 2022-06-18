@@ -1,4 +1,6 @@
-export interface SearchData{
+import { FilesHref } from './filehref'
+
+export interface SearchData {
     SearchName:string,
     SearchAuthor:string,
     SearchUrl:string,
@@ -6,14 +8,6 @@ export interface SearchData{
     SearchCaover:string
     SearchPrice:string
     SearchFiles:FilesHref[]
-
 }
 
-export interface FilesHref{
-    fileName:string,
-    fileHreaf:string,
-    filePath:string,
-    fileType:string,
-    fileSize:string
-  }
 

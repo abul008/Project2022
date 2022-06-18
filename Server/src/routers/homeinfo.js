@@ -4,19 +4,16 @@ import {
     homeinfo,
     HomeCaruselinfo, 
     gethomeinfo ,
-    gethomecaruselinfo ,
+    // gethomecaruselinfo ,
     DeleteHomeinfo,
     DeleteHomeCaruselinfo
 } from "../controllers/homeinfo.js";
 
 const router = express.Router();
 
-
-
 router.post('/homeinfo/' , homeinfo);
 router.post('/homecarusel/upload', homeupload.single('file') , HomeCaruselinfo);
 router.get('/gethomeinfo', gethomeinfo);
-router.get('/gethomecarusel' , gethomecaruselinfo);
 router.delete('/homedelete/', DeleteHomeinfo);
 router.delete('/homecaruseldelete/', DeleteHomeCaruselinfo);
 

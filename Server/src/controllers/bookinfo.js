@@ -3,12 +3,9 @@ import {Bookinfoschema} from "../models/book.js"
 import {FileSizeFormatter} from "../config/fileSizeFormater.js"
 import fs from "fs"
 
-
 process.env.DOMAIN
 
 export const uploadbookinfo = ( async(req,res,next)=>{
-
-
     try{
 
       const filesArray = req.files.map(element => {
@@ -21,7 +18,7 @@ export const uploadbookinfo = ( async(req,res,next)=>{
           }
     });
 
-    const createdata = {...req.body ,files:filesArray}
+    const createdata = {...req.body, files:filesArray}
 
     const bookinfodb = new  Bookinfoschema(createdata)
 
@@ -32,23 +29,6 @@ export const uploadbookinfo = ( async(req,res,next)=>{
 }catch(error) {
     res.status(400).send(error.message);
 }
-})
-
-
-export const getBookinfo = (async(req,res)=>{
-     
-// console.log(session)
-
-    try{
-        const getAllinfo = await Bookinfoschema.find({})
-        
-        if (!getAllinfo) return res.status(404).send("book not found...");
-
-        res.send(getAllinfo)
-    }catch(error){
-        res.send(error)
-    }
-     
 })
 
 export const UbdateBookinfo = (async(req,res)=>{

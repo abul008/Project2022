@@ -1,4 +1,4 @@
-export interface CardJson{
+export interface CardJson {
     cardname_am:string,
     cardname_ru:string,
     cardname_en:string,

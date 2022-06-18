@@ -1,13 +1,12 @@
-import axios from "axios";
-import React , { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import i18next from "i18next";
-import { changelenguage } from "../helpers/auth";
-import {BookinformationCard} from "../InterFace/bookPageInterface";
-import ReactHtmlParser from 'html-react-parser';
-import {SvgTransform} from "../svgicon/svg";
+import React , { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import i18next from "i18next"
+import { changelenguage } from "../helpers/auth"
+import {BookinformationCard} from "../../types/index"
+import ReactHtmlParser from 'html-react-parser'
+import {SvgTransform} from "../svgicon/svg"
+import {getChannels} from "../../api/db/index"
 import "./detailedinformation.css"
-
 
 interface Detalied{
   id:string,
@@ -23,23 +22,19 @@ interface Detalied{
   weight: string,
 }
 
-
-
-
 export const Detailedinformation:React.FC = () =>{
     
 
-    const [detalieddata , setDetalieddata]= useState<Detalied[]>()
-    const [headimg , setHeadimg] = useState<  number>(0)
-    const { id } = useParams <{id?: string  | undefined}>();
-    
-
-    useEffect(()=>{
-         axios.get('/api/v1/getbookinfo')
-         .then(res=>{
-          setDetalieddata(res.data.filter((filter:BookinformationCard)=>
-          filter._id === id
-          ).map((data:BookinformationCard)=>{
+const [detalieddata , setDetalieddata]= useState<Detalied[]>()
+const [headimg , setHeadimg] = useState<  number>(0)
+const { id } = useParams <{id?: string  | undefined}>();
+  
+useEffect(()=>{
+  getChannels('/api/v1/', 'get/book')
+  .then(res=>{
+  setDetalieddata(res.data.filter((filter:BookinformationCard)=>
+  filter._id === id
+  ).map((data:BookinformationCard)=>{
             return{
               id:data._id,
               name:changelenguage(data ,"name"),

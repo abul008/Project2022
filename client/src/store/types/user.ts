@@ -1,15 +1,13 @@
  
 export interface User{
+    _id:string,
     name:string,
     lastname:string,
     email:string,
     password:string,
     userType:string,
     photo_url:string,
-    _id:string
 }
-
-
 
 export interface UserState{
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -34,7 +32,7 @@ interface FetchUsersAction{
 interface FetchUsersSuccessAction{
     type:UserActionTypes.FETCH_USERS_SUCCESS;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    payload:any
+    payload:User[]
 }
 interface FetchUsersErrorAction{
     type:UserActionTypes.FETCH_USERS_ERROR;

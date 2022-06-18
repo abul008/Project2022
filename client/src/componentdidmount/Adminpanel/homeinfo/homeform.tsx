@@ -9,7 +9,7 @@ import {Jodit} from "../joditReact/bookJodit";
 import axios from "axios";
 
 
-export const Homeinfo  = ()=>{
+export const Homeinfo  = () => {
     
 
     // const [uploadPercentage, setUploadPercentage] = useState<number>(0);

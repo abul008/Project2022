@@ -7,6 +7,7 @@ import {connectDB} from "./src/config/dbconnect.js";
 import {routes} from "./src/routers/bookinfo.js";
 import { homeroutes } from "./src/routers/homeinfo.js";
 import {adminroutes} from "./src/routers/authentication.js";
+import { routerMongoDb } from './src/routers/mogodb.js';
 import {order} from "./src/routers/order.js";
 import cors from "cors"; 
 import i18next from "i18next";
@@ -91,10 +92,12 @@ app.get('/api/ubdate',(req,res)=>{
    res.send(tokem)
 })
 
-app.use('/api/v1/' , routes)
-app.use('/api/v1/' , homeroutes)
-app.use('/api/v1/', order)
-app.use('/api/v1/', adminroutes)
+app.use('/api/v1/', routes )
+app.use('/api/v1/', routerMongoDb )
+app.use('/api/v1/', homeroutes )
+app.use('/api/v1/', order )
+app.use('/api/v1/', adminroutes )
+
 
 
 

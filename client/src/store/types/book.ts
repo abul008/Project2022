@@ -1,4 +1,4 @@
-export interface Bookinfo{
+export interface Bookinfo {
     name_am:string,
     name_ru:string,
     name_en:string,
@@ -18,32 +18,23 @@ export interface Bookinfo{
     date:string,
     get_absolute_url:string,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    file:any,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    getbookdata:any
-}
+    file: any,
+    // getbookdata:any
+} 
 
-
-
-// export interface GetBookInfo{
-//     getBookdata:any
-// }
-
-
-export interface FetchBookdata{
+export interface FetchBookdata {
     FetchData:Bookinfo
 }
-export interface bookstate{
-    data:Bookinfo,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    getBookdata:any
+
+export interface bookstate {
+   data:Bookinfo,
+   getBookdata:Bookinfo[]
 }
 
 export enum BookActionTypes {
     BOOK_ADD_INFO= 'BOOK_ADD_INFO',
     BOOK_GET_INFO= 'BOOK_GET_INFO',
 }
-
 
 interface BookAddInfoAction {
     type: BookActionTypes.BOOK_ADD_INFO;
@@ -53,8 +44,7 @@ interface BookAddInfoAction {
 interface BookGetInfoAction {
     type: BookActionTypes.BOOK_GET_INFO;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    payload: any;
+    payload: Bookinfo[] ;
 }
-export type BookAction =
-     BookAddInfoAction | BookGetInfoAction
+export type BookAction = BookAddInfoAction | BookGetInfoAction
 

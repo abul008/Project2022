@@ -1,5 +1,3 @@
-
-
 export interface Tableinfo{
     email: string
     lastname: string
@@ -23,7 +21,7 @@ export interface Tableinfo{
     name: string
     price: string
     _id: string
- }
+}
 
 export interface Tablestate{
     tabledata:Tableinfo[]
@@ -44,7 +42,5 @@ interface TableGeTitleAction {
     type: TableActionTypes.TABLE_GET_TITLE;
     payload: Tabletitle;
 }
-
-
 
 export type TableAction = TableGetInfoAction | TableGeTitleAction

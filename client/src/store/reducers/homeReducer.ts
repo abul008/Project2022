@@ -5,7 +5,7 @@ import {Homestate,HomeActionTypes , HomeAction} from "../types/home";
 
 const initialState:Homestate = {
    data:{
-    file:"",
+    file:[],
     absalute_url:"",
     phone_number:"",
     phone_number2:"",

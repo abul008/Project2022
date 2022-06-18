@@ -1,19 +1,5 @@
 import i18next from "i18next"
-
-
-interface CardShopList{
-    id:string,
-    count:number,
-    price:number,
-    name:string,
-    author:string,
-    file_url:string,
-  }
-
-
-
-
-
+import { CardShopList } from '../../types/index'
 
 
 export const productdatas = () => {
@@ -35,8 +21,6 @@ export const shopList = ()=>{
     }
 }
 
-
-
 export const orderDataCount = (countdata:string[]) =>{ 
     if(localStorage.getItem('productdata')){
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -48,11 +32,9 @@ export const orderDataCount = (countdata:string[]) =>{
         return[]
     }
       
-   }
+}
 
-
-
-export const isAuth =(name:string)=>{        
+export const isAuth = ( name:string ) => {        
           if (localStorage.getItem(name)){
               return localStorage.getItem(name || "");
           } else {
@@ -60,20 +42,15 @@ export const isAuth =(name:string)=>{
           }
 }
 
-
-
-
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const changelenguage = (data:any,name:string)=>{
-    try{    
-    if(data !== undefined){
-        const datas:string = data[(name +i18next.t('lang'))] ;
-
-         return datas;
+export const changelenguage = ( data:any, name:string ) => {
+  try{    
+     if(data !== undefined){
+      const datas:string = data[(name +i18next.t('lang'))] ;
+        return datas;
     }
-}catch(error){
-   console.log(error)
-}
+  }catch(error){
+     console.log(error)
+  }
 }
 

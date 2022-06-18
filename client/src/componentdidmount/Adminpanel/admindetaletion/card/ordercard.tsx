@@ -11,15 +11,9 @@ import "./ordercard.css";
 export const OrderDetliedCard:React.FC =()=>{
        
 
-    const {tabledata} = useTypedSelector(state => state.table)
+const {tabledata} = useTypedSelector(state => state.table)
 
-
-
-
-
-
-    
-    return(
+   return (
        <div className="order-card-wrapper">
                 {
                 tabledata[0] ? tabledata[0].order.map((data)=>{

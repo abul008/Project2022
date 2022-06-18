@@ -16,11 +16,11 @@ export interface ShopingTable{
     fileSize:string
   }
 
-
-  export interface CardShopList{
+export interface CardShopList{
     id:string,
     count:number,
     name:string,
+    price: number,
     author:string,
     file_url:string,
   }

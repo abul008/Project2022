@@ -23,7 +23,7 @@ const initialState: bookstate = {
     date:"",
     get_absolute_url:"",
     file:"",
-    getbookdata:""
+    // getbookdata:""
    },
    getBookdata:[]
  

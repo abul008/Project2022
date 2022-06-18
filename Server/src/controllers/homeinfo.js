@@ -58,9 +58,8 @@ export const homeinfo = ( async(req,res,next)=>{
 
 export const HomeCaruselinfo = ( async(req,res,next)=>{
 
-    const { absolute_url } = req.body
-
-    
+const { absolute_url } = req.body
+  
 try{
    const file = new HomeCaruselInfoScema({
        get_absolute_url:absolute_url,

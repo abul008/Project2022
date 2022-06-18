@@ -3,7 +3,7 @@ import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import {SvgRefresh ,SvgDelete} from "../../svgicon/svg";
-import {FilesHref} from "../../InterFace/bookPageInterface";
+import {FilesHref} from "../../../types/index";
 
 interface AdminTableTbodys{
  

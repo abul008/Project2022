@@ -1,11 +1,11 @@
-import axios from "axios";
 import React,{ useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {BookinformationCard} from "../../InterFace/bookPageInterface";
+import { BookinformationCard } from "../../../types/index";
 import {AdminTableThead} from "../table/admintablethead";
 import {AdminTableTbody} from "../table/adminTabletTbody";
 import {TableStyle} from "../amdinorder/ordertable/tablestyle";
 import { useActions } from "../../../hooks/useActions";
+import {getChannels} from "../../../api/db/index";
 
 export const BookTable:React.FC = ()=>{
 
@@ -14,7 +14,7 @@ export const BookTable:React.FC = ()=>{
      
   useEffect(()=>{
     setViewLoader(false)
-    axios.get('/api/v1/getbookinfo')
+    getChannels('/api/v1/', 'get/book')
     .then(res=>{
       setBooktable(res.data)
       setViewLoader(true)

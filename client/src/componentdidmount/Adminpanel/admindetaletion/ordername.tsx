@@ -3,7 +3,7 @@ import {useTypedSelector} from "../../../hooks/userTypedSelector";
 
 
 
-export const Ordername:React.FC =()=>{
+export const Ordername:React.FC = () => {
   
 
     const {tabledata} = useTypedSelector(state => state.table)

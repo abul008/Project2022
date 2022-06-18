@@ -1,4 +1,4 @@
-import IRoute from '../InterFace/routes';
+import {IRoute} from '../../types/index';
 import {Home} from "../HomePage/homePage";
 import { BookProduct } from '../BookPageScreen/bookPageProduct';
 import {Searchresult} from "../search/searchPage";

@@ -1,9 +1,7 @@
-import {HomeAction, HomeActionTypes ,Homeinfo} from "../types/home";
-import {  Dispatch  } from 'redux';
-
-import axios from "axios";
-
-
+import {HomeAction, HomeActionTypes } from "../types/home"
+import { Homeinfo } from "../../types/index"
+import {  Dispatch  } from 'redux'
+import {getChannels} from "../../api/db/index"
 
 export function setHomePage(caruseldata: Homeinfo): HomeAction {
     
@@ -20,7 +18,7 @@ export const setGetbookinfo = () => {
         dispatch({type: HomeActionTypes.HOME_LOADER, payload: false})
        
         try {
-            await axios.get('http://localhost:8080/api/v1/gethomeinfo')
+            await getChannels('/api/v1/', 'get/home')
             .then(res=>{
                 setTimeout(() => {
                     dispatch({type: HomeActionTypes.HOME_GET_INFO, payload: res.data})

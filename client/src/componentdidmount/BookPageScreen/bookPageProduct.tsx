@@ -1,21 +1,18 @@
-import React from "react";
-import { useActions } from '../../hooks/useActions';
-import { useEffect, useState } from "react";
-import { BookinformationCard , FilesHref } from "../InterFace/bookPageInterface";
-import { CardJson } from "../InterFace/card";
-import { Card } from "../card/card";
-import axios from "axios";
+import React from "react"
+import { useActions } from '../../hooks/useActions'
+import { useEffect, useState } from "react"
+import { BookinformationCard, FilesHref, CardJson } from "../../types/index"
+import { Card } from "../card/card"
+import {getChannels} from "../../api/db/index"
 
 export const BookProduct:React.FC = ()=>{
-   
 
-
-    const [bookdata , setBookdata] = useState<CardJson[]>([])
-    const {setViewLoader} = useActions()
+const [bookdata , setBookdata] = useState<CardJson[]>([])
+const {setViewLoader} = useActions()
     
     useEffect(()=>{
         setViewLoader(false)
-        axios.get('/api/v1/getbookinfo')
+        getChannels('/api/v1/','get/book/')
         .then(res=>{setBookdata(res.data.map((data:BookinformationCard)=>{
             return{
              cardname_am:data.name_am,

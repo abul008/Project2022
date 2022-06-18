@@ -1,6 +1,5 @@
-import React from 'react';
-import { HeadPage } from './componentdidmount/HeadPageScreen/headPageScreen';
-
+import React from 'react'
+import { HeadPage } from './componentdidmount/HeadPageScreen/headPageScreen'
 
 
 export const App:React.FC = () => {

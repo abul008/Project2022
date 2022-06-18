@@ -1,11 +1,11 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {AdminTableThead} from "../table/admintablethead";
 import {AdminTableTbody} from "../table/adminTabletTbody";
-import { Caruseldata } from "../../InterFace/carusel";
+import { Caruseldata } from "../../../types/index";
 import {TableStyle} from "../amdinorder/ordertable/tablestyle";
 import { useActions } from "../../../hooks/useActions";
+import {getChannels} from "../../../api/db/index";
 
 export const CaruselTable:React.FC = ()=>{
 
@@ -14,7 +14,7 @@ export const CaruselTable:React.FC = ()=>{
 
   useEffect(()=>{
     setViewLoader(false)
-    axios.get('/api/v1/gethomecarusel')
+    getChannels('/api/v1/', 'get/carusel')
     .then(res=>{
       setCaruselable(res.data)
       setViewLoader(true)
@@ -22,11 +22,7 @@ export const CaruselTable:React.FC = ()=>{
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
-  
-  
-
-   
-    return( 
+  return( 
         < >
          <Link to="/webadmin/carusel/add">Ավելացնել ինֆորմացիա</Link>
          <TableStyle>

@@ -1,36 +1,31 @@
-import React,{useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import "./search.css";
-import {ChangeLanguage} from "../Changelenguage/changelanguage";
-import {BookinformationCard} from "../InterFace/bookPageInterface";
-import { changelenguage } from "../helpers/auth";
-import {SearchData} from "../InterFace/searchinterface";
-import {SearchDesign} from "./InputResaultUl";
-import {SearchLoader} from "./searchLoader";
-import {SvgSearch} from "../svgicon/svg";
-import axios from "axios";
-
+import React,{useEffect, useState } from "react"
+import { useHistory } from "react-router-dom"
+import "./search.css"
+import {ChangeLanguage} from "../Changelenguage/changelanguage"
+import {BookinformationCard, SearchData} from "../../types/index"
+import { changelenguage } from "../helpers/auth"
+import {SearchDesign} from "./InputResaultUl"
+import {SearchLoader} from "./searchLoader"
+import {SvgSearch} from "../svgicon/svg"
+import {getChannels} from "../../api/db/index"
 
 interface Searchprops {
     placeholder:string
 }
 
+export const Search:React.FC<Searchprops> = (props) => {
 
-
-export const Search:React.FC<Searchprops> = (props) =>{
-  const [searchBlur , setSearchBlur] = useState<boolean>(false)
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const [searchResultsData, setSearchResultsData] = useState<SearchData[]>([]);
-  const [searchloader , setSearchloader] = useState<boolean>(true)
-  const history = useHistory(); 
-
- 
+const [searchBlur , setSearchBlur] = useState<boolean>(false)
+const [searchTerm, setSearchTerm] = useState<string>("");
+const [searchResultsData, setSearchResultsData] = useState<SearchData[]>([]);
+const [searchloader , setSearchloader] = useState<boolean>(true)
+const history = useHistory(); 
 
 useEffect(()=>{
  setSearchloader(false)
   if(searchTerm.length >= 1){
     const handle = setTimeout(()=>{
-      axios.get("/api/v1/getbookinfo/")           
+      getChannels("/api/v1/", "get/book/")           
       .then(res=>{
         setSearchResultsData(res.data.filter((info:BookinformationCard) =>
          (info.name_am).toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  || 
@@ -62,51 +57,53 @@ useEffect(()=>{
   }
 },[searchTerm])
 
+const searchsub = (e: React.FormEvent<HTMLFormElement> ) => {
 
-  const searchsub = (e: React.FormEvent<HTMLFormElement>)=>{
-      e.preventDefault()
-
+  e.preventDefault()
       history.push(`/search/${searchTerm}`);
-
-
-  }
- 
-    return(
-  <div  className="search-page"
-      onFocus={()=>{
-         setSearchBlur(true)
-      }}
-      onBlur={()=>{
-        setTimeout(()=>{
-         setSearchBlur(false) 
-        },100)
-      }}
-  >  
-       <form onSubmit={searchsub} >   
-           <input
-           value={searchTerm}
-           style={{borderRadius:searchBlur ? "6px 6px 0px 0px" : "6px 6px 6px 6px" , paddingLeft:searchBlur ? "38px" :"12px"}}
-           onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{
-            setSearchTerm(e.target.value);
-            setSearchBlur(true)
-          }}
-           placeholder={props.placeholder}
-         />
-          <button 
-          style={{display:searchBlur ? "flex" : "none"}}
-          className="Search-on-the-svg" onClick={()=>console.log("hello")} >
-          <SvgSearch />
-          </button>
-        </form>
-                  <div 
-                     style={{display:searchBlur  ? "flex" : "none"}}
-                     className="searche-page-product-info-form">
-                     <SearchLoader loaderstyle={{display:searchloader ? "block" : "none"}} />
-                     <SearchDesign FindFilter={searchResultsData} />
-                  </div>
-        <ChangeLanguage />
-  </div>
-     
-    )
 }
+
+return(
+
+  <div  
+    className="search-page"
+    onFocus={ () => {
+      setSearchBlur(true)
+    }}
+    onBlur = { () => {
+      setTimeout(()=>{
+      setSearchBlur(false) 
+      } , 100 )
+    }}>
+
+  <form onSubmit={searchsub} >   
+    <input
+      value={searchTerm}
+      style={{borderRadius:searchBlur ? "6px 6px 0px 0px" : "6px 6px 6px 6px" , paddingLeft:searchBlur ? "38px" :"12px"}}
+      onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{
+      setSearchTerm(e.target.value);
+      setSearchBlur(true)
+      }}
+      placeholder={props.placeholder} />
+
+  <button 
+    style={{display:searchBlur ? "flex" : "none"}}
+    className="Search-on-the-svg" onClick={()=>console.log("hello")} >
+    <SvgSearch />
+  </button>
+
+  </form>
+    <div 
+    style={{display:searchBlur  ? "flex" : "none"}}
+    className="searche-page-product-info-form" >
+
+  <SearchLoader loaderstyle={{display:searchloader ? "block" : "none"}} />
+  <SearchDesign FindFilter={searchResultsData} />
+
+  </div>
+
+  <ChangeLanguage />
+
+  </div> 
+)}
 

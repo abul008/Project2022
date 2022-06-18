@@ -162,6 +162,7 @@ export const register = (async(req,res)=>{
 
 
 export const getUserInfo =  (async (req,res)=>{
+  console.log("hello")
   try{
    
     if(req.payload.user){

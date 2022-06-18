@@ -4,7 +4,7 @@ import CSS from 'csstype';
 import "./shoppingform.css";
 import i18next from "i18next";
 import axios from "axios";
-import {CardShopList} from "../InterFace/shopList";
+import {CardShopList} from "../../types/index";
 import {ClossIcon} from "../cssicons/cssicons";
 
 

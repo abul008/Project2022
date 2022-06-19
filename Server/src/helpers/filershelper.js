@@ -1,25 +1,24 @@
 import multer from "multer";
 import path from "path";
 
-
 const fileStorageEngine = multer.diskStorage({
-    destination: path.resolve("./media/bookfoto/"), 
+    destination: function (req, file, cb) {
+      cb(null, path.resolve(`./media/${req.params.upload}`))
+    },
     filename: (req, file, cb) => {
       cb(null, Date.now() + "--" + file.originalname);
     },
-  });
+});
 
- 
-
-
-  const homefileStorageEngine = multer.diskStorage({
-    destination: path.resolve("./media/carusel"), 
+const homefileStorageEngine = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.resolve(`./media/${req.params.upload}`))
+    },
+    // destination: path.resolve("./media/carusel"), 
     filename: (req, file, cb) => {
       cb(null,  Date.now() + "--" + file.originalname);
     },
-  });
-
-
+});
 
 const filefilter = (req, file, cb) => {
     if (file.mimetype === 'image/png' || file.mimetype === 'image/jpg' 

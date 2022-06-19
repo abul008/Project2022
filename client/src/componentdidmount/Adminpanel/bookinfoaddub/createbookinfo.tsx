@@ -90,7 +90,7 @@ export const Bookinfoadd:React.FC = ()=>{
 
        try{
         
-         const res = await axios.post('/api/v1/bookcreate' , formData ,{
+         const res = await axios.post('/api/v1/multiple/bookfoto' , formData ,{
                 
             headers:{
                 'Content-Type': "multipart/form-data"

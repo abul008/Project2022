@@ -42,7 +42,7 @@ export const CaruselTable:React.FC = ()=>{
                         infofive={caruseldata._id}
                         files={[caruseldata]}
                         infoubdate={'carusel/ubdate'}
-                        infourl={'/api/v1/homecaruseldelete/'}
+                        infourl={'/api/v1/carusel/'}
                        />
                       )
                   })

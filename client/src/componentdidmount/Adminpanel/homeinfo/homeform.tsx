@@ -13,12 +13,12 @@ export const Homeinfo  = () => {
     
 
     // const [uploadPercentage, setUploadPercentage] = useState<number>(0);
-    const [litleinfoAm , setLitleinfoAm] = useState<string>("");
-    const [litleinfoRu , setLitleinfoRu] = useState<string>(""); 
-    const [litleinfoEn , setLitleinfoEn] = useState<string>(""); 
-    const [copyrightAm , setCopyrightAm] = useState<string>("");
-    const [copyrightRu , setCopyrightRu] = useState<string>("");
-    const [copyrightEn , setCopyrightEn] = useState<string>("");
+    const [litleinfo_am , setLitleinfo_am] = useState<string>("");
+    const [litleinfo_ru , setLitleinfo_ru] = useState<string>(""); 
+    const [litleinfo_en , setLitleinfo_en] = useState<string>(""); 
+    const [copyright_am , setCopyright_am] = useState<string>("");
+    const [copyright_ru , setCopyright_ru] = useState<string>("");
+    const [copyright_en , setCopyright_en] = useState<string>("");
     const {data} = useTypedSelector(state => state.home)
     const history = useHistory()
   
@@ -44,23 +44,17 @@ export const Homeinfo  = () => {
             facebook_url,
             instagram_url,
             telegram_url,
-            copyrightAm,
-            copyrightRu,
-            copyrightEn,
-            litleinfoAm,
-            litleinfoRu,
-            litleinfoEn
+            copyright_am,
+            copyright_ru,
+            copyright_en,
+            litleinfo_am,
+            litleinfo_ru,
+            litleinfo_en
           }
       
           try{
         
-            await axios.post('/api/v1/homeinfo/' , homedata ,{
-                   
-               headers:{
-                   'Content-Type': "application/json",
-                   
-               }
-            })
+            await axios.post('/api/v1/post/home/' , homedata )
             // setTimeout(() => setUploadPercentage(0), 10000);
            
             // window.location.reload();
@@ -82,13 +76,13 @@ export const Homeinfo  = () => {
               {/* <CaruselFoto /> */}
               <HomeAddres />
               <HomeSocialMedia />
-              <Jodit  onchangeJodit={(content:string) => setCopyrightAm(content)} value={copyrightAm} label={"Am"} />
-              <Jodit onchangeJodit={(content:string) => setCopyrightRu(content)} value={copyrightRu} label={"Ru"} />
-              <Jodit onchangeJodit={(content:string) => setCopyrightEn(content)} value={copyrightEn} label={"En"} />
+              <Jodit  onchangeJodit={(content:string) => setCopyright_am(content)} value={copyright_am} label={"Am"} />
+              <Jodit onchangeJodit={(content:string) => setCopyright_ru(content)} value={copyright_ru} label={"Ru"} />
+              <Jodit onchangeJodit={(content:string) => setCopyright_en(content)} value={copyright_en} label={"En"} />
 
-              <Jodit onchangeJodit={(content:string) => setLitleinfoAm(content)} value={litleinfoAm} label={"Am"} />
-              <Jodit onchangeJodit={(content:string) => setLitleinfoRu(content)} value={litleinfoRu} label={"Ru"} />
-              <Jodit onchangeJodit={(content:string) => setLitleinfoEn(content)} value={litleinfoEn} label={"En"} />
+              <Jodit onchangeJodit={(content:string) => setLitleinfo_am(content)} value={litleinfo_am} label={"Am"} />
+              <Jodit onchangeJodit={(content:string) => setLitleinfo_ru(content)} value={litleinfo_ru} label={"Ru"} />
+              <Jodit onchangeJodit={(content:string) => setLitleinfo_en(content)} value={litleinfo_en} label={"En"} />
   
              <ButtonF type="submit">Send</ButtonF>
             </form>

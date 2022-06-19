@@ -44,7 +44,7 @@ const cretebookinfo = async(e:React.FormEvent<HTMLFormElement>)=>{
   const senddata = {...data , cover_am:coverAm , cover_ru:coverRu , cover_en:coverEn}
         
   try {    
-    await axios.post('/api/v1/bookubdate' , senddata )
+    await axios.put('/api/v1/book' , senddata )
     history.push("/webadmin/book");
   }catch(error){
     console.log(error)

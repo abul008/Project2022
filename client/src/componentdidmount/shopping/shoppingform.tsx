@@ -9,12 +9,12 @@ import {ClossIcon} from "../cssicons/cssicons";
 
 
 interface FormType{
-    name:string ,
-    lastname:string,
-    email:string ,
-    phone:string,
-    message:string,
-    data:CardShopList[]
+    names: string
+    lastname: string
+    email: string
+    phone: string
+    message: string
+    order: CardShopList[]
 }
 
 interface ShopForm{
@@ -31,12 +31,12 @@ export const  ShopForm:React.FC<ShopForm> = React.memo(({data,clossClick,open})=
 
  
     const [formdata ,setFormdata] = useState<FormType>({
-        name:"" ,
+        names:"" ,
         lastname:"",
         email:"" ,
         phone:"",
         message:"",
-        data:data
+        order:data
     })
     const [answer , setAnswer] = useState<string>("")
     const [Formcontainer] = React.useState<HTMLElement >(() => {
@@ -70,20 +70,13 @@ const SendOrder = async (e:React.FormEvent<HTMLFormElement>)=>{
  
   
 
-  const datas:FormType = {
-   name:formdata.name,
-   lastname:formdata.lastname,
-   phone:formdata.phone,
-   email:formdata.email,
-   message:formdata.message,
-   data:data
-  }   
+  const datas:FormType = formdata   
   
-  console.log(data)
+
 
   try {
     
-    await axios.post("/api/v1/order",datas)
+    await axios.post("/api/v1/post/order", datas)
     .then(res=>setAnswer(res.data))
     // setTimeout(()=>{
     //   window.location.reload(); 
@@ -124,7 +117,7 @@ return ReactDom.createPortal(
                  type="text"
                  placeholder={i18next.t('name')}
                  onChange={(e:React.ChangeEvent<HTMLInputElement>)=>
-                 setFormdata({...formdata,name:e.target.value})} 
+                 setFormdata({...formdata,names:e.target.value})} 
               />
              </div>
              <div className="shop-form-input"> 

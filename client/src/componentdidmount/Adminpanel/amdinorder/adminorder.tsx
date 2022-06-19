@@ -46,7 +46,7 @@ return (
           infofive={orderdata._id}
           files={[]}
           infoubdate={'order'}
-          infourl={'/api/v1/orderdelete/'}
+          infourl={'/api/v1/order/'}
           />
           )
           })

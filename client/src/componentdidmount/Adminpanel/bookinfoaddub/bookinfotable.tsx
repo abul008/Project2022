@@ -45,7 +45,7 @@ export const BookTable:React.FC = ()=>{
                         infofive={bookdata._id}
                         files={bookdata.files}
                         infoubdate={'ubdate'}
-                        infourl={'/api/v1/bookdelete/'}
+                        infourl={'/api/v1/book/'}
                        />
                       )
                   })

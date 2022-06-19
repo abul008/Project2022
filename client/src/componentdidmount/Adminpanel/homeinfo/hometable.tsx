@@ -32,7 +32,7 @@ export const HomeTable:React.FC = ()=>{
                         infofive={homedata._id}
                         files={[]}
                         infoubdate={'home/ubdate'}
-                        infourl={'/api/v1/homedelete/'}
+                        infourl={'/api/v1/home/'}
                        />
                       )
                   })

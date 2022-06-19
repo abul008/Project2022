@@ -4,11 +4,7 @@ import passport from "passport";
 import jwt from "jsonwebtoken";
 import path from "path";
 import {connectDB} from "./src/config/dbconnect.js";
-import {routes} from "./src/routers/bookinfo.js";
-import { homeroutes } from "./src/routers/homeinfo.js";
-import {adminroutes} from "./src/routers/authentication.js";
-import { routerMongoDb } from './src/routers/mogodb.js';
-import {order} from "./src/routers/order.js";
+import {authentication, routerMongoDb} from "./src/routers/index.js";
 import cors from "cors"; 
 import i18next from "i18next";
 import Backend from "i18next-fs-backend";
@@ -16,9 +12,6 @@ import middleware from "i18next-http-middleware"
 import bodyParser  from "body-parser"
 import cookieParser from "cookie-parser";
 import secure from 'express-force-https';
-import { token } from "morgan";
-// import {pasportini ,pasportsession} from "./src/controllers/adminlogin.js";
-
 
 i18next.use(Backend).use(middleware.LanguageDetector)
 .init({
@@ -47,15 +40,11 @@ app.use(session({
   }
 }))
 
-  
-
-
 app.use(cookieParser("secretcode"))
 // app.use('/api/', express.static(path.join(__dirname,'uploads')));
 // app.use(express.static('./methods-public'))
 app.use(middleware.handle(i18next));
 // app.use(fileUpload());
-
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
@@ -66,20 +55,14 @@ app.use(cors({
   credentials:true
 }));;
 
-
-
-
 app.use(passport.initialize())
 app.use(passport.session())
 
-
 // console.log(process.env.TOKEN_SECRET)
-
 
 const generateAccessToken =(param)=>{
   return jwt.sign(param, process.env.TOKEN_SECRET, { expiresIn: '1800s'});
 }
-
 
 app.get('/api/ubdate',(req,res)=>{
    const data = {
@@ -92,27 +75,16 @@ app.get('/api/ubdate',(req,res)=>{
    res.send(tokem)
 })
 
-app.use('/api/v1/', routes )
-app.use('/api/v1/', routerMongoDb )
-app.use('/api/v1/', homeroutes )
-app.use('/api/v1/', order )
-app.use('/api/v1/', adminroutes )
-
-
-
+app.use('/api/v1/', routerMongoDb)
+app.use('/api/v1/', authentication)
 
 app.use(express.static(path.resolve("./media")))
-
 
 app.use(express.static(path.resolve("../client/build/")))
 app.get('*', (req, res) => {
   res.sendFile(path.resolve("../client/build/index.html"));
 })
 
-
-
-
 const port = process.env.PORT || 8080;
-
 
 app.listen(port)

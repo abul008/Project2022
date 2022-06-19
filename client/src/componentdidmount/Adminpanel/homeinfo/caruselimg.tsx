@@ -24,11 +24,11 @@ export const CaruselInfo = () =>{
                   
         }
 
-        formData.append('absolute_url', absolutUrl)
+        formData.append('get_absolute_url', absolutUrl)
           
         try{
         
-            const res = await axios.post('/api/v1/homecarusel/upload' , formData ,{
+            const res = await axios.post('/api/v1/singl/carusel' , formData ,{
                    
                headers:{
                    'Content-Type': "multipart/form-data"

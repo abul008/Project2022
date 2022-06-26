@@ -1,10 +1,10 @@
-import express from "express";
+import express from "express"
 import {
-    loginPage ,
+    loginPage,
     register,
-    getUserInfo ,
+    getUserInfo,
     refreshToken 
-} from "../controllers/authentication.js";
+} from "../controllers/authentication.js"
 import {verifyAccessToken} from "../helpers/jwt.helpers.js"
 
 const router = express.Router();

@@ -1,13 +1,12 @@
 // import {CaruselFoto} from "./caruselimg";
-import {HomeAddres} from "./contact";
-import {HomeSocialMedia} from "./socialmedia";
-import {useTypedSelector} from "../../../hooks/userTypedSelector";
-import  {FormHead ,Form ,ButtonF } from "../formdesign/formdesign";
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import {Jodit} from "../joditReact/bookJodit";
-import axios from "axios";
-
+import { HomeAddres } from "./contact"
+import { HomeSocialMedia } from "./socialmedia"
+import { useTypedSelector } from "../../../hooks/userTypedSelector"
+import  {FormHead ,Form ,ButtonF } from "../formdesign/formdesign"
+import React, { useState } from "react"
+import { useHistory } from "react-router-dom"
+import {Jodit} from "../joditReact/bookJodit"
+import axios from "axios"
 
 export const Homeinfo  = () => {
     
@@ -66,7 +65,6 @@ export const Homeinfo  = () => {
 
     }
     
-
     return(
         <FormHead>
           <Form>

@@ -1,17 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import {AdminTableThead} from "../table/admintablethead";
-import {AdminTableTbody} from "../table/adminTabletTbody";
-import {TableStyle} from "../amdinorder/ordertable/tablestyle";
-import {useTypedSelector} from "../../../hooks/userTypedSelector";
+import React from "react"
+import { Link } from "react-router-dom"
+import {AdminTableThead} from "../table/admintablethead"
+import {AdminTableTbody} from "../table/adminTabletTbody"
+import {TableStyle} from "../amdinorder/ordertable/tablestyle"
+import {useTypedSelector} from "../../../hooks/userTypedSelector"
 // import {ErrorPage} from "../../Errorpage/Errorpage";
-export const HomeTable:React.FC = ()=>{
+export const HomeTable:React.FC = () => {
 
     const {getHomedata} = useTypedSelector(state => state.home)
-
-   
-   
-
    
     return( 
         < >

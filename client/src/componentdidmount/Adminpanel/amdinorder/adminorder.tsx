@@ -2,11 +2,11 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import {Tableinfo} from "../../../types/index"
-import {AdminTableThead} from "../table/admintablethead";
-import {AdminTableTbody} from "../table/adminTabletTbody";
-import {TableStyle} from "../amdinorder/ordertable/tablestyle";
-import { useActions } from "../../../hooks/useActions";
-import {getChannels} from "../../../api/db/index";
+import {AdminTableThead} from "../table/admintablethead"
+import {AdminTableTbody} from "../table/adminTabletTbody"
+import {TableStyle} from "../amdinorder/ordertable/tablestyle"
+import { useActions } from "../../../hooks/useActions"
+import {getChannels} from "../../../api/db/index"
 
 export const OrderTable:React.FC = ()=>{
 

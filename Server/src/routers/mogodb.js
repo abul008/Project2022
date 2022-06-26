@@ -1,5 +1,5 @@
-import express from "express";
-import { homeupload , upload} from "../helpers/filershelper.js";
+import express from "express"
+import { homeupload , upload} from "../helpers/filershelper.js"
 import {
     getMongoDb, 
     postMongoDb, 
@@ -7,7 +7,7 @@ import {
     uploadMulterMongoDb, 
     deleteMongoDb, 
     UbdateMongoDb
-} from "../controllers/mongoDb.js";
+} from "../controllers/mongoDb.js"
 
 const router = express.Router();
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeadPage } from './componentdidmount/HeadPageScreen/headPageScreen'
+import { HeadPage } from './componentdidmount/head'
 
 
 export const App:React.FC = () => {

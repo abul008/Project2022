@@ -1,0 +1,21 @@
+.shop-page-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative
+}
+.shop-page-wrapper button {
+  /* background: #35a79c; */
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  width: 100px;
+  align-items: center;
+  justify-content: center;
+  float: right
+}
+@media screen and (max-width: 800px) {
+  .shop-page-wrapper {
+    flex-direction: column;
+   }
+}

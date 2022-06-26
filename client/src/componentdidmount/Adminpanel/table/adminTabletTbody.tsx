@@ -2,7 +2,7 @@
 import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import {SvgRefresh ,SvgDelete} from "../../svgicon/svg";
+import {SvgRefresh ,SvgDelete} from "../../svg";
 import {FilesHref} from "../../../types/index";
 
 interface AdminTableTbodys{

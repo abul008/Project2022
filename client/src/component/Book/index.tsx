@@ -5,10 +5,10 @@ import { Book as BookType, FilesHref, CardJson } from "../../custom_types/index"
 import { Card } from "../card"
 import { getChannels } from "../../api/db/index"
 
-export const BookScreen: React.FC = ()=>{
+export const BookScreen: React.FC = () => {
 
-const [bookdata , setBookdata] = useState<CardJson[]>([])
-const {setViewLoader} = useActions()
+const [bookdata, setBookdata] = useState<CardJson[]>([])
+const { setViewLoader } = useActions()
     
     useEffect( () => {
         setViewLoader(false)
@@ -33,7 +33,7 @@ const {setViewLoader} = useActions()
        setViewLoader(true)
     })       
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
+    }, [])
 
     return( 
         <div className="Book-file-wrapper" >

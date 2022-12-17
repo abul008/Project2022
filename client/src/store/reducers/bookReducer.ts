@@ -1,4 +1,5 @@
-import {bookstate, BookActionTypes, BookAction} from "../../custom_types/book.d"
+import { bookstate, BookAction } from "../../custom_types/book.d"
+import { BOOK_GET_INFO, BOOK_ADD_INFO } from "../../config"
 
 const initialState: bookstate = {
    data: {
@@ -29,9 +30,9 @@ const initialState: bookstate = {
 
 export const BookReducer = (state = initialState, action: BookAction): bookstate => {
     switch (action.type) {
-        case BookActionTypes.BOOK_ADD_INFO:
+        case BOOK_ADD_INFO:
             return {...state, data:action.payload}
-        case BookActionTypes.BOOK_GET_INFO:
+        case BOOK_GET_INFO:
             return {...state, getBookdata:action.payload}
         default:
             return state

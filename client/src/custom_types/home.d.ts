@@ -1,4 +1,5 @@
-import { FilesHref } from "./file_href";
+import { FilesHref } from "./file_href"
+import { HOME_ADD_INFO, HOME_GET_INFO, HOME_CHANGE_QUANTITY, HOME_LOADER } from "../config"
 
 export interface Homeinfo {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -31,22 +32,22 @@ export enum HomeActionTypes {
 }
 
 interface HomeAddInfoAction {
-  type: HomeActionTypes.HOME_ADD_INFO;
+  type: typeof HOME_ADD_INFO;
   payload: Homeinfo ;
 }
 
 interface HomeBookGetInfoAction {
-  type: HomeActionTypes.HOME_GET_INFO;
+  type: typeof HOME_GET_INFO;
   payload: Homeinfo[];
 }
 
 interface HomequanitityAction {
-  type: HomeActionTypes.HOME_CHANGE_QUANTITY;
+  type: typeof HOME_CHANGE_QUANTITY;
   payload: number;
 }
 
 interface Homeloader {
-  type: HomeActionTypes.HOME_LOADER
+  type: typeof HOME_LOADER
   payload: boolean
 }
 

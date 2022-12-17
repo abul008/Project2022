@@ -1,5 +1,5 @@
-import {Homestate,HomeActionTypes , HomeAction} from "../../custom_types/home.d";
-// import {productdatas} from "../../componentdidmount/helpers/auth";
+import { Homestate, HomeAction } from "../../custom_types/home.d"
+import { HOME_ADD_INFO, HOME_GET_INFO, HOME_CHANGE_QUANTITY, HOME_LOADER } from '../../config'
 
 const initialState:Homestate = {
    data:{
@@ -24,13 +24,13 @@ const initialState:Homestate = {
 
 export const HomeReducer = (state = initialState, action: HomeAction): Homestate => {
     switch (action.type) {
-        case HomeActionTypes.HOME_ADD_INFO:
+        case HOME_ADD_INFO:
             return {...state,data:action.payload}
-        case HomeActionTypes.HOME_GET_INFO:
+        case HOME_GET_INFO:
             return {...state,getHomedata:action.payload}
-        case HomeActionTypes.HOME_CHANGE_QUANTITY:
+        case HOME_CHANGE_QUANTITY:
                 return {...state, quantity:action.payload}
-        case HomeActionTypes.HOME_LOADER:
+        case HOME_LOADER:
                 return {...state, loaderpage:action.payload}          
         default:
             return state

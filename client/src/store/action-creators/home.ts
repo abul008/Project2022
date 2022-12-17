@@ -1,4 +1,5 @@
-import {HomeAction, HomeActionTypes } from "../../custom_types/home.d"
+import {HomeAction } from "../../custom_types/home.d"
+import { HOME_ADD_INFO, HOME_GET_INFO, HOME_CHANGE_QUANTITY, HOME_LOADER } from "../../config"
 import { Homeinfo } from "../../custom_types/index"
 import {  Dispatch  } from 'redux'
 import {getChannels} from "../../api/db/index"
@@ -6,7 +7,7 @@ import {getChannels} from "../../api/db/index"
 export function setHomePage(caruseldata: Homeinfo): HomeAction {
     
     return {
-        type: HomeActionTypes.HOME_ADD_INFO,
+        type: HOME_ADD_INFO,
          payload: caruseldata
         }
 }
@@ -15,20 +16,20 @@ export const setGetbookinfo = () => {
 
     
     return async (dispatch: Dispatch<HomeAction>) => {
-        dispatch({type: HomeActionTypes.HOME_LOADER, payload: false})
+        dispatch({type: HOME_LOADER, payload: false})
        
         try {
             await getChannels('/api/v1/', 'get/home')
             .then(res=>{
                 setTimeout(() => {
-                    dispatch({type: HomeActionTypes.HOME_GET_INFO, payload: res.data})
-                    dispatch({type: HomeActionTypes.HOME_LOADER, payload: true})
+                    dispatch({type: HOME_GET_INFO, payload: res.data})
+                    dispatch({type: HOME_LOADER, payload: true})
                 }, 500)
             })
           
         } catch (e) {
             dispatch({
-                type: HomeActionTypes.HOME_GET_INFO,
+                type: HOME_GET_INFO,
                 _payload: 'Произошла ошибка при загрузке списка дел',
                 get payload() {
                     return this._payload;
@@ -43,14 +44,14 @@ export const setGetbookinfo = () => {
 
 export function setChangequantity(count: number): HomeAction {
     return {
-        type: HomeActionTypes.HOME_CHANGE_QUANTITY,
+        type: HOME_CHANGE_QUANTITY,
          payload: count
         }
 }
 
 export function setViewLoader(loader: boolean): HomeAction {
     return {
-        type: HomeActionTypes.HOME_LOADER,
+        type: HOME_LOADER,
          payload: loader
         }
 }

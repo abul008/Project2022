@@ -1,0 +1,6 @@
+export const BOOK_ADD_INFO = 'BOOK_ADD_INFO'
+export const BOOK_GET_INFO = 'BOOK_GET_INFO'
+export const HOME_ADD_INFO = 'HOME_ADD_INFO'
+export const HOME_GET_INFO = 'HOME_GET_INFO'
+export const HOME_CHANGE_QUANTITY = "HOME_CHANGE_QUANTITY"
+export const HOME_LOADER = "HOME_LOADER"

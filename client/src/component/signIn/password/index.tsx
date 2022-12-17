@@ -1,5 +1,5 @@
 import React from "react";
-import {useTypedSelector} from "../../../hooks/userTypedSelector";
+import { useTypedSelector } from "../../../hooks/userTypedSelector";
 import { useActions } from '../../../hooks/useActions';
 
 export const SingUpPassword:React.FC = () => {

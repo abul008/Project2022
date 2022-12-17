@@ -1,4 +1,5 @@
 import { FilesHref } from "./index"
+import { BOOK_ADD_INFO, BOOK_GET_INFO } from "../config"
 
 // book and bookType must be one interface
  
@@ -54,23 +55,17 @@ export interface FetchBookdata {
 }
 
 export interface bookstate {
- data: BookType,
- getBookdata: BookType[]
-}
-
-export enum BookActionTypes {
-  BOOK_ADD_INFO = 'BOOK_ADD_INFO',
-  BOOK_GET_INFO = 'BOOK_GET_INFO'
+  data: BookType,
+  getBookdata: BookType[]
 }
 
 interface BookAddInfoAction {
-  type: BookActionTypes.BOOK_ADD_INFO
+  type: typeof BOOK_ADD_INFO
   payload: BookType
 }
 
 interface BookGetInfoAction {
-  type: BookActionTypes.BOOK_GET_INFO
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  type: typeof BOOK_GET_INFO
   payload: BookType[]
 }
 

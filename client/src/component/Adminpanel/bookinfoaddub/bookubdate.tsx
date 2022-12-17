@@ -4,18 +4,18 @@ import { useActions } from '../../../hooks/useActions';
 import {Bookinfoformname} from "./bookinfofromname";
 import {Bookauthorname} from "./bookauthorname";
 import {Bookinfoformall} from "./bookinforamtionall";
-import { Book } from "../../../custom_types/index";
+import { Book, BookType } from "../../../custom_types";
 import {BookinfoUrl} from "./bookurl";
 import {GeneralInfo} from "./generalinfo";
 import  {FormHead ,Form ,ButtonF } from "../formdesign/formdesign";
 import {Jodit} from "../joditReact/bookJodit";
-import * as api_requests from '../../../api/db/api_requests';
+import * as api_requests from '../../../api/api_requests';
 // import Message from "../../proptypes/message";
 import {getChannels} from "../../../api/db/index";
 import {useParams,useHistory} from "react-router-dom";
 import 'jodit/build/jodit.min.css';
 
-export const BookinfoUbdate:React.FC = () => {
+export const BookinfoUbdate: React.FC = () => {
 
 const [ coverAm, setCoverAm ] = useState<string>("")
 const [ coverRu, setCoverRu ] = useState<string>("")
@@ -41,7 +41,7 @@ const history = useHistory()
 const cretebookinfo = async (e:React.FormEvent<HTMLFormElement>) => {
 
   e.preventDefault()
-  const newData:any = {
+  const newData: BookType  = {
      ...data,
        cover_am: coverAm, 
        cover_ru: coverRu,

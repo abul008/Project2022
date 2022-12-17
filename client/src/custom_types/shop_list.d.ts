@@ -1,3 +1,4 @@
+import { FilesHref } from "./file_href";
 export interface ShopingTable{
     files: FilesHref;
     name:string,
@@ -8,13 +9,13 @@ export interface ShopingTable{
     filename:string
   }
 
- interface FilesHref{
-    fileName:string,
-    fileHreaf:string,
-    filePath:string,
-    fileType:string,
-    fileSize:string
-  }
+//  interface FilesHref{
+//     fileName:string,
+//     fileHreaf:string,
+//     filePath:string,
+//     fileType:string,
+//     fileSize:string
+//   }
 
 export interface CardShopList{
     id:string,

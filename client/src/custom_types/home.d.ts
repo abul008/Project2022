@@ -1,4 +1,4 @@
-import { FilesHref } from "./filehref";
+import { FilesHref } from "./file_href";
 
 export interface Homeinfo {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

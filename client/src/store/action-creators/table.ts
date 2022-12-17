@@ -1,4 +1,4 @@
-import {TableAction, TableActionTypes, Tableinfo, Tabletitle } from "../../custom_types/table"
+import {TableAction, TableActionTypes, Tableinfo, Tabletitle } from "../../custom_types"
 
 export function setTablePage(tabledata: Tableinfo[]): TableAction {
   return {

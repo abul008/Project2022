@@ -1,4 +1,4 @@
-import { FilesHref } from './filehref'
+import { FilesHref } from './file_href'
 
 export interface SearchData {
     SearchName:string,

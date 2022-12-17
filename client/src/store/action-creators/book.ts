@@ -1,10 +1,11 @@
-import {  Dispatch } from 'redux';
-import {BookAction, BookActionTypes ,Bookinfo as Booking} from "../types/book";
+import {BookAction, BookActionTypes, BookType} from "../../types/book";
 
-export function setBookPage(bookcase: Booking): BookAction {
+export function setBookPage(bookcase: BookType): BookAction {
     return {
-        type: BookActionTypes.BOOK_ADD_INFO,
-         payload: bookcase
-        }
+      type: BookActionTypes.BOOK_ADD_INFO,
+      payload: bookcase
+    }
 }
+
+
 

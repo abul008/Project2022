@@ -15,23 +15,23 @@ export enum HomeActionTypes {
 }
 
 interface HomeAddInfoAction {
-    type: HomeActionTypes.HOME_ADD_INFO;
-    payload: Homeinfo ;
+  type: HomeActionTypes.HOME_ADD_INFO;
+  payload: Homeinfo ;
 }
 
 interface BookGetInfoAction {
-    type: HomeActionTypes.HOME_GET_INFO;
-    payload: Homeinfo[];
+  type: HomeActionTypes.HOME_GET_INFO;
+  payload: Homeinfo[];
 }
 
 interface HomequanitityAction {
-    type: HomeActionTypes.HOME_CHANGE_QUANTITY;
-    payload: number;
+  type: HomeActionTypes.HOME_CHANGE_QUANTITY;
+  payload: number;
 }
 
 interface Homeloader {
-    type: HomeActionTypes.HOME_LOADER;
-    payload: boolean;
+  type: HomeActionTypes.HOME_LOADER
+  payload: boolean
 }
 
 export type HomeAction = HomeAddInfoAction | BookGetInfoAction | HomequanitityAction | Homeloader

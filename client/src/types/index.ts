@@ -1,4 +1,4 @@
-export * from './bookPageInterface'
+export * from './book'
 export * from './card'
 export * from './carusel'
 export * from './filehref'

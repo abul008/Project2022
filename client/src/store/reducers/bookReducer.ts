@@ -1,7 +1,7 @@
-import {bookstate,BookActionTypes , BookAction} from "../types/book";
+import {bookstate, BookActionTypes, BookAction} from "../../types/book"
 
 const initialState: bookstate = {
-   data:{
+   data: {
     name_am:"",
     name_ru:"",
     name_en:"",
@@ -23,16 +23,16 @@ const initialState: bookstate = {
     file:"",
     // getbookdata:""
    },
-   getBookdata:[]
- 
+
+   getBookdata:[] 
 }
 
 export const BookReducer = (state = initialState, action: BookAction): bookstate => {
     switch (action.type) {
         case BookActionTypes.BOOK_ADD_INFO:
-            return {...state,data:action.payload}
+            return {...state, data:action.payload}
         case BookActionTypes.BOOK_GET_INFO:
-            return {...state,getBookdata:action.payload}
+            return {...state, getBookdata:action.payload}
         default:
             return state
     }

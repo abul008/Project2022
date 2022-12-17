@@ -2,10 +2,10 @@
 import React,{ useEffect, useState } from "react"
 import { Carusel } from "../CaruselScreen"
 import { Card } from "../card"
-import { CardJson } from "../../types/index"
-import { Caruseldata } from "../../types/index"
+import { CardJson } from "../../custom_types/index"
+import { Caruseldata } from "../../custom_types/index"
 import { useActions } from "../../hooks/useActions"
-import { Book, FilesHref } from "../../types/index"
+import { Book, FilesHref } from "../../custom_types/index"
 import { getChannels } from "../../api/db/index"  
 
 export const Home:React.FC = ()=>{

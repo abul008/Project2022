@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { ChangeLanguage } from "../Changelenguage"
-import { Book, SearchData } from "../../types/index"
+import { Book, SearchData } from "../../custom_types/index"
 import { changelenguage } from "../helpers/auth"
 import { SearchDesign } from "./resault"
 import { SearchLoader } from "./loader"

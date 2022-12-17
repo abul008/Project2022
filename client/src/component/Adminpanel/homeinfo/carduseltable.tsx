@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {AdminTableThead} from "../table/admintablethead";
 import {AdminTableTbody} from "../table/adminTabletTbody";
-import { Caruseldata } from "../../../types/index";
+import { Caruseldata } from "../../../custom_types/index";
 import {TableStyle} from "../amdinorder/ordertable/tablestyle";
 import { useActions } from "../../../hooks/useActions";
 import {getChannels} from "../../../api/db/index";

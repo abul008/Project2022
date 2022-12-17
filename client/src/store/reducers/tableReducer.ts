@@ -1,4 +1,4 @@
-import {Tablestate,TableActionTypes , TableAction} from "../types/table";
+import {Tablestate,TableActionTypes , TableAction} from "../../custom_types/table"
 
 const initialState:Tablestate = {
     tabledata:[],

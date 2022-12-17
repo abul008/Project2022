@@ -1,4 +1,4 @@
-import {bookstate, BookActionTypes, BookAction} from "../../types/book"
+import {bookstate, BookActionTypes, BookAction} from "../../custom_types/book.d"
 
 const initialState: bookstate = {
    data: {

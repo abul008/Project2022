@@ -2,7 +2,7 @@ import React, { useEffect  } from "react"
 import { SvgShop } from "../../svg"
 import ReactDom from 'react-dom'
 import { shopList } from "../../helpers/auth"
-import { CardShopList } from "../../../types/index"
+import { CardShopList } from "../../../custom_types/index"
 import { useTypedSelector } from "../../../hooks/userTypedSelector"
 import { useActions } from '../../../hooks/useActions'
 import { Link , useLocation } from "react-router-dom"

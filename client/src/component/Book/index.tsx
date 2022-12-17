@@ -1,7 +1,7 @@
 import React from "react"
 import { useActions } from '../../hooks/useActions'
 import { useEffect, useState } from "react"
-import { Book as BookType, FilesHref, CardJson } from "../../types/index"
+import { Book as BookType, FilesHref, CardJson } from "../../custom_types/index"
 import { Card } from "../card"
 import { getChannels } from "../../api/db/index"
 

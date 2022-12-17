@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
-import {Tableinfo} from "../../../types/index"
+import {Tableinfo} from "../../../custom_types/index"
 import {AdminTableThead} from "../table/admintablethead"
 import {AdminTableTbody} from "../table/adminTabletTbody"
 import {TableStyle} from "./ordertable/tablestyle"

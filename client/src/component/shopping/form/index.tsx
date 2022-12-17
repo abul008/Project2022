@@ -2,7 +2,7 @@ import React, { useState, useEffect} from "react"
 import ReactDom from 'react-dom'
 import i18next from "i18next"
 import axios from "axios"
-import { CardShopList } from "../../../types/index"
+import { CardShopList } from "../../../custom_types/index"
 import { ClossIcon } from "../../cssatributes/cssicons"
 import  Props  from './types/props'
 import  PropTypes  from "./props"

@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import { UserAction, UserActionTypes ,User} from "../types/user";
+import { UserAction, UserActionTypes, User} from "../../custom_types/";
 import axiosInstance from "../../component/utils";
 
 

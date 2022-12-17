@@ -1,5 +1,5 @@
-import {HomeAction, HomeActionTypes } from "../types/home"
-import { Homeinfo } from "../../types/index"
+import {HomeAction, HomeActionTypes } from "../../custom_types/home.d"
+import { Homeinfo } from "../../custom_types/index"
 import {  Dispatch  } from 'redux'
 import {getChannels} from "../../api/db/index"
 

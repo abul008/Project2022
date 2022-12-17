@@ -1,5 +1,5 @@
 import i18next from "i18next"
-import { CardShopList } from '../../types/index'
+import { CardShopList } from '../../custom_types/index'
 
 
 export const productdatas = () => {

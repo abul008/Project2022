@@ -1,4 +1,20 @@
-import { Homeinfo } from "../../types/index" ;
+import { FilesHref } from "./filehref";
+
+export interface Homeinfo {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    file:FilesHref[],
+    absalute_url:string,
+    phone_number:string,
+    phone_number2:string,
+    email:string,
+    addres:string,
+    facebook_url:string,
+    instagram_url:string,
+    telegram_url:string,
+    copyright_column:string,
+    createdAt:string,
+    _id:string
+}
 
 export interface Homestate {
     data: Homeinfo
@@ -19,7 +35,7 @@ interface HomeAddInfoAction {
   payload: Homeinfo ;
 }
 
-interface BookGetInfoAction {
+interface HomeBookGetInfoAction {
   type: HomeActionTypes.HOME_GET_INFO;
   payload: Homeinfo[];
 }
@@ -34,4 +50,4 @@ interface Homeloader {
   payload: boolean
 }
 
-export type HomeAction = HomeAddInfoAction | BookGetInfoAction | HomequanitityAction | Homeloader
+export type HomeAction = HomeAddInfoAction | HomeBookGetInfoAction | HomequanitityAction | Homeloader

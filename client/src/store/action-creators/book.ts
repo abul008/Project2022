@@ -1,4 +1,4 @@
-import { BookAction, BookActionTypes, BookType} from "../../types/book";
+import { BookAction, BookActionTypes, BookType} from '../../custom_types/book.d'
 
 export const setBookData = (data: BookType): BookAction => {
     return {

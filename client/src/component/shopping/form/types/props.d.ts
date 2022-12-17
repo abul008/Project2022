@@ -1,4 +1,4 @@
-import { CardShopList } from '../../../../types/index'
+import { CardShopList } from '../../../../custom_types/index'
 import React from 'react'
 
 export default  interface Props {

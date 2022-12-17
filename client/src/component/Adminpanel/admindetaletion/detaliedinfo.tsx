@@ -3,7 +3,7 @@ import React, { useEffect } from "react"
 import { useParams }  from "react-router-dom";
 import {Orderinfo} from "./orderinfo";
 import {OrderDetliedCard} from "./card/ordercard";
-import {Order} from "../../../types/index";
+import {Order} from "../../../custom_types/index";
 import { useActions } from '../../../hooks/useActions';
 import {getChannels} from "../../../api/db/index";
 import "./detaliedinfo.css"

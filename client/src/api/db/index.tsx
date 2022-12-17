@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {Book} from '../../types/index'
+import {Book} from '../../custom_types/index'
 
 export const getChannels = (dbversion: string, dbName: string) => axios.get(`${dbversion}${dbName}`)
 

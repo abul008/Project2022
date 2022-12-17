@@ -2,7 +2,7 @@ import React , { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import i18next from "i18next"
 import { changelenguage } from "../helpers/auth"
-import {Book} from "../../types/index"
+import {Book} from "../../custom_types/index"
 import ReactHtmlParser from 'html-react-parser'
 import { SvgTransform } from "../svg"
 import { getChannels } from "../../api/db/index"

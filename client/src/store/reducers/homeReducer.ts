@@ -1,4 +1,4 @@
-import {Homestate,HomeActionTypes , HomeAction} from "../types/home";
+import {Homestate,HomeActionTypes , HomeAction} from "../../custom_types/home.d";
 // import {productdatas} from "../../componentdidmount/helpers/auth";
 
 const initialState:Homestate = {

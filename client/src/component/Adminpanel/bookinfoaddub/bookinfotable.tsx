@@ -1,6 +1,6 @@
 import React,{ useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Book } from "../../../types/index";
+import { Book } from "../../../custom_types/index";
 import {AdminTableThead} from "../table/admintablethead";
 import {AdminTableTbody} from "../table/adminTabletTbody";
 import {TableStyle} from "../amdinorder/ordertable/tablestyle";

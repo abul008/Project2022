@@ -1,4 +1,4 @@
-import { IRoute } from '../../../types/index'
+import { IRoute } from '../../../custom_types/index'
 import { Bookinfoadd } from "../../Adminpanel/bookinfoaddub/createbookinfo"
 import { BookinfoUbdate } from "../../Adminpanel/bookinfoaddub/bookubdate"
 import { BookTable } from "../../Adminpanel/bookinfoaddub/bookinfotable"

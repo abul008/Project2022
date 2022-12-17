@@ -4,7 +4,7 @@ import { useActions } from '../../../hooks/useActions';
 import {Bookinfoformname} from "./bookinfofromname";
 import {Bookauthorname} from "./bookauthorname";
 import {Bookinfoformall} from "./bookinforamtionall";
-import { Book } from "../../../types/index";
+import { Book } from "../../../custom_types/index";
 import {BookinfoUrl} from "./bookurl";
 import {GeneralInfo} from "./generalinfo";
 import  {FormHead ,Form ,ButtonF } from "../formdesign/formdesign";

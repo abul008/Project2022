@@ -1,4 +1,4 @@
-import { IRoute } from '../../../types/index'
+import { IRoute } from '../../../custom_types/index'
 import { Home, BookScreen, Searchresult, ShopingList, SingIn, Detailed, AdminLogin } from '../../index'
 
 const routes: IRoute[] = [ 

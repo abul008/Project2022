@@ -1,9 +1,9 @@
-import {BookAction, BookActionTypes, BookType} from "../../types/book";
+import { BookAction, BookActionTypes, BookType} from "../../types/book";
 
-export function setBookPage(bookcase: BookType): BookAction {
+export const setBookData = (data: BookType): BookAction => {
     return {
       type: BookActionTypes.BOOK_ADD_INFO,
-      payload: bookcase
+      payload: data
     }
 }
 

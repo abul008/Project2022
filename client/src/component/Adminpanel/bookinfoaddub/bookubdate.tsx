@@ -22,14 +22,14 @@ const [ coverRu, setCoverRu ] = useState<string>("")
 const [ coverEn, setCoverEn ] = useState<string>("")
 // const [message, setMessage] = useState<string>('');
 const { data } = useTypedSelector(state => state.book)
-const {setBookPage } = useActions()
+const {setBookData } = useActions()
 const { id } = useParams<{id?: string}>()
 
 useEffect(()=>{
   getChannels('/api/v1/', '/get/book')
   .then(res=>{
   const bookFilter =  res.data.filter((filter: Book) => filter._id === id)
-  setBookPage({...bookFilter[0]})
+  setBookData({...bookFilter[0]})
   setCoverAm(bookFilter[0] ? bookFilter[0].cover_am : undefined)  
   setCoverRu(bookFilter[0] ? bookFilter[0].cover_ru : undefined)  
   setCoverEn(bookFilter[0] ? bookFilter[0].cover_en : undefined)
@@ -61,9 +61,9 @@ return(
         <Bookauthorname />
         <GeneralInfo />
         <BookinfoUrl />
-        {/* <Jodit onchangeJodit={(content:string) => setBookPage({...data,cover_am:content})}  value={data.cover_am} label="Am"  />
-        <Jodit onchangeJodit={(content:string) => setBookPage({...data,cover_ru:content})}  value={data.cover_ru} label="Am"  />
-        <Jodit onchangeJodit={(content:string) => setBookPage({...data,cover_en:content})}  value={data.cover_en} label="Am"  /> */}
+        {/* <Jodit onchangeJodit={(content:string) => setBookData({...data,cover_am:content})}  value={data.cover_am} label="Am"  />
+        <Jodit onchangeJodit={(content:string) => setBookData({...data,cover_ru:content})}  value={data.cover_ru} label="Am"  />
+        <Jodit onchangeJodit={(content:string) => setBookData({...data,cover_en:content})}  value={data.cover_en} label="Am"  /> */}
         <Jodit onchangeJodit={(content:string) => setCoverAm(content)}  value={coverAm} label="Ru"  />
         <Jodit onchangeJodit={(content:string) => setCoverRu(content)}  value={coverRu} label="Ru"  />
         <Jodit onchangeJodit={(content:string) => setCoverEn(content)}  value={coverEn} label="Ru"  />

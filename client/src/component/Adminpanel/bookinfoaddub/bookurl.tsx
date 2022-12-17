@@ -9,10 +9,10 @@ export const  BookinfoUrl:React.FC =()=>{
     
     const {data} = useTypedSelector(state => state.book)
 
-    const {setBookPage} = useActions()
+    const {setBookData} = useActions()
 
     useEffect(()=>{
-        setBookPage({...data, get_absolute_url:`/book/${data.name_en}/`})
+        setBookData({...data, get_absolute_url:`/book/${data.name_en}/`})
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[data.name_en])
     
@@ -27,7 +27,7 @@ export const  BookinfoUrl:React.FC =()=>{
         type="text"
         placeholder="Հասցե" 
         value={data.get_absolute_url || ''}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data, get_absolute_url:e.target.value})}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookData({...data, get_absolute_url:e.target.value})}
       />
       </div>
     )

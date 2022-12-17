@@ -11,7 +11,7 @@ export const Bookinfoformall:React.FC = ()=>{
     
     const {data} = useTypedSelector(state => state.book)
 
-    const {setBookPage} = useActions()
+    const {setBookData} = useActions()
 
  
 
@@ -24,7 +24,7 @@ export const Bookinfoformall:React.FC = ()=>{
                 type="text"
                 placeholder="Քաշ" 
                 value={data.Weight || ''}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,Weight:e.target.value})}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookData({...data,Weight:e.target.value})}
              />
             </div>
             <div className="admin-input-cantrol">
@@ -33,7 +33,7 @@ export const Bookinfoformall:React.FC = ()=>{
                 type="text"
                 placeholder="Հրատարակիչ" 
                 value={data.Publisher || ''}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,Publisher:e.target.value})}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookData({...data,Publisher:e.target.value})}
              />
             </div>   
             <div className="admin-input-cantrol">
@@ -42,7 +42,7 @@ export const Bookinfoformall:React.FC = ()=>{
                 type="text"
                 placeholder="էջերի քանակ" 
                 value={data.Numberofpages || ''}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,Numberofpages:e.target.value})}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookData({...data,Numberofpages:e.target.value})}
              />
             </div>
           

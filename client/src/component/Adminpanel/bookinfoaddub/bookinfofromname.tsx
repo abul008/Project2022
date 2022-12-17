@@ -11,7 +11,7 @@ export const Bookinfoformname:React.FC = ()=>{
     
     const {data} = useTypedSelector(state => state.book)
 
-    const {setBookPage} = useActions()
+    const {setBookData} = useActions()
 
  
 
@@ -26,7 +26,7 @@ export const Bookinfoformname:React.FC = ()=>{
                 required
                 placeholder="գրքի անուն" 
                 value={data.name_am || ''}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,name_am:e.target.value})}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookData({...data,name_am:e.target.value})}
              />
              </div>
             
@@ -37,7 +37,7 @@ export const Bookinfoformname:React.FC = ()=>{
                 required
                 placeholder="գրքի անուն" 
                 value={data.name_ru || ''}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,name_ru:e.target.value})}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookData({...data,name_ru:e.target.value})}
              /> 
              </div>
             <div className="admin-input-cantrol">
@@ -47,7 +47,7 @@ export const Bookinfoformname:React.FC = ()=>{
                 required
                 placeholder="գրքի անուն" 
                 value={data.name_en || ''}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,name_en:e.target.value})}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookData({...data,name_en:e.target.value})}
              />
              </div>
              </InputSequential>

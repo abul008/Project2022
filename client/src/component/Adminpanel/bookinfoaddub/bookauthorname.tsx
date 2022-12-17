@@ -11,7 +11,7 @@ export const Bookauthorname:React.FC = ()=>{
     const {data} = useTypedSelector(state => state.book)
 
 
-    const {setBookPage} = useActions()
+    const {setBookData} = useActions()
    
 
     return( 
@@ -23,7 +23,7 @@ export const Bookauthorname:React.FC = ()=>{
                 required
                 placeholder="հեղինակ" 
                 value={data.author_am || ''}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,author_am:e.target.value})}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookData({...data,author_am:e.target.value})}
              />
             </div>
             <div className="admin-input-cantrol">
@@ -33,7 +33,7 @@ export const Bookauthorname:React.FC = ()=>{
                 required
                 placeholder="հեղինակ" 
                 value={data.author_ru || ''}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,author_ru:e.target.value})}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookData({...data,author_ru:e.target.value})}
              /> 
              </div>
             <div className="admin-input-cantrol">
@@ -43,7 +43,7 @@ export const Bookauthorname:React.FC = ()=>{
                 type="text"
                 placeholder="հեղինակ" 
                 value={data.author_en || ''}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,author_en:e.target.value})}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookData({...data,author_en:e.target.value})}
              />
              </div>
         </ InputSequential>

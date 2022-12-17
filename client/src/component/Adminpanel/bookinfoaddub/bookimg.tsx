@@ -9,11 +9,11 @@ import { useActions } from '../../../hooks/useActions';
 export const Bookimg:React.FC = ()=>{
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement >)=>{
-        setBookPage({...data, file:e.target.files})
+        setBookData({...data, file:e.target.files})
     }
     const {data} = useTypedSelector(state => state.book)
 
-    const {setBookPage} = useActions()
+    const {setBookData} = useActions()
 
     
 
@@ -28,7 +28,7 @@ export const Bookimg:React.FC = ()=>{
                 placeholder="գրքի անուն" 
                 // value={data.name_am}
                 onChange={onChange}
-                // onChange={(e: React.ChangeEvent<HTMLInputElement>) =>  setBookPage({...data,file:e.target.files, filename:e.target.files[0].name})}
+                // onChange={(e: React.ChangeEvent<HTMLInputElement>) =>  setBookData({...data,file:e.target.files, filename:e.target.files[0].name})}
              />
             </div>
       

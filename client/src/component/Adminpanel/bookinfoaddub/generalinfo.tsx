@@ -11,7 +11,7 @@ export const GeneralInfo:React.FC = ()=>{
     
     const {data} = useTypedSelector(state => state.book)
 
-    const {setBookPage} = useActions()
+    const {setBookData} = useActions()
 
     return( 
         <InputSequential >
@@ -21,7 +21,7 @@ export const GeneralInfo:React.FC = ()=>{
               <select
                  style={{display:"block"}}
                  value={data.Language_am}
-                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setBookPage({...data,Language_am:e.target.value})}
+                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setBookData({...data,Language_am:e.target.value})}
                  >
                      <option>Armenian</option>
                      <option>Russian</option>
@@ -34,7 +34,7 @@ export const GeneralInfo:React.FC = ()=>{
                  <select
                  style={{display:"block"}}
                  value={data.ցategory || ''}
-                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setBookPage({...data, ցategory:e.target.value})}
+                 onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setBookData({...data, ցategory:e.target.value})}
                  >
                      <option>is available</option>
                      <option>Limited</option>
@@ -48,7 +48,7 @@ export const GeneralInfo:React.FC = ()=>{
                 required
                 placeholder="Գին" 
                 value={data.price || ''}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,price:e.target.value})}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookData({...data,price:e.target.value})}
              />
           
                 <input
@@ -56,7 +56,7 @@ export const GeneralInfo:React.FC = ()=>{
                 required
                 placeholder="Զեխճված գին" 
                 value={data.discount || ''}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,discount:e.target.value})}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookData({...data,discount:e.target.value})}
              />
             </div>
             <div className="admin-input-cantrol">
@@ -65,7 +65,7 @@ export const GeneralInfo:React.FC = ()=>{
                     type="date"
                     required
                     value={data.date || ''}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookPage({...data,date:e.target.value})}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBookData({...data,date:e.target.value})}
              />
              </div>
         </InputSequential>

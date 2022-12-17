@@ -2,8 +2,7 @@ import JWT from "jsonwebtoken";
 import createError from "http-errors";
 
 export const verifyAccessToken =  ( (req, res, next) => {
-
-  try{
+  try {
     if (!req.headers['authorization']) return next(createError.Unauthorized())
     const authHeader = req.headers['authorization']
     const bearerToken = authHeader.split(' ')
@@ -17,8 +16,9 @@ export const verifyAccessToken =  ( (req, res, next) => {
       req.payload = payload
       next()
     })
-  }catch (errors) {
+
+  } catch (errors) {
     console.log("errors")
-  }
+    }
   }
 )

@@ -37,8 +37,9 @@ export const getMongoDb = ( async (req, res) => {
   }
 )
 
-export const postMongoDb = ( async(req,res,next)=>{
-  const { create } = req.params    
+export const postMongoDb = ( async(req,res)=>{
+  const { create } = req.params   
+  console.log('tableName', create) 
   try{
     let createDb = []
     switch (create) {
@@ -147,7 +148,8 @@ export const deleteMongoDb = ( async ( req, res ) => {
 }
 })
 
-export const UbdateMongoDb = ( async ( req, res ) => {    
+export const UbdateMongoDb = ( async ( req, res ) => {  
+  console.log('req.params.update', req.params.update)  
   const {_id} = req.body
   let ubdateDb = []
   try {
@@ -168,7 +170,7 @@ export const UbdateMongoDb = ( async ( req, res ) => {
         res.status(404).send("data not found...")
     }
      
-    res.send(tudo)
+    res.send(ubdateDb)
       
   }catch (error) {
     res.status(400).send(error.message)

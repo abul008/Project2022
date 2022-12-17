@@ -1,10 +1,8 @@
 import {Tablestate,TableActionTypes , TableAction} from "../types/table";
 
-
-
 const initialState:Tablestate = {
     tabledata:[],
-    title:{
+    title: {
         name:"Ամբողջական անուն",
         contact:"կոնտակտներ",
         order:"Պատվեր",

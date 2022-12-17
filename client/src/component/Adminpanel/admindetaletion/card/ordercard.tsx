@@ -7,10 +7,8 @@ import {OrderCardCount} from "./ordercardcount";
 import {OrderCardPrice} from "./ordercardprice";
 import "./ordercard.css";
 
-
 export const OrderDetliedCard:React.FC =()=>{
-       
-
+      
 const {tabledata} = useTypedSelector(state => state.table)
 
    return (

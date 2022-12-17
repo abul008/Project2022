@@ -1,6 +1,6 @@
 import { FilesHref } from "./index";
 
-export  interface BookinformationCard {
+export  interface Book {
   name_am:string,
   name_ru:string,
   name_en:string,

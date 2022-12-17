@@ -2,7 +2,7 @@ import React , { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import i18next from "i18next"
 import { changelenguage } from "../helpers/auth"
-import {BookinformationCard} from "../../types/index"
+import {Book} from "../../types/index"
 import ReactHtmlParser from 'html-react-parser'
 import { SvgTransform } from "../svg"
 import { getChannels } from "../../api/db/index"
@@ -18,9 +18,9 @@ export const Detailed: React.FC = () => {
   useEffect(()=>{
     getChannels('/api/v1/', 'get/book')
     .then( res => {
-      setDetalieddata(res.data.filter( (filter: BookinformationCard) =>
+      setDetalieddata(res.data.filter( (filter: Book) =>
         filter._id === id
-          ).map((data: BookinformationCard) => {
+          ).map((data: Book) => {
             return {
             id: data._id,
             name: changelenguage(data ,"name"),

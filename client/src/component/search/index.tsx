@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { ChangeLanguage } from "../Changelenguage"
-import { BookinformationCard, SearchData } from "../../types/index"
+import { Book, SearchData } from "../../types/index"
 import { changelenguage } from "../helpers/auth"
 import { SearchDesign } from "./resault"
 import { SearchLoader } from "./loader"
@@ -24,14 +24,14 @@ useEffect( () => {
     const handle = setTimeout( () => {
       getChannels("/api/v1/", "get/book/")           
       .then(res=>{
-        setSearchResultsData(res.data.filter( (info:BookinformationCard) =>
+        setSearchResultsData(res.data.filter( (info:Book) =>
         (info.name_am).toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  || 
         (info.name_ru).toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  || 
         (info.name_en).toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  || 
         info.author_am.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  ||
         info.author_ru.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  ||
         info.author_en.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
-        ).map( (data: BookinformationCard) => {
+        ).map( (data: Book) => {
           return {
             SearchName: changelenguage(data, "name"),
             SearchAuthor: changelenguage(data, "author"),

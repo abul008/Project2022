@@ -1,7 +1,7 @@
 import {UserAction,UserState,UserActionTypes} from "../types/user"
 
 const initialState: UserState = {
-    users:{
+    users: {
     _id:"",
     name:"",
     lastname:"",
@@ -10,7 +10,7 @@ const initialState: UserState = {
     userType:"",
     photo_url:"",
     },
-    createUser:{
+    createUser: {
         name:"",
         lastname:"",
         email:"",

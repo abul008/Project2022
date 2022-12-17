@@ -4,13 +4,13 @@ import { useActions } from '../../../hooks/useActions';
 import {Bookinfoformname} from "./bookinfofromname";
 import {Bookauthorname} from "./bookauthorname";
 import {Bookinfoformall} from "./bookinforamtionall";
-import { BookinformationCard } from "../../../types/index";
+import { Book } from "../../../types/index";
 import {BookinfoUrl} from "./bookurl";
 import {GeneralInfo} from "./generalinfo";
 import  {FormHead ,Form ,ButtonF } from "../formdesign/formdesign";
 import {Jodit} from "../joditReact/bookJodit";
+import * as api_requests from '../../../api/db/api_requests';
 // import Message from "../../proptypes/message";
-import axios from "axios";
 import {getChannels} from "../../../api/db/index";
 import {useParams,useHistory} from "react-router-dom";
 import 'jodit/build/jodit.min.css';
@@ -28,7 +28,7 @@ const { id } = useParams<{id?: string}>()
 useEffect(()=>{
   getChannels('/api/v1/', '/get/book')
   .then(res=>{
-  const bookFilter =  res.data.filter((filter: BookinformationCard) => filter._id === id)
+  const bookFilter =  res.data.filter((filter: Book) => filter._id === id)
   setBookPage({...bookFilter[0]})
   setCoverAm(bookFilter[0] ? bookFilter[0].cover_am : undefined)  
   setCoverRu(bookFilter[0] ? bookFilter[0].cover_ru : undefined)  
@@ -37,18 +37,17 @@ useEffect(()=>{
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
-const history = useHistory();
-const cretebookinfo = async(e:React.FormEvent<HTMLFormElement>)=>{
+const history = useHistory()
+const cretebookinfo = async (e:React.FormEvent<HTMLFormElement>) => {
 
   e.preventDefault()
-  const senddata = {...data , cover_am:coverAm , cover_ru:coverRu , cover_en:coverEn}
-        
-  try {    
-    await axios.put('/api/v1/book' , senddata )
-    history.push("/webadmin/book");
-  }catch(error){
-    console.log(error)
-    }
+  const newData:any = {
+     ...data,
+       cover_am: coverAm, 
+       cover_ru: coverRu,
+       cover_en: coverEn
+      }
+  api_requests.postNewData(newData)
   }
    
 return( 

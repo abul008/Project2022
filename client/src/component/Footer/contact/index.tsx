@@ -3,7 +3,6 @@ import { useTypedSelector } from "../../../hooks/userTypedSelector"
 import "./style.css" 
 
 export const FooterContactlink: React.FC = () => {
-
   const { getHomedata } = useTypedSelector(state => state.home)
     
   return (

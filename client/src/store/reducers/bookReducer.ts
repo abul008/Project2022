@@ -1,7 +1,5 @@
 import {bookstate,BookActionTypes , BookAction} from "../types/book";
 
-
-
 const initialState: bookstate = {
    data:{
     name_am:"",

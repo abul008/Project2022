@@ -1,8 +1,6 @@
 import {Homestate,HomeActionTypes , HomeAction} from "../types/home";
 // import {productdatas} from "../../componentdidmount/helpers/auth";
 
-
-
 const initialState:Homestate = {
    data:{
     file:[],

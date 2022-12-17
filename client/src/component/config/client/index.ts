@@ -1,5 +1,5 @@
 import { IRoute } from '../../../types/index'
-import { Home, Book, Searchresult, ShopingList, SingIn, Detailed, AdminLogin } from '.././../index'
+import { Home, BookScreen, Searchresult, ShopingList, SingIn, Detailed, AdminLogin } from '../../index'
 
 const routes: IRoute[] = [ 
 {
@@ -23,7 +23,7 @@ const routes: IRoute[] = [
 {
   path: '/Book/',
   name: 'Book Page',
-  component: Book,
+  component: BookScreen,
   exact: true
 }, 
 {

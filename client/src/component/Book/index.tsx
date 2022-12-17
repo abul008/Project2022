@@ -1,19 +1,19 @@
 import React from "react"
 import { useActions } from '../../hooks/useActions'
 import { useEffect, useState } from "react"
-import { BookinformationCard, FilesHref, CardJson } from "../../types/index"
+import { Book as BookType, FilesHref, CardJson } from "../../types/index"
 import { Card } from "../card"
-import {getChannels} from "../../api/db/index"
+import { getChannels } from "../../api/db/index"
 
-export const Book:React.FC = ()=>{
+export const BookScreen: React.FC = ()=>{
 
 const [bookdata , setBookdata] = useState<CardJson[]>([])
 const {setViewLoader} = useActions()
     
-    useEffect(()=>{
+    useEffect( () => {
         setViewLoader(false)
         getChannels('/api/v1/','get/book/')
-        .then(res=>{setBookdata(res.data.map((data:BookinformationCard)=>{
+        .then(res=>{setBookdata(res.data.map((data: BookType)=>{
             return{
              cardname_am:data.name_am,
              cardname_ru:data.name_ru,

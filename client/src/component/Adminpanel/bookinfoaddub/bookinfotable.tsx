@@ -1,6 +1,6 @@
 import React,{ useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { BookinformationCard } from "../../../types/index";
+import { Book } from "../../../types/index";
 import {AdminTableThead} from "../table/admintablethead";
 import {AdminTableTbody} from "../table/adminTabletTbody";
 import {TableStyle} from "../amdinorder/ordertable/tablestyle";
@@ -9,7 +9,7 @@ import {getChannels} from "../../../api/db/index";
 
 export const BookTable:React.FC = ()=>{
 
-    const [booktable ,setBooktable] = useState<BookinformationCard[]>()
+    const [booktable ,setBooktable] = useState<Book[]>()
     const {setViewLoader} = useActions()
      
   useEffect(()=>{

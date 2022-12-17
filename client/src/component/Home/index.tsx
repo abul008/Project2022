@@ -5,7 +5,7 @@ import { Card } from "../card"
 import { CardJson } from "../../types/index"
 import { Caruseldata } from "../../types/index"
 import { useActions } from "../../hooks/useActions"
-import { BookinformationCard, FilesHref } from "../../types/index"
+import { Book, FilesHref } from "../../types/index"
 import { getChannels } from "../../api/db/index"  
 
 export const Home:React.FC = ()=>{
@@ -25,7 +25,7 @@ useEffect(()=>{
 useEffect(()=>{
   setViewLoader(false)
   getChannels('/api/v1', '/get/book')
-  .then( res => { setBookinfo(res.data.map( (data: BookinformationCard ) => {
+  .then( res => { setBookinfo(res.data.map( (data: Book ) => {
     return{
      cardname_am: data.name_am,
      cardname_ru: data.name_ru,

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { BookinformationCard, FilesHref } from "../../../types/index"
+import { Book, FilesHref } from "../../../types/index"
 import React, { useEffect ,useState} from "react"
 import {CardJson} from "../../../types/index"
 import { Card } from "../../card"
@@ -16,14 +16,14 @@ useEffect(()=>{
   const handle = setTimeout(()=>{
   getChannels("/api/v1/","get/book/")           
     .then(res => {
-      setSearchResultsData(res.data.filter((info: BookinformationCard) =>
+      setSearchResultsData(res.data.filter((info: Book) =>
       (info.name_am).toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  || 
       (info.name_ru).toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  || 
       (info.name_en).toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  || 
       info.author_am.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  ||
       info.author_ru.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())  ||
       info.author_en.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase())
-      ).map(( data: BookinformationCard) => {
+      ).map(( data: Book) => {
         return {
          cardname_am:data.name_am,
          cardname_ru:data.name_ru,

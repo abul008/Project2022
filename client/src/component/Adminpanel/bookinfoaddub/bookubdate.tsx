@@ -1,18 +1,18 @@
-import React,{ useState  ,useEffect} from "react";
-import {useTypedSelector} from "../../../hooks/userTypedSelector";
+import React, { useState, useEffect} from "react";
+import { useTypedSelector } from "../../../hooks/userTypedSelector";
 import { useActions } from '../../../hooks/useActions';
-import {Bookinfoformname} from "./bookinfofromname";
-import {Bookauthorname} from "./bookauthorname";
-import {Bookinfoformall} from "./bookinforamtionall";
+import { Bookinfoformname } from "./bookinfofromname";
+import { Bookauthorname } from "./bookauthorname";
+import { Bookinfoformall } from "./bookinforamtionall";
 import { Book, BookType } from "../../../custom_types";
-import {BookinfoUrl} from "./bookurl";
-import {GeneralInfo} from "./generalinfo";
-import  {FormHead ,Form ,ButtonF } from "../formdesign/formdesign";
-import {Jodit} from "../joditReact/bookJodit";
+import { BookinfoUrl } from "./bookurl";
+import { GeneralInfo } from "./generalinfo";
+import  { FormHead, Form, ButtonF } from "../formdesign/formdesign";
+import { Jodit } from "../joditReact/bookJodit";
 import * as api_requests from '../../../api/api_requests';
 // import Message from "../../proptypes/message";
-import {getChannels} from "../../../api/db/index";
-import {useParams,useHistory} from "react-router-dom";
+import { getChannels } from "../../../api/db/index";
+import { useParams } from "react-router-dom";
 import 'jodit/build/jodit.min.css';
 
 export const BookinfoUbdate: React.FC = () => {
@@ -37,7 +37,6 @@ useEffect(()=>{
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
-const history = useHistory()
 const cretebookinfo = async (e:React.FormEvent<HTMLFormElement>) => {
 
   e.preventDefault()

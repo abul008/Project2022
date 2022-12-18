@@ -2,7 +2,7 @@ import { Homestate, HomeAction } from "../../custom_types/home"
 import { HOME_ADD_INFO, HOME_GET_INFO, HOME_CHANGE_QUANTITY, HOME_LOADER } from '../../config'
 
 const initialState:Homestate = {
-   data:{
+   data: {
     file:[],
     absalute_url:"",
     phone_number:"",
@@ -19,7 +19,6 @@ const initialState:Homestate = {
    getHomedata:[],
    quantity:0,
    loaderpage:true
-
 }
 
 export const HomeReducer = (state = initialState, action: HomeAction): Homestate => {

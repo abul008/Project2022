@@ -1,6 +1,6 @@
 import { bookstate, BookAction } from "../../custom_types/book"
 import { BOOK_GET_INFO, BOOK_ADD_INFO } from "../../config"
-
+import { deepCopy } from "../../helpers"
 const initialState: bookstate = {
    data: {
     name_am:"",
@@ -29,12 +29,18 @@ const initialState: bookstate = {
 }
 
 export const BookReducer = (state = initialState, action: BookAction): bookstate => {
+    const newState: bookstate = deepCopy(state)
     switch (action.type) {
         case BOOK_ADD_INFO:
-            return {...state, data: action.payload}
+            newState.data = action.payload
+            // return {...state, data: action.payload}
+            break
         case BOOK_GET_INFO:
-            return {...state, getBookdata: action.payload}
+            newState.getBookdata = action.payload
+            // return {...state, getBookdata: action.payload}
+            break
         default:
-            return state
+            return newState
     }
+    return newState
 }

@@ -1,4 +1,5 @@
- 
+import { FETCH_USERS, FETCH_USERS_SUCCESS, FETCH_USERS_ERROR, CREATE_USERS_SING_UP } from "../config"
+
 export interface User {
   _id:string,
   name:string,
@@ -12,37 +13,29 @@ export interface User {
 export interface UserState {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   users: any,
-  loading: boolean,
+  loading:  boolean,
   error: null | string,
-  createUser: User,
-  // create:string
-}
-
-export enum UserActionTypes {
-  FETCH_USERS = 'FETCH_USERS',
-  FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS',
-  FETCH_USERS_ERROR = 'FETCH_USERS_ERROR',
-  CREATE_USERS_SING_UP = 'CREATE_USERS_SING_UP'
+  createUser: User
 }
  
 interface FetchUsersAction {
-  type: UserActionTypes.FETCH_USERS;
+  type: typeof FETCH_USERS;
 }
   
 interface FetchUsersSuccessAction {
-  type:UserActionTypes.FETCH_USERS_SUCCESS;
+  type: typeof FETCH_USERS_SUCCESS;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  payload:User[]
+  payload: User[]
 }
   
 interface FetchUsersErrorAction {
-  type:UserActionTypes.FETCH_USERS_ERROR;
-  payload:string
+  type: typeof FETCH_USERS_ERROR;
+  payload: string
 }
   
 interface CreateUsersSingUpAction {
-  type:UserActionTypes.CREATE_USERS_SING_UP;
-  payload:User
+  type: typeof CREATE_USERS_SING_UP;
+  payload: User
 }
   
 export type UserAction = FetchUsersAction | FetchUsersSuccessAction | FetchUsersErrorAction | CreateUsersSingUpAction

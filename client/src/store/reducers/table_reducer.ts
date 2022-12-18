@@ -1,4 +1,5 @@
-import {Tablestate,TableActionTypes , TableAction} from "../../custom_types"
+import {Tablestate, TableAction} from "../../custom_types"
+import { TABLE_GET_INFO, TABLE_GET_TITLE } from "../../config"
 
 const initialState:Tablestate = {
     tabledata:[],
@@ -11,9 +12,9 @@ const initialState:Tablestate = {
 
 export const TableReducer = (state = initialState, action: TableAction): Tablestate => {
     switch (action.type) {
-        case TableActionTypes.TABLE_GET_INFO:
-            return {...state,tabledata:action.payload}
-        case TableActionTypes.TABLE_GET_TITLE:
+        case TABLE_GET_INFO:
+            return {...state, tabledata:action.payload}
+        case TABLE_GET_TITLE:
             return {...state,title:action.payload}
         default:
             return state

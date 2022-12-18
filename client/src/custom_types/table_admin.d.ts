@@ -1,3 +1,5 @@
+import { TABLE_GET_INFO, TABLE_GET_TITLE } from "../config"
+
 export interface Tableinfo {
   email: string
   lastname: string
@@ -27,19 +29,14 @@ export interface Tablestate {
   tabledata:Tableinfo[]
   title:Tabletitle
 }
-
-export enum TableActionTypes {
-  TABLE_GET_INFO = 'TABLE_GET_INFO',
-  TABLE_GET_TITLE = 'TABLE_GET_TITILE'
-}
   
 interface TableGetInfoAction {
-  type: TableActionTypes.TABLE_GET_INFO
+  type: typeof TABLE_GET_INFO
   payload: Tableinfo[]
 }
   
 interface TableGeTitleAction {
-  type: TableActionTypes.TABLE_GET_TITLE
+  type: typeof TABLE_GET_TITLE
   payload: Tabletitle
 }
   

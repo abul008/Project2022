@@ -1,4 +1,4 @@
-import { Homestate, HomeAction } from "../../custom_types/home.d"
+import { Homestate, HomeAction } from "../../custom_types/home"
 import { HOME_ADD_INFO, HOME_GET_INFO, HOME_CHANGE_QUANTITY, HOME_LOADER } from '../../config'
 
 const initialState:Homestate = {

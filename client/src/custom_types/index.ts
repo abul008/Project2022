@@ -7,7 +7,7 @@ export * from './order.d'
 export * from './routes.d'
 export * from './search.d'
 export * from './shop_list.d'
-export * from './table.d'
+export * from './table_admin.d'
 export * from './user.d'
 
 

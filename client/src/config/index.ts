@@ -1,1 +1,1 @@
-export * from './action-constants'
+export * from './action_constants'

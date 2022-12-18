@@ -1,4 +1,5 @@
-import { UserAction, UserState, UserActionTypes } from '../../custom_types'
+import { UserAction, UserState } from '../../custom_types'
+import {FETCH_USERS, FETCH_USERS_SUCCESS, FETCH_USERS_ERROR, CREATE_USERS_SING_UP } from "../../config"
 
 const initialState: UserState = {
   users: {
@@ -25,13 +26,13 @@ const initialState: UserState = {
 
 export const userReducer = (state = initialState, action: UserAction): UserState => {
   switch (action.type) {
-    case UserActionTypes.FETCH_USERS:
+    case FETCH_USERS:
       return {... state, loading: true, error: null, users:[]}
-    case UserActionTypes.FETCH_USERS_SUCCESS:
+    case FETCH_USERS_SUCCESS:
       return {... state, loading: false, error: null, users: action.payload}
-    case UserActionTypes.FETCH_USERS_ERROR:
+    case FETCH_USERS_ERROR:
       return {... state, loading: false, error: action.payload, users:[]}
-    case UserActionTypes.CREATE_USERS_SING_UP:
+    case CREATE_USERS_SING_UP:
       return {... state, createUser: action.payload}   
     default:
       return state

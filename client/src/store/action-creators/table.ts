@@ -1,15 +1,17 @@
-import {TableAction, TableActionTypes, Tableinfo, Tabletitle } from "../../custom_types"
+import { TableAction, Tableinfo, Tabletitle } from "../../custom_types"
+import { TABLE_GET_INFO, TABLE_GET_TITLE } from "../../config"
+
 
 export function setTablePage(tabledata: Tableinfo[]): TableAction {
   return {
-    type: TableActionTypes.TABLE_GET_INFO,
+    type: TABLE_GET_INFO,
     payload: tabledata
   }
 }
 
 export function setTableTitle(tabletitle: Tabletitle): TableAction {
   return {
-    type: TableActionTypes.TABLE_GET_TITLE,
+    type: TABLE_GET_TITLE,
     payload: tabletitle
   }
 }

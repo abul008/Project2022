@@ -24,12 +24,12 @@ export interface Homestate {
     loaderpage: boolean
 }
 
-export enum HomeActionTypes {
-    HOME_ADD_INFO = 'HOME_ADD_INFO',
-    HOME_GET_INFO = 'HOME_GET_INFO',
-    HOME_CHANGE_QUANTITY = "HOME_CHANGE_QUANTITY",
-    HOME_LOADER = "HOME_LOADER"
-}
+// export enum HomeActionTypes {
+//     HOME_ADD_INFO = 'HOME_ADD_INFO',
+//     HOME_GET_INFO = 'HOME_GET_INFO',
+//     HOME_CHANGE_QUANTITY = "HOME_CHANGE_QUANTITY",
+//     HOME_LOADER = "HOME_LOADER"
+// }
 
 interface HomeAddInfoAction {
   type: typeof HOME_ADD_INFO;

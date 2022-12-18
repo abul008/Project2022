@@ -1,4 +1,4 @@
-import {HomeAction } from "../../custom_types/home.d"
+import {HomeAction } from "../../custom_types/home"
 import { HOME_ADD_INFO, HOME_GET_INFO, HOME_CHANGE_QUANTITY, HOME_LOADER } from "../../config"
 import { Homeinfo } from "../../custom_types/index"
 import {  Dispatch  } from 'redux'

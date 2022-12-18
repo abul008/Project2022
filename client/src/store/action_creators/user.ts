@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import {FETCH_USERS, FETCH_USERS_SUCCESS, FETCH_USERS_ERROR, CREATE_USERS_SING_UP } from "../../config"
-import { UserAction, User} from "../../custom_types/";
+import { UserAction, User} from "../../custom_types";
 import axiosInstance from "../../component/utils";
 
 
